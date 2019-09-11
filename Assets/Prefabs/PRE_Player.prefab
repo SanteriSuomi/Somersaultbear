@@ -171,5 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalSpeed: 3
+  maxVerticalSpeed: 6.5
   gravity: 2
-  jumpModifier: 6
+  jumpModifier: 8
