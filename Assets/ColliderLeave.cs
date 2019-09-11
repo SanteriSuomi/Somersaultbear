@@ -4,22 +4,13 @@ using UnityEngine;
 
 public class ColliderLeave : MonoBehaviour
 {
-
-    void Start()
-    {
-		    
-    }
-
-    void Update()
-    {
-        
-    }
-
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player"))
 		{
-			gameObject.SetActive(false);
+			print($"{gameObject.transform.parent.gameObject.name} has been set inactive.");
+
+			gameObject.transform.parent.gameObject.SetActive(false);	
 		}
 	}
 }

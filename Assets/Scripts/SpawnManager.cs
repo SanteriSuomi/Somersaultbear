@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-	// Starting scene prefab.
+	// Starting scene prefab, to get it's tranform for later use.
 	[SerializeField]
 	private GameObject prefabStart = null;
 
@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 	// Current scene prefab's transform to keep track of instantiating new scenes.
 	private Transform currentPositionTransform;
 
-	// Object pool.
+	// Prefab object pool.
 	private List<GameObject> prefabList = new List<GameObject>();
 
 	void Start()
@@ -39,9 +39,9 @@ public class SpawnManager : MonoBehaviour
 			// If prefab is not active, select it.
 			if (!prefab.activeSelf)
 			{
-				print($"Activating {prefab}");
+				print($"Activating {prefab}.");
 
-				// Make the spawned prefab's position to the currentPositionTransform position.
+				// Set the spawned prefab's transform position to the currentPositionTransform transform's position, plus 39.5f X vector, so they will spawn in line.
 				prefab.transform.position = currentPositionTransform.transform.position + new Vector3(39.5f, 0f);
 
 				// Make the currentPositionTransform field's value the transform of the spawned prefab, to make it easier to spawn new prefabs (scenes).
@@ -49,6 +49,9 @@ public class SpawnManager : MonoBehaviour
 
 				// Finally make the prefab active.
 				prefab.SetActive(true);
+
+				// When found a inactive prefab, break away from the foreach loop to stop making all prefabs active.
+				break;
 			}
 		}
 	}

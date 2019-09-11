@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class ColliderInfo : MonoBehaviour
 {
-	// Scene spawn manager script reference.
 	private SpawnManager spawnManager;
 
-    void Start()
+	private bool alreadyHit = false;
+
+	void Start()
     {
-		// Find the spawn manager gameobject and get the script to access it's methods.
 		spawnManager = GameObject.Find("PRE_SpawnManager").GetComponent<SpawnManager>();
     }
 
+	private void OnEnable()
+	{
+		alreadyHit = false;
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player"))
+		if (collision.CompareTag("Player") && !alreadyHit)
 		{
-			print($"Hit {collision.gameObject.name}");
+			print($"Hit {collision.gameObject.name}.");
+
+			alreadyHit = true;
 
 			spawnManager.SetNewScene(true);
 		}
