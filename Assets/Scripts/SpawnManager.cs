@@ -21,23 +21,38 @@ public class SpawnManager : MonoBehaviour
 
 	public void SetNewScene(bool hitCollider)
 	{
-		foreach (var prefab in prefabPool)
+		var random = Random.Range(0, prefabPool.Length);
+
+		// If the selected random index in the prefab pool is not active, activate the prefab.
+		if (!prefabPool[random].activeSelf)
 		{
-			// If the prefab is not active, select it.
-			if (!prefab.activeSelf)
+			ActivePrefab(prefabPool[random]);
+		}
+		// Else select the first not active prefab in the pool.
+		else
+		{
+			foreach (var prefab in prefabPool)
 			{
-				print($"Activating {prefab}.");
+				if (!prefab.activeSelf)
+				{
+					ActivePrefab(prefab);
 
-				// Set the spawned prefab's transform position to the currentPositionTransform transform's position, plus 39.5f X vector, so they will spawn in line.
-				prefab.transform.position = currentPositionTransform.transform.position + new Vector3(39.5f, 0f);
-
-				// Make the currentPositionTransform field's value the transform of the spawned prefab, to make it easier to spawn new prefabs (scenes).
-				currentPositionTransform = prefab.transform;
-
-				prefab.SetActive(true);
-
-				break;
+					break;
+				}
 			}
 		}
+	}
+
+	private void ActivePrefab(GameObject prefab)
+	{
+		print($"Activating {prefab}.");
+
+		// Set the spawned prefab's transform position to the currentPositionTransform transform's position, plus 39.5f X vector, so they will spawn in line.
+		prefab.transform.position = currentPositionTransform.transform.position + new Vector3(39.5f, 0f);
+
+		// Make the currentPositionTransform field's value the transform of the spawned prefab, to make it easier to spawn new prefabs (scenes).
+		currentPositionTransform = prefab.transform;
+
+		prefab.SetActive(true);
 	}
 }

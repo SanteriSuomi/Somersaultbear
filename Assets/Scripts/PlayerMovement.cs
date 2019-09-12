@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private float jumpModifier = 8f;
 
-	private const float jumpVelocityLock = 0.05f;
+	private const float jumpVelocityLock = 0.1f;
 
 	void Start()
 	{
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		// Keep checking for player space input and and limit jumping to when the player object's rigidbody's velocity is between the constant -jumpVelocityLock and +jumpVelocityLock.
-		if (Input.GetKeyDown(KeyCode.Space) && rigidBody.velocity.y > -jumpVelocityLock && rigidBody.velocity.y < jumpVelocityLock)
+		if (Input.GetButtonDown("Jump") && rigidBody.velocity.y > -jumpVelocityLock && rigidBody.velocity.y < jumpVelocityLock)
 		{
 			// Add impulse force to the player for the jump.
 			rigidBody.AddForce(new Vector2(0f, jumpModifier), ForceMode2D.Impulse);
