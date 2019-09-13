@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private float jumpModifier = 8f;
 
-	private const float jumpVelocityLock = 0.1f;
+	private const float jumpVelocityLock = 0.2f;
 
 	void Start()
 	{

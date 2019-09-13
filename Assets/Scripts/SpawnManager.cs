@@ -26,16 +26,16 @@ public class SpawnManager : MonoBehaviour
 		// If the selected random index in the prefab pool is not active, activate the prefab.
 		if (!prefabPool[random].activeSelf)
 		{
-			ActivePrefab(prefabPool[random]);
+			ActivatePrefab(prefabPool[random]);
 		}
-		// Else select the first not active prefab in the pool.
+		// Else select the first deactivated prefab in the pool.
 		else
 		{
 			foreach (var prefab in prefabPool)
 			{
 				if (!prefab.activeSelf)
 				{
-					ActivePrefab(prefab);
+					ActivatePrefab(prefab);
 
 					break;
 				}
@@ -43,7 +43,7 @@ public class SpawnManager : MonoBehaviour
 		}
 	}
 
-	private void ActivePrefab(GameObject prefab)
+	private void ActivatePrefab(GameObject prefab)
 	{
 		print($"Activating {prefab}.");
 

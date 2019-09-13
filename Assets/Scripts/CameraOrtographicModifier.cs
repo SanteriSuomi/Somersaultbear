@@ -7,8 +7,6 @@ public class CameraOrtographicModifier : MonoBehaviour
 {
 	private CinemachineVirtualCamera cinemachine;
 
-	private GameObject player;
-
 	private Rigidbody2D playerRigidbody;
 
 	[SerializeField]
@@ -24,18 +22,16 @@ public class CameraOrtographicModifier : MonoBehaviour
 	{
 		cinemachine = GetComponent<CinemachineVirtualCamera>();
 
-		player = GameObject.FindGameObjectWithTag("Player");
-
-		playerRigidbody = player.GetComponent<Rigidbody2D>();
+		playerRigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
 	}
 
 	void Update()
 	{
-		if (playerRigidbody.velocity.y >= 1.5f)
+		if (playerRigidbody.velocity.y >= 2f)
 		{
 			StartCoroutine(ChangeOrtographicSize(true));
 		}
-		else if (playerRigidbody.velocity.y >= 0f && playerRigidbody.velocity.y <= 0.15f)
+		else if (playerRigidbody.velocity.y >= 0f && playerRigidbody.velocity.y <= 0.1f)
 		{
 			StartCoroutine(ChangeOrtographicSize(false));
 		}
@@ -52,6 +48,6 @@ public class CameraOrtographicModifier : MonoBehaviour
 			cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(cinemachine.m_Lens.OrthographicSize, minLensSize, ref yVelocity, lensSmoothTime);
 		}
 
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(2.5f);
 	}
 }
