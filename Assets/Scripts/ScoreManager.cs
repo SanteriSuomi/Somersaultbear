@@ -14,6 +14,6 @@ public class ScoreManager : MonoBehaviour
     {
 		currentScore += (int)Time.time;
 
-		textScore.text = $"Score: {currentScore}";
+		textScore.text = $"Score: {currentScore / 10}";
 	}
 }
