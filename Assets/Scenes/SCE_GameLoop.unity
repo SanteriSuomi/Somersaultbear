@@ -2044,6 +2044,11 @@ PrefabInstance:
       propertyPath: menuButtons.Array.data[1]
       value: 
       objectReference: {fileID: 421743034}
+    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
+        type: 3}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 6756189374769294615}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7, type: 3}
 --- !u!1001 &1576905833639040834
@@ -2433,6 +2438,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6756189374769294613}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6756189374769294615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5031819714512378866, guid: 7f1a747a512c0cd438da5113522bc778,
+    type: 3}
+  m_PrefabInstance: {fileID: 6756189374769294613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88429750ba48254b9ccd5d964ce8a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8269032617050318442
 PrefabInstance:
   m_ObjectHideFlags: 0

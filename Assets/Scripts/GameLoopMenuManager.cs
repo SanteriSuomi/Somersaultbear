@@ -5,7 +5,10 @@ using UnityEngine;
 public class GameLoopMenuManager : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject[] menuButtons;
+	private GameObject[] menuButtons = null;
+
+	[SerializeField]
+	private ScoreManager scoreManager = null;
 
     void Update()
     {
@@ -15,12 +18,16 @@ public class GameLoopMenuManager : MonoBehaviour
 			{
 				if (item.activeSelf)
 				{
+					scoreManager.gameIsPaused = false;
+
 					Time.timeScale = 1;
 
 					item.SetActive(false);
 				}
 				else
 				{
+					scoreManager.gameIsPaused = true;
+
 					Time.timeScale = 0;
 
 					item.SetActive(true);

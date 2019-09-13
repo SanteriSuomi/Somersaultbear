@@ -10,10 +10,15 @@ public class ScoreManager : MonoBehaviour
 
 	private int currentScore;
 
+	public bool gameIsPaused = false;
+
     void Update()
     {
-		currentScore += (int)Time.time;
+		if (!gameIsPaused)
+		{
+			currentScore += (int)Time.time;
 
-		textScore.text = $"Score: {currentScore / 10}";
+			textScore.text = $"Score: {currentScore / 10}";
+		}
 	}
 }
