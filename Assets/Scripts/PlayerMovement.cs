@@ -6,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-	private Rigidbody2D rigidBody;
-
 	[SerializeField]
 	private float verticalSpeed = 3f;
 
@@ -16,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
 	[SerializeField]
 	private float jumpModifier = 8f;
+
+	private Rigidbody2D rigidBody;
 
 	private const float jumpVelocityLock = 0.2f;
 

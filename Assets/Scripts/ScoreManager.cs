@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
 
 	private int currentScore;
 
-	public bool gameIsPaused = false;
+	public bool gameIsPaused { get; set; } = false;
 
     void Update()
     {
