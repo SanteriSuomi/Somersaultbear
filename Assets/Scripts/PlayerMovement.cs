@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Require rigidbody for movement.
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,9 +14,13 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private float jumpModifier = 8f;
 
-	private Rigidbody2D rigidBody;
+	[SerializeField]
+	private float jumpDetectionHeight = 0.7f;
 
-	private const float jumpVelocityLock = 0.2f;
+	[SerializeField]
+	private LayerMask groundLayer;
+
+	private Rigidbody2D rigidBody;
 
 	void Start()
 	{
@@ -30,14 +33,22 @@ public class PlayerMovement : MonoBehaviour
 		if (rigidBody.velocity.x < maxVerticalSpeed)
 		{
 			// Move player vertically.
-			rigidBody.AddForce(new Vector2(verticalSpeed, 0f), ForceMode2D.Force);
+			rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
 		}
 
-		// Keep checking for player space input and and limit jumping to when the player object's rigidbody's velocity is between the constant -jumpVelocityLock and +jumpVelocityLock.
-		if (Input.GetButtonDown("Jump") && rigidBody.velocity.y > -jumpVelocityLock && rigidBody.velocity.y < jumpVelocityLock)
+		// Detect if there is a collider below player object and store it in raycasthit2d. Only detect objects with ground layer applied to them.
+		RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+		// Draw a debug ray.
+		Debug.DrawRay(transform.position, Vector2.down, Color.green);
+		
+		// Ask if rayhit and rayhit collider return true before asking for input.
+		if (rayHit && rayHit.collider) 
 		{
-			// Add impulse force to the player for the jump.
-			rigidBody.AddForce(new Vector2(0f, jumpModifier), ForceMode2D.Impulse);
+			if (Input.GetButtonDown("Jump"))
+			{
+				// Add impulse force for the jump.
+				rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+			}
 		}
 	}
 }

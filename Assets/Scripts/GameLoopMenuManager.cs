@@ -5,10 +5,10 @@ using UnityEngine;
 public class GameLoopMenuManager : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject[] menuButtons = null;
+	private GameObject[] menuButtons;
 
 	[SerializeField]
-	private ScoreManager scoreManager = null;
+	private ScoreManager scoreManager;
 
     void Update()
     {

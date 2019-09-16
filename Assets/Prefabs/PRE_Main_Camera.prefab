@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1616202543944396377}
   - component: {fileID: 1616202543944396378}
   - component: {fileID: 1616202543944396379}
-  - component: {fileID: 1616202543944396376}
+  - component: {fileID: 2037877625}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &1616202543944396376
+--- !u!114 &2037877625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1616202545220264532}
   - component: {fileID: 1616202545220264535}
+  - component: {fileID: 1693932596}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -285,3 +286,16 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1616202543944396377}
+--- !u!114 &1693932596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616202545220264533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5268f72848ddb46875ea128d3dd46f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lensSmoothTime: 0.5

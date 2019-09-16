@@ -44,5 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabStart: {fileID: 0}
-  prefabOne: {fileID: 0}
-  prefabTwo: {fileID: 0}
+  prefabPool:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

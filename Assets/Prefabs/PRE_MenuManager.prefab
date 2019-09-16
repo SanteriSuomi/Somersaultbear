@@ -46,3 +46,4 @@ MonoBehaviour:
   menuButtons:
   - {fileID: 0}
   - {fileID: 0}
+  scoreManager: {fileID: 0}

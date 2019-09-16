@@ -172,5 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalSpeed: 3
   maxVerticalSpeed: 6.5
-  gravity: 2
   jumpModifier: 8
+  jumpDetectionHeight: 0.7
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
