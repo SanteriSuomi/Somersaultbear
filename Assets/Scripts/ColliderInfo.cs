@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ColliderInfo : MonoBehaviour
 {
-	private SpawnManager spawnManager;
+	private SpawnManager spawnManager = default;
 
 	private bool alreadyHit = false;
 
 	void Start()
     {
-		spawnManager = GameObject.Find("PRE_SpawnManager").GetComponent<SpawnManager>();
+		spawnManager = GameObject.Find("PRE_SceneSpawnManager").GetComponent<SpawnManager>();
     }
 
 	private void OnEnable()

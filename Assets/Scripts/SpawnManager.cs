@@ -6,10 +6,10 @@ public class SpawnManager : MonoBehaviour
 {
 	// Starting scene prefab, to get it's tranform for later use.
 	[SerializeField]
-	private GameObject prefabStart;
+	private GameObject prefabStart = default;
 
 	[SerializeField]
-	private GameObject[] prefabPool;
+	private GameObject[] prefabPool = default;
 
 	private Transform currentPositionTransform;
 

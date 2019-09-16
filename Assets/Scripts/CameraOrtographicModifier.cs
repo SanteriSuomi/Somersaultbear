@@ -5,10 +5,6 @@ using Cinemachine;
 
 public class CameraOrtographicModifier : MonoBehaviour
 {
-	private CinemachineVirtualCamera cinemachine;
-
-	private Rigidbody2D playerRigidbody;
-
 	[SerializeField]
 	private float lensSmoothTime = 0.25f;
 
@@ -17,6 +13,10 @@ public class CameraOrtographicModifier : MonoBehaviour
 	private const float minLensSize = 5f;
 
 	private float yVelocity = 0f;
+
+	private CinemachineVirtualCamera cinemachine = default;
+
+	private Rigidbody2D playerRigidbody = default;
 
 	void Start()
 	{

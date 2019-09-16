@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ColliderLeave : MonoBehaviour
 {
+	[SerializeField]
+	private float maxRandomRange = 10f;
+
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player"))
@@ -14,7 +17,7 @@ public class ColliderLeave : MonoBehaviour
 
 	private IEnumerator RandomDelay()
 	{
-		var random = Random.Range(0f, 10f);
+		var random = Random.Range(0f, maxRandomRange);
 
 		print($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
 

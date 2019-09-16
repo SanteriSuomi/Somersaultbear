@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField]
@@ -15,12 +14,12 @@ public class PlayerMovement : MonoBehaviour
 	private float jumpModifier = 8f;
 
 	[SerializeField]
-	private float jumpDetectionHeight = 0.7f;
+	private float jumpDetectionHeight = 0.71f;
 
 	[SerializeField]
-	private LayerMask groundLayer;
+	private LayerMask groundLayer = default;
 
-	private Rigidbody2D rigidBody;
+	private Rigidbody2D rigidBody = default;
 
 	void Start()
 	{

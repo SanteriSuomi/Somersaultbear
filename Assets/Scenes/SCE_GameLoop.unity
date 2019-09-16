@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 421743037}
   - component: {fileID: 421743036}
   m_Layer: 5
-  m_Name: '!!Undecided!!'
+  m_Name: Reset Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,7 +580,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 421743037}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3779479791258770003, guid: c3f2955eba1ed4640a24340304a925a6,
+          type: 3}
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SCE_GameLoop
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &421743037
@@ -691,7 +703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Exit
+  m_Text: 'Reset
 
 '
 --- !u!222 &425261711
@@ -1064,7 +1076,7 @@ GameObject:
   - component: {fileID: 803159887}
   - component: {fileID: 803159886}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1523,7 +1535,7 @@ PrefabInstance:
     - target: {fileID: 3779479791258770002, guid: c3f2955eba1ed4640a24340304a925a6,
         type: 3}
       propertyPath: m_Name
-      value: PRE_MenuLogic
+      value: PRE_UILogic
       objectReference: {fileID: 0}
     - target: {fileID: 3779479791258770012, guid: c3f2955eba1ed4640a24340304a925a6,
         type: 3}
@@ -1877,8 +1889,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: jumpDetectionHeight
+      value: 0.71
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
+--- !u!1 &223707788818364516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 223707787211815928, guid: 8e910b234c0009b4abc1b56dea37a005,
+    type: 3}
+  m_PrefabInstance: {fileID: 223707788818364515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &249831292133714338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1889,7 +1912,7 @@ PrefabInstance:
     - target: {fileID: 249831292181989417, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
         type: 3}
       propertyPath: m_Name
-      value: PRE_MenuManager
+      value: PRE_UIManager
       objectReference: {fileID: 0}
     - target: {fileID: 249831292181989422, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
         type: 3}
@@ -1973,7 +1996,7 @@ PrefabInstance:
     - target: {fileID: 1576905832937024426, guid: 05ee3c8b359fcb74fb55486fcd7b69ba,
         type: 3}
       propertyPath: m_Name
-      value: PRE_SpawnManager
+      value: PRE_SceneSpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 1576905832937024424, guid: 05ee3c8b359fcb74fb55486fcd7b69ba,
         type: 3}
@@ -2256,6 +2279,11 @@ PrefabInstance:
       propertyPath: textScore
       value: 
       objectReference: {fileID: 803159886}
+    - target: {fileID: 5031819714512378866, guid: 7f1a747a512c0cd438da5113522bc778,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 223707788818364516}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f1a747a512c0cd438da5113522bc778, type: 3}
 --- !u!4 &6756189374769294614 stripped
@@ -2287,6 +2315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_1_Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
