@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	private float jumpModifier = 8f;
 
 	[SerializeField]
-	private float jumpDetectionHeight = 0.75f;
+	private float jumpDetectionHeight = 0.72f;
 
 	[SerializeField]
 	private LayerMask groundLayer = default;
@@ -37,17 +37,15 @@ public class PlayerMovement : MonoBehaviour
 
 		// Detect if there is a collider below player object and store it in raycasthit2d. Only detect objects with ground layer applied to them.
 		RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+
 		// Draw a debug ray.
-		Debug.DrawRay(transform.position, Vector3.down, Color.green);
-		
+		Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.red);
+
 		// Ask if rayhit and rayhit collider return true before asking for input.
-		if (rayHit && rayHit.collider) 
+		if (rayHit && rayHit.collider && Input.GetButtonDown("Jump"))
 		{
-			if (Input.GetButtonDown("Jump"))
-			{
-				// Add impulse force for the jump.
-				rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
-			}
+			// Add impulse force for the jump.
+			rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
 		}
 	}
 }

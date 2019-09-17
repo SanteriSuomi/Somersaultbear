@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
 		currentPositionTransform = prefabStart.transform;
 	}
 
-	public void SetNewScene(bool hitCollider)
+	public void SetNewScene()
 	{
 		var random = Random.Range(0, prefabPool.Length);
 

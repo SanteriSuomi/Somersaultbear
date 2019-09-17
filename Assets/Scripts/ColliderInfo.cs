@@ -31,7 +31,7 @@ public class ColliderInfo : MonoBehaviour
 			alreadyHit = true;
 
 			// Spawn a new scene using the spawnManager.
-			spawnManager.SetNewScene(true);
+			spawnManager.SetNewScene();
 		}
 	}
 }
