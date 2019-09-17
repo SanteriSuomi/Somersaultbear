@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-	// A property for pausing the score counting when player presses "Cancel" (escape) for the menu.
-	public bool pauseScoreCounting { get; set; } = false;
+	public bool PauseScoreCounting { get; set; } = false;
 
 	private int currentScore;
 
@@ -27,7 +26,7 @@ public class ScoreManager : MonoBehaviour
 	void Update()
 	{
 		// Update score when not pausing the score and player's velocity is more than X amount in the positive X.
-		if (!pauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
+		if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
 		{
 			// Add time to the current score and cast it with int because Time.time returns float normally and we don't want decimals.
 			currentScore += (int)Time.time;

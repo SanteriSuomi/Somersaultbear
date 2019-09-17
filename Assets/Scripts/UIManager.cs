@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 			if (item.activeSelf)
 			{
 				// Continue score counting.
-				scoreManager.pauseScoreCounting = false;
+				scoreManager.PauseScoreCounting = false;
 
 				// Unpause.
 				Time.timeScale = 1;
@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
 			else
 			{
 				// Pause score counting.
-				scoreManager.pauseScoreCounting = true;
+				scoreManager.PauseScoreCounting = true;
 
 				// Pause, or freeze the time.
 				Time.timeScale = 0;
