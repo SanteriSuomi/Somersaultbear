@@ -12,6 +12,8 @@ public class SpawnManager : MonoBehaviour
 	private GameObject[] prefabPool = default;
 
 	private Transform currentPositionTransform;
+	
+	private const float spawnInXAxis = 39.9f;
 
 	void Start()
 	{
@@ -48,7 +50,7 @@ public class SpawnManager : MonoBehaviour
 		print($"Activating {prefab}.");
 
 		// Set the spawned prefab's transform position to the currentPositionTransform transform's position, plus 39.5f X vector, so they will spawn in line.
-		prefab.transform.position = currentPositionTransform.transform.position + new Vector3(39.5f, 0f);
+		prefab.transform.position = currentPositionTransform.transform.position + new Vector3(spawnInXAxis, 0f, 0f);
 
 		// Make the currentPositionTransform field's value the transform of the spawned prefab, to make it easier to spawn new prefabs (scenes).
 		currentPositionTransform = prefab.transform;

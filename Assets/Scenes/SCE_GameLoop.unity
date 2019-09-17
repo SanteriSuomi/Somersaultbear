@@ -1892,7 +1892,7 @@ PrefabInstance:
     - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: jumpDetectionHeight
-      value: 0.71
+      value: 0.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
@@ -2193,6 +2193,14 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1614676893}
+    - target: {fileID: 1693932596, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693932596, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
+      propertyPath: detectionHeight
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
 --- !u!4 &4256879637215493113 stripped

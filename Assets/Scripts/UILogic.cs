@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UILogic : MonoBehaviour
 {
+	// "Central" logic for variety of UI logic, main using buttons.
+
+	// Change the scene using the scene name, and unpause the game (since the game is most likely paused).
 	public void ChangeScene(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);
