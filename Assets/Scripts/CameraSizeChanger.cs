@@ -9,7 +9,7 @@ public class CameraSizeChanger : MonoBehaviour
 	private float lensSmoothTime = 0.5f;
 
 	[SerializeField]
-	private float detectionHeight = 1.1f;
+	private float detectionHeight = 2f;
 
 	private float yVelocity = 0f;
 
@@ -26,14 +26,14 @@ public class CameraSizeChanger : MonoBehaviour
 	[SerializeField]
 	private LayerMask groundLayer = default;
 
-	void Start()
+	private void Start()
 	{
 		cinemachine = GetComponent<CinemachineVirtualCamera>();
 
 		player = GameObject.Find("PRE_Player");
 	}
 
-	void LateUpdate()
+	private void LateUpdate()
 	{
 		// Cast a 2d raycast down, and use detection height as the height. Only detect layers specified in groundLayer.
 		RaycastHit2D rayHit = Physics2D.Raycast(player.transform.position, Vector2.down, detectionHeight, groundLayer);

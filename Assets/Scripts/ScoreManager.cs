@@ -18,12 +18,12 @@ public class ScoreManager : MonoBehaviour
 
 	private Rigidbody2D playerRigidbody = default;
 
-	void Start()
+	private void Start()
 	{
 		playerRigidbody = GameObject.Find("PRE_Player").GetComponent<Rigidbody2D>();
 	}
 
-	void Update()
+	private void Update()
 	{
 		// Update score when not pausing the score and player's velocity is more than X amount in the positive X.
 		if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)

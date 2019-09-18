@@ -6,7 +6,7 @@ public class ColliderDeath : MonoBehaviour
 {
 	private UILogic uiLogic = default;
 
-	void Start()
+	private void Start()
 	{
 		uiLogic = GameObject.Find("PRE_UILogic").GetComponent<UILogic>();
 	}

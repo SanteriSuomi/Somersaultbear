@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
 	private ScoreManager scoreManager = default;
 
 	// Check for user input continously.
-	void Update()
+	private void Update()
     {
         if (Input.GetButtonDown("Cancel"))
 		{
@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 		}
     }
 
-	public void ShowMenuButtons()
+	private void ShowMenuButtons()
 	{
 		// Loop through the menu buttons array.
 		foreach (var item in menuButtons)

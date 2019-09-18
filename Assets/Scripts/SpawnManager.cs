@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+	private const float spawnInXAxis = 39.9f;
+
 	// Starting scene prefab, to get it's tranform for later use.
 	[SerializeField]
 	private GameObject prefabStart = default;
@@ -12,10 +14,8 @@ public class SpawnManager : MonoBehaviour
 	private GameObject[] prefabPool = default;
 
 	private Transform currentPositionTransform;
-	
-	private const float spawnInXAxis = 39.9f;
 
-	void Start()
+	private void Start()
 	{
 		// Initialize current position transform variable to start with the first scene in the game, for easier instantiating of objects.
 		currentPositionTransform = prefabStart.transform;
@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
 
 	public void SetNewScene()
 	{
-		var random = Random.Range(0, prefabPool.Length);
+		int random = Random.Range(0, prefabPool.Length);
 
 		// If the selected random index in the prefab pool is not active, activate the prefab.
 		if (!prefabPool[random].activeSelf)

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	private float jumpModifier = 8f;
 
 	[SerializeField]
-	private float jumpDetectionHeight = 0.72f;
+	private float jumpDetectionHeight = 0.715f;
 
 	[SerializeField]
 	private LayerMask groundLayer = default;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 		Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.red);
 
 		// Ask if rayhit and rayhit collider return true before asking for input.
-		if (rayHit && rayHit.collider && Input.GetButtonDown("Jump"))
+		if (rayHit && Input.GetButtonDown("Jump"))
 		{
 			// Add impulse force for the jump.
 			rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);

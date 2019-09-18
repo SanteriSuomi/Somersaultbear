@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColliderLeave : MonoBehaviour
 {
 	[SerializeField]
-	private float maxRandomRange = 10f;
+	private int maxRandomRange = 10;
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
@@ -18,7 +18,7 @@ public class ColliderLeave : MonoBehaviour
 	private IEnumerator RandomDelay()
 	{
 		// Get a new random number in the range of 0 and maxRandomRange
-		var random = Random.Range(0f, maxRandomRange);
+		int random = Random.Range(0, maxRandomRange);
 
 		print($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
 

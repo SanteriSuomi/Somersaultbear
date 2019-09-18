@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
 
 	private Rigidbody2D rigidBody = default;
 
-	void Start()
+	private void Start()
 	{
 		rigidBody = GetComponent<Rigidbody2D>();
 		
@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	void OnEnable()
+	private void OnEnable()
 	{
 		// If onEnable true, activate speed when the prefab gets enabled/activated.
 		if (onEnable)
@@ -52,11 +52,12 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
 		// If oneDirection is false, cast 2 rays on left and right and move to the left and right according to collisions.
 		if (!oneDirection)
 		{
+			// Draw rays left and right and store their collision info in variables.
 			RaycastHit2D hitXPositive = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
 
 			Debug.DrawRay(transform.position, Vector2.right * hitDetectionDistance, Color.white);
@@ -65,6 +66,7 @@ public class EnemyAI : MonoBehaviour
 
 			Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);
 
+			// Valuate X+ and X- and apply force to the player rigidbody according to them.
 			if (hitXPositive && hitXPositive.collider)
 			{
 				rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Impulse);

@@ -9,7 +9,7 @@ public class ColliderInfo : MonoBehaviour
 	// Prevent spawning duplicates by using a boolean lock.
 	private bool alreadyHit = false;
 
-	void Start()
+	private void Start()
     {
 		spawnManager = GameObject.Find("PRE_SceneSpawnManager").GetComponent<SpawnManager>();
     }
