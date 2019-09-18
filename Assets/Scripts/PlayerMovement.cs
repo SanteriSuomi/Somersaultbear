@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -42,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 		Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.red);
 
 		// Ask if rayhit and rayhit collider return true before asking for input.
-		if (rayHit && Input.GetButtonDown("Jump"))
+		if (rayHit && rayHit.collider && Input.GetButtonDown("Jump"))
 		{
 			// Add impulse force for the jump.
 			rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);

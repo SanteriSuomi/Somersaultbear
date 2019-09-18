@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ColliderInfo : MonoBehaviour
 {
@@ -31,7 +29,7 @@ public class ColliderInfo : MonoBehaviour
 			alreadyHit = true;
 
 			// Spawn a new scene using the spawnManager.
-			spawnManager.SetNewScene();
+			spawnManager.SpawnNewScenePrefab();
 		}
 	}
 }
