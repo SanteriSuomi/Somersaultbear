@@ -63,6 +63,7 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
+    // Reset the game when collided with the player.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
