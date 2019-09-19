@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
@@ -38,7 +37,6 @@ public class CameraSizeChanger : MonoBehaviour
 		// Cast a 2d raycast down, and use detection height as the height. Only detect layers specified in groundLayer.
 		RaycastHit2D rayHit = Physics2D.Raycast(player.transform.position, Vector2.down, detectionHeight, groundLayer);
 
-		// Draw a debug ray.
 		Debug.DrawRay(player.transform.position, Vector2.down * detectionHeight, Color.black);
 
 		// When the raycast hits the ground layer "Ground", change the size to small (normal)

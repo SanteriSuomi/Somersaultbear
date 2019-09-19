@@ -50,16 +50,17 @@ public class SpawnManager : MonoBehaviour
     {
         print($"Activating {prefab}.");
 
-        // Set the spawned prefab's transform position to the currentPositionTransform transform's position, plus 39.5f X vector, so they will spawn in line.
+        // Set the spawned prefab's transform position to the currentPositionTransform transform's position,
+        // plus spawnInXAxis vector, so it will spawn ahead of it in line.
         prefab.transform.position = currentPositionTransform.transform.position + new Vector3(spawnInXAxis, 0f, 0f);
 
-        // Make the currentPositionTransform field's value the transform of the spawned prefab, to make it easier to spawn new prefabs (scenes).
+        // Make the currentPositionTransform field's value the transform of the spawned prefab, to make it easier to spawn new prefabs.
         currentPositionTransform = prefab.transform;
 
         StartCoroutine(WaitActivate(prefab));
     }
 
-    // Wait for specified amount of time to prevent flashing when spawning a new prefab.
+    // Wait for specified amount of time to help prevent flashing when spawning a new prefab.
     private IEnumerator WaitActivate(GameObject prefab)
     {
         yield return new WaitForSeconds(waitActivateTime);

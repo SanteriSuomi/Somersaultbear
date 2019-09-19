@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -28,10 +26,10 @@ public class ScoreManager : MonoBehaviour
 		// Update score when not pausing the score and player's velocity is more than X amount in the positive X.
 		if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
 		{
-			// Add time to the current score and cast it with int because Time.time returns float normally and we don't want decimals.
+			// Add time to the currentScore and cast it in integer because Time.time returns float and we don't want decimals.
 			currentScore += (int)Time.time;
 
-			// Update the UI score display.
+			// Update the UI score display and divide it by specified amount for smaller numbers.
 			textScore.text = $"Score: {currentScore / divideScoreBy}";
 		}
 	}

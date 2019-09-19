@@ -20,7 +20,6 @@ public class ColliderInfo : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		// If collision is player, and alreadyHit is false.
 		if (collision.CompareTag("Player") && !alreadyHit)
 		{
 			print($"Hit {collision.gameObject.name}.");
@@ -28,7 +27,6 @@ public class ColliderInfo : MonoBehaviour
 			// Change alreadyHit to true to prevent this from activating again in this instance of the prefab.
 			alreadyHit = true;
 
-			// Spawn a new scene using the spawnManager.
 			spawnManager.SpawnNewScenePrefab();
 		}
 	}

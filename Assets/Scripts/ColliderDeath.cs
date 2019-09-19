@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ColliderDeath : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class ColliderDeath : MonoBehaviour
 		uiLogic = GameObject.Find("PRE_UILogic").GetComponent<UILogic>();
 	}
 
-	// When player enters the trigger (collider), change the scene using UILogic (reset).
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player"))

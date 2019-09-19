@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -10,23 +8,21 @@ public class EnemyAI : MonoBehaviour
 	[SerializeField]
 	private float hitDetectionDistance = 1f;
 
-	// If one direction == true, when the enemy spawns it will just charge in one direction.
+	// If oneDirection is true, when the enemy spawns it will just charge in one direction.
 	[SerializeField]
 	private bool oneDirection = false;
 
-	// If true, enable OnEnable addforce.
 	[SerializeField]
 	private bool onEnable = true;
 
-	// Starting speed OnEnable/On Start.
+	// Starting speed for OnEnable or On Start.
 	[SerializeField]
 	private float startSpeed = 2f;
 
-	// Starting direction, X 1/-1.
+	// Starting direction, X 1/-1 or left/right.
 	[SerializeField]
 	private Vector2 startDirection = Vector2.left;
 
-	// Layer to use raycast with.
 	[SerializeField]
 	private LayerMask groundLayer = default;
 
@@ -57,7 +53,7 @@ public class EnemyAI : MonoBehaviour
 		// If oneDirection is false, cast 2 rays on left and right and move to the left and right according to collisions.
 		if (!oneDirection)
 		{
-			// Draw rays left and right and store their collision info in variables.
+			// Draw rays left and right and store their collision info in in two variables.
 			RaycastHit2D hitXPositive = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
 
 			Debug.DrawRay(transform.position, Vector2.right * hitDetectionDistance, Color.white);
@@ -66,7 +62,7 @@ public class EnemyAI : MonoBehaviour
 
 			Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);
 
-			// Valuate X+ and X- and apply force to the player rigidbody according to them.
+			// Valuate X+/right and X-/left and apply force to the player rigidbody according to them.
 			if (hitXPositive && hitXPositive.collider)
 			{
 				rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Impulse);
