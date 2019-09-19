@@ -18,19 +18,14 @@ public class CameraSizeChanger : MonoBehaviour
 
 	private const float timeToWait = 2f;
 
-	private CinemachineVirtualCamera cinemachine = default;
+    [SerializeField]
+    private Camera _camera = default;
 
+    [SerializeField]
 	private GameObject player = default;
 
 	[SerializeField]
 	private LayerMask groundLayer = default;
-
-	private void Start()
-	{
-		cinemachine = GetComponent<CinemachineVirtualCamera>();
-
-		player = GameObject.Find("PRE_Player");
-	}
 
 	private void LateUpdate()
 	{
@@ -54,7 +49,7 @@ public class CameraSizeChanger : MonoBehaviour
 	private IEnumerator ChangeCameraSizeSmall()
 	{
 		// Change size smoothly with smoothdamp.
-		cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(cinemachine.m_Lens.OrthographicSize, minLensSize, ref yVelocity, lensSmoothTime);
+		//cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(cinemachine.m_Lens.OrthographicSize, minLensSize, ref yVelocity, lensSmoothTime);
 
 		// Wait for a X amount of seconds to prevent any unexpected "spam" behaviour or such.
 		yield return new WaitForSeconds(timeToWait);
@@ -62,7 +57,7 @@ public class CameraSizeChanger : MonoBehaviour
 
 	private IEnumerator ChangeCameraSizeBig()
 	{
-		cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(cinemachine.m_Lens.OrthographicSize, maxLensSize, ref yVelocity, lensSmoothTime);
+		//cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(cinemachine.m_Lens.OrthographicSize, maxLensSize, ref yVelocity, lensSmoothTime);
 
 		yield return new WaitForSeconds(timeToWait);
 	}

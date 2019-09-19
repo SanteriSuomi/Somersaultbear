@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Mirror;
+using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
 	[SerializeField]
 	private float verticalSpeed = 3f;
@@ -26,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
 		if (rigidBody.velocity.x < maxVerticalSpeed)
 		{
 			rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);

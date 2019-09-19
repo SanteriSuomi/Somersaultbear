@@ -14,11 +14,12 @@ public class ScoreManager : MonoBehaviour
 	[SerializeField]
 	private Text textScore = default;
 
+    [SerializeField]
 	private Rigidbody2D playerRigidbody = default;
 
 	private void Start()
 	{
-		playerRigidbody = GameObject.Find("PRE_Player").GetComponent<Rigidbody2D>();
+		//playerRigidbody = GameObject.Find("PRE_Player").GetComponent<Rigidbody2D>();
 	}
 
 	private void Update()
