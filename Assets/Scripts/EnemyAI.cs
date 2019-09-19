@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
 
 	// Starting speed for OnEnable or On Start.
 	[SerializeField]
-	private float startSpeed = 2f;
+	private float startSpeed = 3f;
 
 	// Starting direction, X 1/-1 or left/right.
 	[SerializeField]
@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
 
 	private Rigidbody2D rigidBody = default;
 
-    private UILogic uiLogic;
+    private UILogic uiLogic = default;
 
 	private void Start()
 	{

@@ -3,34 +3,38 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-	public bool PauseScoreCounting { get; set; } = false;
+    public bool PauseScoreCounting { private get; set; } = false;
 
-	private int currentScore;
+    private int currentScore;
 
-	private const int divideScoreBy = 10;
+    private const int divideScoreBy = 10;
 
-	private const float minXVelocity = 0.1f;
+    private const float minXVelocity = 3.25f;
 
-	[SerializeField]
-	private Text textScore = default;
+    private const string scoreString = "Score: ";
 
-	private Rigidbody2D playerRigidbody = default;
+    [SerializeField]
+    private Text textScore = default;
 
-	private void Start()
-	{
-		playerRigidbody = GameObject.Find("PRE_Player").GetComponent<Rigidbody2D>();
-	}
+    private Rigidbody2D playerRigidbody = default;
 
-	private void Update()
-	{
-		// Update score when not pausing the score and player's velocity is more than X amount in the positive X.
-		if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
-		{
-			// Add time to the currentScore and cast it in integer because Time.time returns float and we don't want decimals.
-			currentScore += (int)Time.time;
+    private void Start()
+    {
+        playerRigidbody = GameObject.Find("PRE_Player").GetComponent<Rigidbody2D>();
 
-			// Update the UI score display and divide it by specified amount for smaller numbers.
-			textScore.text = $"Score: {currentScore / divideScoreBy}";
-		}
-	}
+        textScore.text = scoreString;
+    }
+
+    private void Update()
+    {
+        // Update score when not pausing the score and player's velocity is more than X amount in the positive X.
+        if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
+        {
+            // Add time to the currentScore and cast it in integer because Time.time returns float and we don't want decimals.
+            currentScore += (int)Time.time;
+
+            // Update the UI score display and divide it by specified amount for smaller numbers.
+            textScore.text = $"{scoreString} {currentScore / divideScoreBy}";
+        }
+    }
 }

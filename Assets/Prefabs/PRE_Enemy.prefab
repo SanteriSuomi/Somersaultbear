@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3483452168541340714}
   - component: {fileID: 8746532410099265278}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: PRE_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,8 +135,7 @@ MonoBehaviour:
   verticalSpeed: 4
   hitDetectionDistance: 1
   oneDirection: 0
-  onEnable: 1
-  startSpeed: 2
+  startSpeed: 3
   startDirection: {x: -1, y: 0}
   groundLayer:
     serializedVersion: 2
