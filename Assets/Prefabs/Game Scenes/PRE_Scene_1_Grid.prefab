@@ -4322,7 +4322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5319586941177798035
 Transform:
   m_ObjectHideFlags: 0
@@ -4577,16 +4577,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746532410099265278, guid: b29934522c7954844a3e469aee802e4a,
-        type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746532410099265278, guid: b29934522c7954844a3e469aee802e4a,
-        type: 3}
-      propertyPath: onEnable
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b29934522c7954844a3e469aee802e4a, type: 3}

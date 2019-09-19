@@ -2548,11 +2548,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Scene_1_Grid
       objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
       propertyPath: m_LocalPosition.x
