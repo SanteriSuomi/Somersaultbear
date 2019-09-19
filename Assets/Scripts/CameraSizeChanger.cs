@@ -8,7 +8,7 @@ public class CameraSizeChanger : MonoBehaviour
 	private float lensSmoothTime = 0.5f;
 
 	[SerializeField]
-	private float detectionHeight = 2f;
+	private float detectionHeight = 1.5f;
 
 	private float yVelocity = 0f;
 

@@ -12,9 +12,6 @@ public class EnemyAI : MonoBehaviour
 	[SerializeField]
 	private bool oneDirection = false;
 
-	[SerializeField]
-	private bool onEnable = true;
-
 	// Starting speed for OnEnable or On Start.
 	[SerializeField]
 	private float startSpeed = 2f;
@@ -28,25 +25,17 @@ public class EnemyAI : MonoBehaviour
 
 	private Rigidbody2D rigidBody = default;
 
+    private UILogic uiLogic;
+
 	private void Start()
 	{
 		rigidBody = GetComponent<Rigidbody2D>();
-		
-		// If onEnable is false, activate speed at the start of the game.
-		if (!onEnable)
-		{
-			rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
-		}
-	}
 
-	private void OnEnable()
-	{
-		// If onEnable true, activate speed when the prefab gets enabled/activated.
-		if (onEnable)
-		{
-			rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
-		}
-	}
+        uiLogic = GameObject.Find("PRE_UILogic").GetComponent<UILogic>();
+
+        // Add slight force to the object on spawn.
+        rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
+    }
 
 	private void FixedUpdate()
 	{
@@ -73,4 +62,12 @@ public class EnemyAI : MonoBehaviour
 			}
 		}
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            uiLogic.ChangeScene("SCE_GameLoop");
+        }
+    }
 }
