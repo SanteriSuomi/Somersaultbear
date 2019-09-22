@@ -1,11 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     public bool PauseScoreCounting { private get; set; } = false;
 
+    [SerializeField]
+    private float updateScoreTime = 0.5f;
+
     private int currentScore;
+
+    private int time;
 
     private const int divideScoreBy = 10;
 
@@ -16,25 +22,29 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private Text textScore = default;
 
+    [SerializeField]
     private Rigidbody2D playerRigidbody = default;
 
     private void Start()
     {
-        playerRigidbody = GameObject.Find("PRE_Player").GetComponent<Rigidbody2D>();
-
         textScore.text = scoreString;
     }
 
     private void Update()
     {
+        // Get the fixedTime since the beginning of the game int int and store it in time variable.
+        time = (int)Time.fixedTime;
+
         // Update score when not pausing the score and player's velocity is more than X amount in the positive X.
         if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
         {
-            // Add time to the currentScore and cast it in integer because Time.time returns float and we don't want decimals.
-            currentScore += (int)Time.time;
+            currentScore += time;
 
-            // Update the UI score display and divide it by specified amount for smaller numbers.
-            textScore.text = $"{scoreString} {currentScore / divideScoreBy}";
+            // Update the UI score string every updateScoreTime.
+            if (time % updateScoreTime == 0)
+            {
+                textScore.text = $"{scoreString} {currentScore / divideScoreBy}";
+            }
         }
     }
 }

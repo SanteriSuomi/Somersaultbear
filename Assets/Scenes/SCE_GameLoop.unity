@@ -1340,6 +1340,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 868712689}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &918740418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 223707787211815928, guid: 8e910b234c0009b4abc1b56dea37a005,
+    type: 3}
+  m_PrefabInstance: {fileID: 223707788818364515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &918740420 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 223707787211815875, guid: 8e910b234c0009b4abc1b56dea37a005,
+    type: 3}
+  m_PrefabInstance: {fileID: 223707788818364515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1075802305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2363,14 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1614676893}
+    - target: {fileID: 1693932596, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 918740418}
+    - target: {fileID: 1693932596, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
+      propertyPath: detectionHeight
+      value: 1.43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
 --- !u!20 &1616202545012787130 stripped
@@ -2443,6 +2463,11 @@ PrefabInstance:
       propertyPath: textScore
       value: 
       objectReference: {fileID: 803159886}
+    - target: {fileID: 5031819714512378866, guid: 7f1a747a512c0cd438da5113522bc778,
+        type: 3}
+      propertyPath: playerRigidbody
+      value: 
+      objectReference: {fileID: 918740420}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f1a747a512c0cd438da5113522bc778, type: 3}
 --- !u!4 &6756189374769294614 stripped

@@ -48,7 +48,9 @@ public class SpawnManager : MonoBehaviour
 
     private void ActivatePrefab(GameObject prefab)
     {
+        #if UNITY_EDITOR
         print($"Activating {prefab}.");
+        #endif
 
         // Set the spawned prefab's transform position to the currentPositionTransform transform's position,
         // plus spawnInXAxis vector, so it will spawn ahead of it in line.
