@@ -40,19 +40,18 @@ public class CameraSizeChanger : MonoBehaviour
         Debug.DrawRay(player.transform.position, Vector2.down * detectionHeight, Color.black);
         #endif
 
-        // When the raycast hits the ground layer "Ground", change the size to small (normal)
+        // Evaluate if player is touching the ground and change camera size according to that.
         if (rayHit && rayHit.collider)
         {
-            StartCoroutine(ChangeCameraSizeSmall());
+            StartCoroutine(CameraSmall());
         }
-        // Else make it big when player is not close to the ground.
         else
         {
-            StartCoroutine(ChangeCameraSizeBig());
+            StartCoroutine(CameraBig());
         }
     }
 
-    private IEnumerator ChangeCameraSizeSmall()
+    private IEnumerator CameraSmall()
     {
         // Change size smoothly with smoothdamp.
         cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(cinemachine.m_Lens.OrthographicSize, minLensSize, ref yVelocity, lensSmoothTime);
@@ -61,7 +60,7 @@ public class CameraSizeChanger : MonoBehaviour
         yield return new WaitForSeconds(timeToWait);
     }
 
-    private IEnumerator ChangeCameraSizeBig()
+    private IEnumerator CameraBig()
     {
         cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(cinemachine.m_Lens.OrthographicSize, maxLensSize, ref yVelocity, lensSmoothTime);
 

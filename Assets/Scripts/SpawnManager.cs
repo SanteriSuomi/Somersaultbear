@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System.Linq;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -34,14 +35,19 @@ public class SpawnManager : MonoBehaviour
         // Else select the first deactivated prefab in the pool.
         else
         {
-            foreach (var prefab in prefabPool)
-            {
-                if (!prefab.activeSelf)
-                {
-                    ActivatePrefab(prefab);
+            // Query prefab pool array.
+            var findActive = prefabPool.Where(p => !p.activeSelf).FirstOrDefault();
 
-                    break;
-                }
+            // Make sure that the selected prefab isn't null.
+            if (findActive != null)
+            {
+                ActivatePrefab(findActive);
+            }
+            else
+            {
+                #if UNITY_EDITOR
+                print($"{findActive} is null. Finding prefab in the pool failed.");
+                #endif
             }
         }
     }
