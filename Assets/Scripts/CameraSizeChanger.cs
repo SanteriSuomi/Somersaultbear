@@ -6,6 +6,15 @@ using Cinemachine;
 public class CameraSizeChanger : MonoBehaviour
 {
     [SerializeField]
+    private LayerMask groundLayer = default;
+
+    [SerializeField]
+    private GameObject player = default;
+
+    [SerializeField]
+    private CinemachineVirtualCamera cinemachine = default;
+
+    [SerializeField]
     private float lensSmoothTime = 0.5f;
 
     [SerializeField]
@@ -16,19 +25,6 @@ public class CameraSizeChanger : MonoBehaviour
     private const float maxLensSize = 7f;
 
     private const float minLensSize = 5f;
-
-    [SerializeField]
-    private LayerMask groundLayer = default;
-
-    [SerializeField]
-    private GameObject player = default;
-
-    private CinemachineVirtualCamera cinemachine = default;
-
-    private void Start()
-    {
-        cinemachine = GetComponent<CinemachineVirtualCamera>();
-    }
 
     private void FixedUpdate()
     {

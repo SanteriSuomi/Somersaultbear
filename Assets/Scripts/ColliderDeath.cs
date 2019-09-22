@@ -7,7 +7,8 @@ public class ColliderDeath : MonoBehaviour
 
     private void Start()
     {
-        uiLogic = GameObject.FindWithTag("UILogicManager").GetComponent<UILogic>();
+        // Use GameObject.Find because otherwise you would have to reference each instance by hand.
+        uiLogic = GameObject.Find("PRE_UILogicManager").GetComponent<UILogic>();
 
         Assert.IsNotNull(uiLogic);
     }

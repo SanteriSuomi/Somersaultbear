@@ -5,10 +5,6 @@ using UnityEngine.Assertions;
 
 public class SpawnManager : MonoBehaviour
 {
-    private const float spawnInXAxis = 39.9f;
-
-    private const float waitActivateTime = 0.1f;
-
     [SerializeField]
     private GameObject prefabStart = default;
 
@@ -16,6 +12,10 @@ public class SpawnManager : MonoBehaviour
     private GameObject[] prefabPool = default;
 
     private Transform currentPosition;
+
+    private const float spawnInXAxis = 39.9f;
+
+    private const float waitActivateTime = 0.1f;
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
     private void ActivatePrefab(GameObject prefab)
     {
         #if UNITY_EDITOR
-        print($"Activating {prefab}.");
+        Debug.Log($"Activating {prefab}.");
         #endif
 
         // Spawn scene prefabs ahead the player using the currentPosition.

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class UILogic : MonoBehaviour
 {
-	// "Central" logic mainly used for actions such as button presses.
+	// "Central" logic for variety of things such as changing scene.
 
 	public void ChangeScene(string sceneName)
 	{

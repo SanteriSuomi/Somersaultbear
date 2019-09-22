@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5031819714512378866}
   m_Layer: 0
   m_Name: PRE_ScoreManager
-  m_TagString: ScoreManager
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88429750ba48254b9ccd5d964ce8a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateScoreTime: 0.5
   textScore: {fileID: 0}
   playerRigidbody: {fileID: 0}
+  updateScoreTime: 0.5

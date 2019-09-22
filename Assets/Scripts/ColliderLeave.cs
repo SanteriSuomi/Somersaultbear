@@ -19,7 +19,7 @@ public class ColliderLeave : MonoBehaviour
 		int random = Random.Range(0, maxRandomRange);
 
         #if UNITY_EDITOR
-		print($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
+		Debug.Log($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
         #endif
 
 		yield return new WaitForSeconds(random);

@@ -4,6 +4,11 @@
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
+    private LayerMask groundLayer = default;
+
+    private Rigidbody2D rigidBody = default;
+
+    [SerializeField]
     private float verticalSpeed = 3f;
 
     [SerializeField]
@@ -18,11 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private bool pressedSpace;
 
     private const float rbYVelocityMax = 0.5f;
-
-    [SerializeField]
-    private LayerMask groundLayer = default;
-
-    private Rigidbody2D rigidBody = default;
 
     private void Start()
     {

@@ -9,7 +9,8 @@ public class ColliderInfo : MonoBehaviour
 
 	private void Start()
     {
-		spawnManager = GameObject.FindWithTag("SpawnManager").GetComponent<SpawnManager>();
+        // Use GameObject.Find because otherwise you would have to reference each instance by hand.
+		spawnManager = GameObject.Find("PRE_SpawnManager").GetComponent<SpawnManager>();
 
         Assert.IsNotNull(spawnManager);
     }
@@ -24,7 +25,7 @@ public class ColliderInfo : MonoBehaviour
 		if (collision.CompareTag("Player") && !alreadyHit)
 		{
             #if UNITY_EDITOR
-			print($"Hit {collision.gameObject.name}.");
+			Debug.Log($"Hit {collision.gameObject.name}.");
             #endif
 
 			// Change alreadyHit to true to prevent this from activating again in this instance of the prefab.

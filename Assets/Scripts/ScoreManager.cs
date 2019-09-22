@@ -7,6 +7,12 @@ public class ScoreManager : MonoBehaviour
     public bool PauseScoreCounting { private get; set; } = false;
 
     [SerializeField]
+    private Text textScore = default;
+
+    [SerializeField]
+    private Rigidbody2D playerRigidbody = default;
+
+    [SerializeField]
     private float updateScoreTime = 0.5f;
 
     private int currentScore;
@@ -18,12 +24,6 @@ public class ScoreManager : MonoBehaviour
     private const float minXVelocity = 3.25f;
 
     private const string scoreString = "Score: ";
-
-    [SerializeField]
-    private Text textScore = default;
-
-    [SerializeField]
-    private Rigidbody2D playerRigidbody = default;
 
     private void Start()
     {

@@ -5,30 +5,31 @@ using UnityEngine.Assertions;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
-    private float verticalSpeed = 4f;
-
-    [SerializeField]
-    private float hitDetectionDistance = 1f;
-
-    [SerializeField]
-    private bool oneDirection = false;
-
-    [SerializeField]
-    private float startSpeed = 3f;
-
-    [SerializeField]
-    private Vector2 startDirection = Vector2.left;
-
-    [SerializeField]
     private LayerMask groundLayer = default;
 
     private UILogic uiLogic = default;
 
     private Rigidbody2D rigidBody = default;
 
+    [SerializeField]
+    private Vector2 startDirection = Vector2.left;
+
+    [SerializeField]
+    private float verticalSpeed = 4f;
+
+    [SerializeField]
+    private float hitDetectionDistance = 1f;
+
+    [SerializeField]
+    private float startSpeed = 3f;
+
+    [SerializeField]
+    private bool oneDirection = false;
+
     private void Start()
     {
-        uiLogic = GameObject.FindWithTag("UILogicManager").GetComponent<UILogic>();
+        // Use GameObject.Find because otherwise you would have to reference each instance by hand.
+        uiLogic = GameObject.Find("PRE_UILogicManager").GetComponent<UILogic>();
 
         Assert.IsNotNull(uiLogic);
 

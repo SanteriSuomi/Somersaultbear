@@ -270,9 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5268f72848ddb46875ea128d3dd46f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lensSmoothTime: 0.5
-  detectionHeight: 1.25125
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 0}
+  cinemachine: {fileID: 1616202545220264535}
+  lensSmoothTime: 0.5
+  detectionHeight: 1.25125
