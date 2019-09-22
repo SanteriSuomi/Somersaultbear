@@ -32,10 +32,10 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        // Get the fixedTime since the beginning of the game int int and store it in time variable.
+        // Update the time.
         time = (int)Time.fixedTime;
 
-        // Update score when not pausing the score and player's velocity is more than X amount in the positive X.
+        // Update score.
         if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
         {
             currentScore += time;

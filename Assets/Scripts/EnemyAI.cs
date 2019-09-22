@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
@@ -8,15 +10,12 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float hitDetectionDistance = 1f;
 
-    // If oneDirection is true, when the enemy spawns it will just charge in one direction.
     [SerializeField]
     private bool oneDirection = false;
 
-    // Starting speed for OnEnable or On Start.
     [SerializeField]
     private float startSpeed = 3f;
 
-    // Starting direction, X 1/-1 or left/right.
     [SerializeField]
     private Vector2 startDirection = Vector2.left;
 
@@ -29,45 +28,40 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        uiLogic = GameObject.Find("PRE_UILogic").GetComponent<UILogic>();
+        uiLogic = GameObject.FindWithTag("UILogicManager").GetComponent<UILogic>();
+
+        Assert.IsNotNull(uiLogic);
 
         rigidBody = GetComponent<Rigidbody2D>();
 
-        // Add slight force to the object on spawn.
+        // Add slight force to the object on spawn so it's not stationary.
         rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()
     {
-        // If oneDirection is false, cast 2 rays on left and right and move to the left and right according to collisions.
+        // If the object should only go in one direction when spawning (using the Start() AddForce).
         if (!oneDirection)
         {
-            // Draw rays left and right and store their collision info in in two variables.
-            RaycastHit2D hitXPositive = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
+            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
 
-            #if UNITY_EDITOR
+            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, hitDetectionDistance, groundLayer);
+
             Debug.DrawRay(transform.position, Vector2.right * hitDetectionDistance, Color.white);
-            #endif
 
-            RaycastHit2D hitXNegative = Physics2D.Raycast(transform.position, Vector2.left, hitDetectionDistance, groundLayer);
-
-            #if UNITY_EDITOR
             Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);
-            #endif
 
-            // Valuate X+/right and X-/left and apply force to the player rigidbody according to them.
-            if (hitXPositive && hitXPositive.collider)
+            if (hitRight)
             {
                 rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Impulse);
             }
-            else if (hitXNegative && hitXNegative.collider)
+            else if (hitLeft)
             {
                 rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Impulse);
             }
         }
     }
 
-    // Reset the game when collided with the player.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

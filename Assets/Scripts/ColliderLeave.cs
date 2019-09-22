@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ColliderLeave : MonoBehaviour
 {
-	[SerializeField]
+	[SerializeField] [Range(1, 20)]
 	private int maxRandomRange = 10;
 
 	private void OnTriggerExit2D(Collider2D collision)
@@ -24,7 +24,7 @@ public class ColliderLeave : MonoBehaviour
 
 		yield return new WaitForSeconds(random);
 
-		// Deactivate the whole scene prefab, parent of the script.
+		// Deactivate the whole scene prefab including the children.
 		gameObject.transform.parent.gameObject.SetActive(false);
 	}
 }

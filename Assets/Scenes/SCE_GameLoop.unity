@@ -1733,7 +1733,7 @@ PrefabInstance:
     - target: {fileID: 3779479791258770002, guid: c3f2955eba1ed4640a24340304a925a6,
         type: 3}
       propertyPath: m_Name
-      value: PRE_UILogic
+      value: PRE_UILogicManager
       objectReference: {fileID: 0}
     - target: {fileID: 3779479791258770012, guid: c3f2955eba1ed4640a24340304a925a6,
         type: 3}
@@ -2075,11 +2075,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: jumpDetectionHeight
-      value: 1.43
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
 --- !u!1001 &249831292133714338
@@ -2176,7 +2171,7 @@ PrefabInstance:
     - target: {fileID: 1576905832937024426, guid: 05ee3c8b359fcb74fb55486fcd7b69ba,
         type: 3}
       propertyPath: m_Name
-      value: PRE_SceneSpawnManager
+      value: PRE_SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 1576905832937024424, guid: 05ee3c8b359fcb74fb55486fcd7b69ba,
         type: 3}
@@ -2372,10 +2367,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 918740418}
-    - target: {fileID: 1693932596, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
-      propertyPath: detectionHeight
-      value: 1.0725
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
 --- !u!20 &1616202545012787130 stripped

@@ -24,20 +24,16 @@ public class UIManager : MonoBehaviour
 			{
 				scoreManager.PauseScoreCounting = false;
 
-				// Unpause the game.
 				Time.timeScale = 1;
 
-				// Hide the menu buttons.
 				item.SetActive(false);
 			}
 			else
 			{
 				scoreManager.PauseScoreCounting = true;
 
-				// Pause the game.
 				Time.timeScale = 0;
 
-				// Show the menu buttons.
 				item.SetActive(true);
 			}
 		}

@@ -173,7 +173,7 @@ MonoBehaviour:
   verticalSpeed: 3
   maxVerticalSpeed: 6.5
   jumpModifier: 8
-  jumpDetectionHeight: 1.43
+  jumpDetectionHeight: 0.715
   groundLayer:
     serializedVersion: 2
     m_Bits: 256

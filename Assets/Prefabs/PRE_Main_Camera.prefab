@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lensSmoothTime: 0.5
-  detectionHeight: 1
+  detectionHeight: 1.25125
   groundLayer:
     serializedVersion: 2
     m_Bits: 256

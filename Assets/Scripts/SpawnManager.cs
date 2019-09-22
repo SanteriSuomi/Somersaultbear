@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Assertions;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -8,47 +9,37 @@ public class SpawnManager : MonoBehaviour
 
     private const float waitActivateTime = 0.1f;
 
-    // Starting scene prefab, to get it's tranform for later use.
     [SerializeField]
     private GameObject prefabStart = default;
 
     [SerializeField]
     private GameObject[] prefabPool = default;
 
-    private Transform currentPositionTransform;
+    private Transform currentPosition;
 
     private void Start()
     {
-        // Initialize current position transform variable to start with the first scene in the game, for easier instantiating of objects.
-        currentPositionTransform = prefabStart.transform;
+        // Initialise the currentPosition with the first scene prefab in the game.
+        currentPosition = prefabStart.transform;
     }
 
     public void SpawnNewScenePrefab()
     {
         int random = Random.Range(0, prefabPool.Length);
 
-        // If the selected random index in the prefab pool is not active, activate the prefab.
+        // Check if the random prefab in the pool is true and activate it.
         if (!prefabPool[random].activeSelf)
         {
             ActivatePrefab(prefabPool[random]);
         }
-        // Else select the first deactivated prefab in the pool.
+        // Otherwise select the first deactivated prefab in the pool.
         else
         {
-            // Query prefab pool array.
             var findActive = prefabPool.Where(p => !p.activeSelf).FirstOrDefault();
 
-            // Make sure that the selected prefab isn't null.
-            if (findActive != null)
-            {
-                ActivatePrefab(findActive);
-            }
-            else
-            {
-                #if UNITY_EDITOR
-                print($"{findActive} is null. Finding prefab in the pool failed.");
-                #endif
-            }
+            Assert.IsNull(findActive);
+
+            ActivatePrefab(findActive);
         }
     }
 
@@ -58,20 +49,11 @@ public class SpawnManager : MonoBehaviour
         print($"Activating {prefab}.");
         #endif
 
-        // Set the spawned prefab's transform position to the currentPositionTransform transform's position,
-        // plus spawnInXAxis vector, so it will spawn ahead of it in line.
-        prefab.transform.position = currentPositionTransform.transform.position + new Vector3(spawnInXAxis, 0f, 0f);
+        // Spawn scene prefabs ahead the player using the currentPosition.
+        prefab.transform.position = currentPosition.position + new Vector3(spawnInXAxis, 0f, 0f);
 
-        // Make the currentPositionTransform field's value the transform of the spawned prefab, to make it easier to spawn new prefabs.
-        currentPositionTransform = prefab.transform;
-
-        StartCoroutine(WaitActivate(prefab));
-    }
-
-    // Wait for specified amount of time to help prevent flashing when spawning a new prefab.
-    private IEnumerator WaitActivate(GameObject prefab)
-    {
-        yield return new WaitForSeconds(waitActivateTime);
+        // Re-initialise the current position again using the spawned prefab.
+        currentPosition = prefab.transform;
 
         prefab.SetActive(true);
     }

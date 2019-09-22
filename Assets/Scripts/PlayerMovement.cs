@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
@@ -30,26 +31,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // Ask for player input and store it in pressedSpace as a boolean.
         pressedSpace = Input.GetButton("Jump");
     }
 
     private void FixedUpdate()
     {
+        // Continuously move player to the right.
         if (rigidBody.velocity.x < maxVerticalSpeed)
         {
             rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
         }
 
-        // Detect if there is a collider below player object and store it in raycasthit2d. Only detect objects with ground layer applied to them.
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
-        #if UNITY_EDITOR
         Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
-        #endif
 
-        // Jump when ray hits the specified target, space is being pressed and rigidbody Y velocity is less than the constant.
-        if (rayHit && rayHit.collider && pressedSpace && rigidBody.velocity.y < rbYVelocityMax)
+        if (rayHit && pressedSpace && rigidBody.velocity.y < rbYVelocityMax)
         {
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
         }
