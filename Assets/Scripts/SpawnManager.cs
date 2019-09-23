@@ -37,7 +37,7 @@ public class SpawnManager : MonoBehaviour
         {
             var findActive = prefabPool.Where(p => !p.activeSelf).FirstOrDefault();
 
-            Assert.IsNull(findActive);
+            Assert.IsNotNull(findActive);
 
             ActivatePrefab(findActive);
         }
