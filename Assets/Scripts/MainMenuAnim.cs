@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainMenuAnim : MonoBehaviour
 {
     // true == right, false == left.
-    public bool Direction { get; set; }
+    public bool Direction { get; set; } = false;
 
     [SerializeField]
     private LayerMask groundLayer = default;

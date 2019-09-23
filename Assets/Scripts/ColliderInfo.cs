@@ -9,7 +9,6 @@ public class ColliderInfo : MonoBehaviour
 
 	private void Start()
     {
-        // Use GameObject.Find because otherwise you would have to reference each instance by hand.
 		spawnManager = GameObject.Find("PRE_SpawnManager").GetComponent<SpawnManager>();
 
         Assert.IsNotNull(spawnManager);

@@ -5,12 +5,13 @@ public class ColliderMenuAnim : MonoBehaviour
 {
     private MainMenuAnim mmAnim;
 
-    void Start()
+    private void Start()
     {
         mmAnim = GameObject.Find("PRE_Menu_Player").GetComponent<MainMenuAnim>();
 
         Assert.IsNotNull(mmAnim);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

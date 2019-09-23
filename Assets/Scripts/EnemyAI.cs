@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     private Vector2 startDirection = Vector2.left;
 
     [SerializeField]
-    private float verticalSpeed = 4f;
+    private float verticalSpeed = 5f;
 
     [SerializeField]
     private float hitDetectionDistance = 1f;
@@ -28,7 +28,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        // Use GameObject.Find because otherwise you would have to reference each instance by hand.
         uiLogic = GameObject.Find("PRE_UILogicManager").GetComponent<UILogic>();
 
         Assert.IsNotNull(uiLogic);
