@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshRenderer), typeof(Rigidbody2D))]
 public class ScrollingBackground : MonoBehaviour
 {
     [SerializeField]
@@ -16,7 +16,7 @@ public class ScrollingBackground : MonoBehaviour
     [SerializeField]
     private float backgroundSpeed = 0.05f;
 
-    private const float minXVelocity = 0.85f;
+    private const float MIN_X_VELOCITY = 0.85f;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class ScrollingBackground : MonoBehaviour
     private void Update()
     {
         // If the instance isn't the menu background.
-        if (!isMenuBackground && characterRigidbody.velocity.x > minXVelocity)
+        if (!isMenuBackground && characterRigidbody.velocity.x > MIN_X_VELOCITY)
         {
             // Move the repeating texture on the quad on X axis to create a scrolling background effect.
             MoveOffsetRight();

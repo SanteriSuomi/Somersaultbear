@@ -3,13 +3,18 @@ using UnityEngine.Assertions;
 
 public class ColliderMenuAnim : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject player;
+
     private MainMenuAnim mmAnim;
 
     private void Start()
     {
-        mmAnim = GameObject.Find("PRE_Menu_Player").GetComponent<MainMenuAnim>();
+        mmAnim = player.GetComponent<MainMenuAnim>();
 
+        #if UNITY_EDITOR
         Assert.IsNotNull(mmAnim);
+        #endif
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

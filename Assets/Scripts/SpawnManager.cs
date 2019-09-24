@@ -45,9 +45,9 @@ public class SpawnManager : MonoBehaviour
 
             #if UNITY_EDITOR
             Assert.IsNotNull(findActive);
+            #endif
 
             ActivatePrefab(findActive);
-            #endif
         }
     }
 

@@ -4,7 +4,6 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField]
     private UIManager uiManager = default;
 
     [SerializeField]
@@ -29,6 +28,9 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        // Find the Manager prefab manually, to prevent having to select it for every instance manually.
+        uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
+
         // Assert that the reference is not null, and only run this in the Unity editor.
         #if UNITY_EDITOR
         Assert.IsNotNull(uiManager);
