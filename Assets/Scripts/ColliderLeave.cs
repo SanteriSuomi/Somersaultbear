@@ -22,6 +22,7 @@ public class ColliderLeave : MonoBehaviour
 		Debug.Log($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
         #endif
 
+        // Wait for a random amount of seconds.
 		yield return new WaitForSeconds(random);
 
 		// Deactivate the whole scene prefab including the children.

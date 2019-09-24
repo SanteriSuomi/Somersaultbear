@@ -20,6 +20,7 @@ public class ColliderMenuAnim : MonoBehaviour
             Debug.Log($"{gameObject} collided with {collision.gameObject.name}");
             #endif
 
+            // New direction is the opposite direction to the current one.
             mmAnim.Direction = !mmAnim.Direction;
         }
     }

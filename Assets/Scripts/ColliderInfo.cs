@@ -16,6 +16,7 @@ public class ColliderInfo : MonoBehaviour
 
 	private void OnEnable()
 	{
+        // Every time the gameObject is enabled, alreadyHit should be false.
 		alreadyHit = false;
 	}
 
@@ -30,6 +31,7 @@ public class ColliderInfo : MonoBehaviour
 			// Change alreadyHit to true to prevent this from activating again in this instance of the prefab.
 			alreadyHit = true;
 
+            // Spawn a new scene prefab using the method in spawnManager.
 			spawnManager.SpawnNewScenePrefab();
 		}
 	}

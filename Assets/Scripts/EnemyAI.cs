@@ -51,6 +51,7 @@ public class EnemyAI : MonoBehaviour
 
             Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);
 
+            // Detect if the gameObject is hitting left or right using raycasts and move to the opposite direction.
             if (hitRight)
             {
                 rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Impulse);

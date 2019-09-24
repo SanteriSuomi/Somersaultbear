@@ -13,7 +13,7 @@ public class ScrollingBackground : MonoBehaviour
     [SerializeField]
     private float backgroundSpeed = 0.05f;
 
-    private const float minXVelocity = 0.75f;
+    private const float minXVelocity = 0.85f;
 
     private void Start()
     {
@@ -26,6 +26,7 @@ public class ScrollingBackground : MonoBehaviour
     {
         if (playerRigidbody.velocity.x > minXVelocity)
         {
+            // Move the repeating texture on the quad on X axis to create a scrolling background effect.
             backgroundRenderer.material.mainTextureOffset += Vector2.right * backgroundSpeed * Time.deltaTime;
         }
     }
