@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c34484cdee8d2a408c13e882b56fd9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuButtons:
-  - {fileID: 0}
-  - {fileID: 0}
   scoreManager: {fileID: 0}
+  audioSource: {fileID: 0}
+  menuItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

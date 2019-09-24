@@ -5,9 +5,13 @@ public class ColliderDeath : MonoBehaviour
 {
     private UILogic uiLogic = default;
 
+    private UIManager uiManager = default;
+
     private void Start()
     {
         uiLogic = GameObject.Find("PRE_UILogicManager").GetComponent<UILogic>();
+
+        uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
 
         Assert.IsNotNull(uiLogic);
     }
@@ -16,7 +20,7 @@ public class ColliderDeath : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            uiLogic.ChangeScene("SCE_GameLoop");
+            uiManager.ShowMenuItemsDeath();
         }
     }
 }

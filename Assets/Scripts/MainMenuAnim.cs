@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MainMenuAnim : MonoBehaviour
@@ -11,6 +10,8 @@ public class MainMenuAnim : MonoBehaviour
     private LayerMask groundLayer = default;
 
     private Rigidbody2D rigidBody;
+
+    private AudioSource audioSource;
 
     [SerializeField]
     private float jumpDetectionHeight = 0.715f;
@@ -24,6 +25,8 @@ public class MainMenuAnim : MonoBehaviour
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -51,5 +54,7 @@ public class MainMenuAnim : MonoBehaviour
     private void Jump()
     {
         rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+
+        audioSource.Play();
     }
 }

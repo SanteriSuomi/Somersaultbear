@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigidBody = default;
 
+    private AudioSource audioSource = default;
+
     [SerializeField]
     private float verticalSpeed = 3f;
 
@@ -27,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -49,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         if (rayHit && pressedSpace && rigidBody.velocity.y < rbYVelocityMax)
         {
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+
+            audioSource.Play();
         }
     }
 }

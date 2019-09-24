@@ -2,40 +2,65 @@
 
 public class UIManager : MonoBehaviour
 {
-	[SerializeField]
-	private GameObject[] menuButtons = default;
+    [SerializeField]
+    private ScoreManager scoreManager = default;
 
-	[SerializeField]
-	private ScoreManager scoreManager = default;
+    [SerializeField]
+    private AudioSource audioSource = default;
 
-	private void Update()
+    [SerializeField]
+    private GameObject[] menuItems = default;
+
+    private void Update()
     {
         if (Input.GetButtonDown("Cancel"))
-		{
-			ShowMenuButtons();
-		}
+        {
+            ShowMenuItems();
+        }
     }
 
-	private void ShowMenuButtons()
-	{
-		foreach (var item in menuButtons)
-		{
-			if (item.activeSelf)
-			{
-				scoreManager.PauseScoreCounting = false;
+    private void ShowMenuItems()
+    {
+        foreach (var item in menuItems)
+        {
+            if (item.activeSelf && item.CompareTag("Button"))
+            {
+                // Score counting control.
+                scoreManager.PauseScoreCounting = false;
 
-				Time.timeScale = 1;
+                // Game freeze control.
+                Time.timeScale = 1;
 
-				item.SetActive(false);
-			}
-			else
-			{
-				scoreManager.PauseScoreCounting = true;
+                // Game music control.
+                audioSource.Play();
 
-				Time.timeScale = 0;
+                // Show/hide menu buttons.
+                item.SetActive(false);
+            }
+            else if (item.CompareTag("Button"))
+            {
+                scoreManager.PauseScoreCounting = true;
 
-				item.SetActive(true);
-			}
-		}
-	}
+                Time.timeScale = 0;
+
+                audioSource.Stop();
+
+                item.SetActive(true);
+            }
+        }
+    }
+
+    public void ShowMenuItemsDeath()
+    {
+        foreach (var item in menuItems)
+        {
+            scoreManager.PauseScoreCounting = true;
+
+            Time.timeScale = 0;
+
+            audioSource.Stop();
+
+            item.SetActive(true);
+        }
+    }
 }
