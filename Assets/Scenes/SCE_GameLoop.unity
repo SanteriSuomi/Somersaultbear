@@ -2407,6 +2407,18 @@ PrefabInstance:
       objectReference: {fileID: 1995009520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7, type: 3}
+--- !u!114 &249831292133714339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
+    type: 3}
+  m_PrefabInstance: {fileID: 249831292133714338}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c34484cdee8d2a408c13e882b56fd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1576905833639040834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2537,6 +2549,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1576905833639040834}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1576905833639040836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1576905832937024427, guid: 05ee3c8b359fcb74fb55486fcd7b69ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1576905833639040834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5740e106ee14ef74990376f618800a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1616202545012787129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2946,5 +2970,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5967797468877953619, guid: c523f08ffbff72f4590090f33587674e,
+        type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 249831292133714339}
+    - target: {fileID: 8091931589807581589, guid: c523f08ffbff72f4590090f33587674e,
+        type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 249831292133714339}
+    - target: {fileID: 4679395249074930639, guid: c523f08ffbff72f4590090f33587674e,
+        type: 3}
+      propertyPath: spawnManager
+      value: 
+      objectReference: {fileID: 1576905833639040836}
+    - target: {fileID: 2585085752618443540, guid: c523f08ffbff72f4590090f33587674e,
+        type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 249831292133714339}
+    - target: {fileID: 6383505014529469939, guid: c523f08ffbff72f4590090f33587674e,
+        type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 249831292133714339}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c523f08ffbff72f4590090f33587674e, type: 3}

@@ -5,9 +5,10 @@ using UnityEngine.Assertions;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
-    private LayerMask groundLayer = default;
-
     private UIManager uiManager = default;
+
+    [SerializeField]
+    private LayerMask groundLayer = default;
 
     private Rigidbody2D rigidBody = default;
 
@@ -28,28 +29,31 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
-
+        // Assert that the reference is not null, and only run this in the Unity editor.
+        #if UNITY_EDITOR
         Assert.IsNotNull(uiManager);
+        #endif
 
         rigidBody = GetComponent<Rigidbody2D>();
 
-        // Add slight force to the object on spawn so it's not stationary.
+        // Add slight force to the object on spawn so it won't remain stationary.
         rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()
     {
-        // If the object should only go in one direction when spawning (using the Start() AddForce).
         if (!oneDirection)
         {
             RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
 
             RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, hitDetectionDistance, groundLayer);
 
+            // Draw debug rays for the raycasts in the Unity editor.
+            #if UNITY_EDITOR
             Debug.DrawRay(transform.position, Vector2.right * hitDetectionDistance, Color.white);
 
             Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);
+            #endif
 
             // Detect if the gameObject is hitting left or right using raycasts and move to the opposite direction.
             if (hitRight)

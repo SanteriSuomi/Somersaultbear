@@ -3,16 +3,18 @@ using UnityEngine.Assertions;
 
 public class ColliderInfo : MonoBehaviour
 {
+    [SerializeField]
 	private SpawnManager spawnManager = default;
 
 	private bool alreadyHit = false;
 
-	private void Start()
+    // Assert that the reference is not null, and only run this in the Unity editor.
+    #if UNITY_EDITOR
+    private void Start()
     {
-		spawnManager = GameObject.Find("PRE_SpawnManager").GetComponent<SpawnManager>();
-
         Assert.IsNotNull(spawnManager);
     }
+    #endif
 
 	private void OnEnable()
 	{

@@ -1,5 +1,5 @@
-﻿using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -25,31 +25,37 @@ public class ScoreManager : MonoBehaviour
 
     private int time;
 
-    private const int divideScoreBy = 10;
+    private const int DIVIDE_SCORE_BY = 10;
 
-    private const float minXVelocity = 3;
+    private const float MIN_X_VELOCITY = 3;
 
-    private const string scoreString = "Score: ";
+    private const string SCORE_STRING = "Score: ";
 
     private void Start()
     {
-        textScore.text = scoreString;
+        // Assert that the reference is not null, and only run this in the Unity editor.
+        #if UNITY_EDITOR
+        Assert.IsNotNull(textScore);
+        Assert.IsNotNull(playerRigidbody);
+        #endif
+
+        textScore.text = SCORE_STRING;
     }
 
     private void Update()
     {
-        // Update the time.
-        time = (int)Time.fixedTime;
+        // Update the time and round the time to integer continuously.
+        time = Mathf.RoundToInt(Time.fixedTime);
 
-        // Update score.
-        if (!PauseScoreCounting && playerRigidbody.velocity.x > minXVelocity)
+        // Update score using the time value.
+        if (!PauseScoreCounting && playerRigidbody.velocity.x > MIN_X_VELOCITY)
         {
             CurrentScore += time;
 
             // Update the UI score string every updateScoreTime.
             if (time % updateScoreTime == 0)
             {
-                textScore.text = $"{scoreString} {CurrentScore / divideScoreBy}";
+                textScore.text = $"{SCORE_STRING} {CurrentScore / DIVIDE_SCORE_BY}";
             }
         }
     }

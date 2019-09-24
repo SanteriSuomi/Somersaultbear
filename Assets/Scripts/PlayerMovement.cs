@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), (typeof(AudioSource)))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool pressedSpace;
 
-    private const float rbYVelocityMax = 0.5f;
+    private const float RB_Y_VELOCITY_MAX = 0.5f;
 
     private void Start()
     {
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
 
-        if (rayHit && pressedSpace && rigidBody.velocity.y < rbYVelocityMax)
+        if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX)
         {
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
 
