@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 40e29a43b462d1348bddd0045f72e736
+guid: 027ff67658965a04b8b17c6a2159d279
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Prototype
+  fontName: Blueberry
   fontNames:
-  - Prototype
+  - Blueberry
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
