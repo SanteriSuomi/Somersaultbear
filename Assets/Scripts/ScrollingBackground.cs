@@ -4,11 +4,14 @@
 public class ScrollingBackground : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player = default;
+    private GameObject character = default;
 
-    private Rigidbody2D playerRigidbody = default;
+    private Rigidbody2D characterRigidbody = default;
 
     private Renderer backgroundRenderer = default;
+
+    [SerializeField]
+    private bool isMenuBackground = false;
 
     [SerializeField]
     private float backgroundSpeed = 0.05f;
@@ -17,17 +20,40 @@ public class ScrollingBackground : MonoBehaviour
 
     private void Start()
     {
-        playerRigidbody = player.GetComponent<Rigidbody2D>();
+        characterRigidbody = character.GetComponent<Rigidbody2D>();
 
         backgroundRenderer = GetComponent<MeshRenderer>();
     }
 
     private void Update()
     {
-        if (playerRigidbody.velocity.x > minXVelocity)
+        // If the instance isn't the menu background.
+        if (!isMenuBackground && characterRigidbody.velocity.x > minXVelocity)
         {
             // Move the repeating texture on the quad on X axis to create a scrolling background effect.
-            backgroundRenderer.material.mainTextureOffset += Vector2.right * backgroundSpeed * Time.deltaTime;
+            MoveOffsetRight();
         }
+        // If the instance is the menu background.
+        else if (isMenuBackground)
+        {
+            if (characterRigidbody.velocity.x > float.Epsilon)
+            {
+                MoveOffsetRight();
+            }
+            else
+            {
+                MoveOffsetLeft();
+            }
+        }
+    }
+
+    private void MoveOffsetRight()
+    {
+        backgroundRenderer.material.mainTextureOffset += Vector2.right * backgroundSpeed * Time.deltaTime;
+    }
+
+    private void MoveOffsetLeft()
+    {
+        backgroundRenderer.material.mainTextureOffset += Vector2.left * backgroundSpeed * Time.deltaTime;
     }
 }
