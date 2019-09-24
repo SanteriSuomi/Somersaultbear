@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -58,8 +59,19 @@ public class UIManager : MonoBehaviour
 
             Time.timeScale = 0;
 
+            // Stop game music.
             audioSource.Stop();
 
+            // Disable/enable the UI score text.
+            scoreManager.TextScore.enabled = false;
+
+            // Get the Text component from the array.
+            var totalScoreText = menuItems[3].GetComponent<Text>();
+
+            // Update the score to represent the current score.
+            totalScoreText.text = $"Score: {scoreManager.CurrentScore}";
+
+            // Show all menu items.
             item.SetActive(true);
         }
     }

@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer = default;
 
-    private UILogic uiLogic = default;
+    private UIManager uiManager = default;
 
     private Rigidbody2D rigidBody = default;
 
@@ -28,9 +28,9 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        uiLogic = GameObject.Find("PRE_UILogicManager").GetComponent<UILogic>();
+        uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
 
-        Assert.IsNotNull(uiLogic);
+        Assert.IsNotNull(uiManager);
 
         rigidBody = GetComponent<Rigidbody2D>();
 
@@ -67,7 +67,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            uiLogic.ChangeScene("SCE_GameLoop");
+            uiManager.ShowMenuItemsDeath();
         }
     }
 }

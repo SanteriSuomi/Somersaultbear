@@ -524,7 +524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &288109316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &421743035
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1994,7 +1994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1995009521
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2164,7 +2164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2141423181
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2372,6 +2372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
         type: 3}
+      propertyPath: menuItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
+        type: 3}
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 6756189374769294615}
@@ -2395,6 +2400,11 @@ PrefabInstance:
       propertyPath: menuItems.Array.data[2]
       value: 
       objectReference: {fileID: 421743034}
+    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
+        type: 3}
+      propertyPath: menuItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 1995009520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7, type: 3}
 --- !u!1001 &1576905833639040834
