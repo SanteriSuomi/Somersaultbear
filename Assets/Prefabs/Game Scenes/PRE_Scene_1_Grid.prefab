@@ -4369,16 +4369,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5319586941177798035}
     m_Modifications:
-    - target: {fileID: 5650531496985649717, guid: a0d026ad7dee09740bb11c3777040d4c,
-        type: 3}
-      propertyPath: m_Name
-      value: PRE_ColliderInfo
-      objectReference: {fileID: 0}
-    - target: {fileID: 5650531496985649717, guid: a0d026ad7dee09740bb11c3777040d4c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6083168599955250425, guid: a0d026ad7dee09740bb11c3777040d4c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4434,6 +4424,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5650531496985649717, guid: a0d026ad7dee09740bb11c3777040d4c,
+        type: 3}
+      propertyPath: m_Name
+      value: PRE_ColliderInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5650531496985649717, guid: a0d026ad7dee09740bb11c3777040d4c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d026ad7dee09740bb11c3777040d4c, type: 3}
 --- !u!4 &6285663411242969749 stripped
@@ -4449,16 +4449,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5319586941177798035}
     m_Modifications:
-    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
-        type: 3}
-      propertyPath: m_Name
-      value: PRE_ColliderDeath (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8007818974183248448, guid: eb03853aa12b08542b4b16fef2338e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4519,6 +4509,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
+        type: 3}
+      propertyPath: m_Name
+      value: PRE_ColliderDeath (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb03853aa12b08542b4b16fef2338e9a, type: 3}
 --- !u!4 &8329693034122182574 stripped
@@ -4534,16 +4534,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5319586941177798035}
     m_Modifications:
-    - target: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a,
-        type: 3}
-      propertyPath: m_Name
-      value: PRE_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4253038440641906534, guid: b29934522c7954844a3e469aee802e4a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4599,7 +4589,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a,
+        type: 3}
+      propertyPath: m_Name
+      value: PRE_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8746532410099265278, guid: b29934522c7954844a3e469aee802e4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b29934522c7954844a3e469aee802e4a, type: 3}
 --- !u!4 &1941892506100073579 stripped
 Transform:
@@ -4694,16 +4695,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5319586941177798035}
     m_Modifications:
-    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
-        type: 3}
-      propertyPath: m_Name
-      value: PRE_ColliderDeath (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8007818974183248448, guid: eb03853aa12b08542b4b16fef2338e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4764,6 +4755,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
+        type: 3}
+      propertyPath: m_Name
+      value: PRE_ColliderDeath (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb03853aa12b08542b4b16fef2338e9a, type: 3}
 --- !u!4 &5837988290064141416 stripped
@@ -4779,16 +4780,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5319586941177798035}
     m_Modifications:
-    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
-        type: 3}
-      propertyPath: m_Name
-      value: PRE_ColliderDeath (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8007818974183248448, guid: eb03853aa12b08542b4b16fef2338e9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4848,6 +4839,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
+        type: 3}
+      propertyPath: m_Name
+      value: PRE_ColliderDeath (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 532908537850233489, guid: eb03853aa12b08542b4b16fef2338e9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb03853aa12b08542b4b16fef2338e9a, type: 3}

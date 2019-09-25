@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 8502286506657180483}
   - component: {fileID: 9187401895856117544}
   - component: {fileID: 3483452168541340714}
-  - component: {fileID: 8746532410099265278}
   m_Layer: 0
-  m_Name: PRE_Enemy
+  m_Name: PRE_Boulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,23 +119,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8746532410099265278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6061388375931740284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a8363359e358e94f8e7dca35cf070c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  startDirection: {x: -1, y: 0}
-  verticalSpeed: 5
-  hitDetectionDistance: 1
-  startSpeed: 3
-  oneDirection: 0
