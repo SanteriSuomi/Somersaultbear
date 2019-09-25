@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
-[RequireComponent(typeof(MeshRenderer), typeof(Rigidbody2D))]
+[RequireComponent(typeof(MeshRenderer))]
 public class ScrollingBackground : MonoBehaviour
 {
     [SerializeField]
@@ -16,13 +17,18 @@ public class ScrollingBackground : MonoBehaviour
     [SerializeField]
     private float backgroundSpeed = 0.05f;
 
-    private const float MIN_X_VELOCITY = 0.85f;
+    private const float MIN_X_VELOCITY = 1f;
 
     private void Start()
     {
         characterRigidbody = character.GetComponent<Rigidbody2D>();
 
         backgroundRenderer = GetComponent<MeshRenderer>();
+
+        #if UNITY_EDITOR
+        Assert.IsNotNull(character);
+        Assert.IsNotNull(backgroundRenderer);
+        #endif
     }
 
     private void Update()

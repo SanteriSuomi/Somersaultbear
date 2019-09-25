@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 public class ColliderMenuAnim : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player;
+    private GameObject player = default;
 
     private MainMenuAnim mmAnim;
 

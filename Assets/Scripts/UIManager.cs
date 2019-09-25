@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -7,7 +8,8 @@ public class UIManager : MonoBehaviour
     private ScoreManager scoreManager = default;
 
     [SerializeField]
-    private AudioSource audioSource = default;
+    private AudioSource[] audioSources = default;
+
 
     [SerializeField]
     private GameObject[] menuItems = default;
@@ -33,7 +35,10 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1;
 
                 // Game music control.
-                audioSource.Play();
+                foreach (var audioSrc in audioSources)
+                {
+                    audioSrc.mute = false;
+                }
 
                 // Show/hide menu buttons.
                 item.SetActive(false);
@@ -44,7 +49,10 @@ public class UIManager : MonoBehaviour
 
                 Time.timeScale = 0;
 
-                audioSource.Stop();
+                foreach (var audioSrc in audioSources)
+                {
+                    audioSrc.mute = true;
+                }
 
                 item.SetActive(true);
             }
@@ -60,7 +68,10 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0;
 
             // Stop game music.
-            audioSource.Stop();
+            foreach (var audioSrc in audioSources)
+            {
+                audioSrc.mute = true;
+            }
 
             // Disable/enable the UI score text.
             scoreManager.TextScore.enabled = false;
