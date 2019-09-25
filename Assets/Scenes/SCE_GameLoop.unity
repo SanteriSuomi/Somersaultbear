@@ -1581,12 +1581,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1128376437 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8638048287221463073, guid: 16d680dcc13122d40acb689c67712b02,
-    type: 3}
-  m_PrefabInstance: {fileID: 8638048288349622356}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1153948745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,64 +2629,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
-      propertyPath: projectiles.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[0]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[1]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[2]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[3]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[4]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[5]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[6]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[7]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[8]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: projectiles.Array.data[9]
       value: 
-      objectReference: {fileID: 1128376437}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
 --- !u!1001 &249831292133714338
@@ -3528,72 +3517,3 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6383505014529469939, guid: c523f08ffbff72f4590090f33587674e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c523f08ffbff72f4590090f33587674e, type: 3}
---- !u!1001 &8638048288349622356
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8638048287221463073, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_Name
-      value: PRE_Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.917
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638048287221463075, guid: 16d680dcc13122d40acb689c67712b02,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 16d680dcc13122d40acb689c67712b02, type: 3}
