@@ -25,7 +25,9 @@ public class ScrollingBackground : MonoBehaviour
 
     private float yVelocity = 0;
 
-    private const float MIN_X_VELOCITY = 0.05f;
+    private bool wasMaxUpdated = false;
+
+    private const float RB_VELOCITY_RANGE = 0.15f;
 
     private void Start()
     {
@@ -43,21 +45,35 @@ public class ScrollingBackground : MonoBehaviour
 
     private void Update()
     {
-        if (character.transform.position.x > currentMaxX)
-        {
-            currentMaxX = character.transform.position.x;
-        }
-
         // Update the current material offset X to the field.
         backgroundRendererOffsetX = backgroundRenderer.material.mainTextureOffset.x;
 
-        // If the instance isn't the menu background.
-        if (characterRigidbody.velocity.x > MIN_X_VELOCITY)
+        // Determine if the current character's position is higher than the highest it has been.
+        if (character.transform.position.x > currentMaxX)
         {
-            // Move the repeating texture on the quad on X axis to create a scrolling background effect.
+            // Update the highest max position with the current one.
+            currentMaxX = character.transform.position.x;
+
+            // Signal that it has indeed been updated.
+            wasMaxUpdated = true;
+        }
+        else if (character.transform.position.x < currentMaxX)
+        {
+            currentMaxX = character.transform.position.x;
+
+            wasMaxUpdated = false;
+        }
+
+        if (characterRigidbody.velocity.x > -RB_VELOCITY_RANGE && characterRigidbody.velocity.x < RB_VELOCITY_RANGE)
+        {
+            // Do nothing if player is close to stationary.
+        }
+        else if (wasMaxUpdated)
+        {
+            // Move the repeating texture on the quad on X axis.
             MoveOffsetRight();
         }
-        else if (characterRigidbody.velocity.x < -MIN_X_VELOCITY)
+        else if (!wasMaxUpdated)
         {
             MoveOffsetLeft();
         }
@@ -68,6 +84,7 @@ public class ScrollingBackground : MonoBehaviour
 
     private void MoveOffsetRight()
     {
+        // Smoothly transition the image with SmoothDamp.
         backgroundNewPosition = new Vector2(Mathf.SmoothDamp(backgroundRendererOffsetX, backgroundRendererOffsetX + unitsToOffset, ref yVelocity, offsetSmooth), 0);
     }
 
