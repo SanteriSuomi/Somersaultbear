@@ -75,8 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -73038665
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6363371214854213707, guid: 15b98e874e64ea84b92f246a15de197a,
-    type: 3}
+  m_Sprite: {fileID: 776541521127924938, guid: 15b98e874e64ea84b92f246a15de197a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -139,7 +138,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.645
+  m_Radius: 0.6
 --- !u!50 &223707787211815875
 Rigidbody2D:
   serializedVersion: 4
@@ -284,7 +283,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223707787211815928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 66611d5e887a0f743b77c1bfc821076b, type: 2}
   m_CullingMode: 0
