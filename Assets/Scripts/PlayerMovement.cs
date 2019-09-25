@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float jumpDetectionHeight = 0.715f;
 
-    private bool pressedSpace;
+    private bool pressedSpace = false;
 
     private const float RB_Y_VELOCITY_MAX = 0.5f;
 
