@@ -11,13 +11,21 @@ public class ScrollingBackground : MonoBehaviour
 
     private Renderer backgroundRenderer = default;
 
-    [SerializeField]
-    private bool isMenuBackground = false;
+    private Vector2 backgroundNewPosition;
 
     [SerializeField]
     private float backgroundSpeed = 0.05f;
 
-    private const float MIN_X_VELOCITY = 1f;
+    [SerializeField]
+    private float offsetSmooth = 1f;
+
+    private float backgroundRendererOffsetX;
+
+    private float zeroVelocity = Mathf.Epsilon;
+
+    private float yVelocity = 0;
+
+    private const float UNITS_TO_OFFSET = 1f;
 
     private void Start()
     {
@@ -33,33 +41,30 @@ public class ScrollingBackground : MonoBehaviour
 
     private void Update()
     {
+        // Update the current material offset X to the field.
+        backgroundRendererOffsetX = backgroundRenderer.material.mainTextureOffset.x;
+
         // If the instance isn't the menu background.
-        if (!isMenuBackground && characterRigidbody.velocity.x > MIN_X_VELOCITY)
+        if (characterRigidbody.velocity.x > zeroVelocity)
         {
             // Move the repeating texture on the quad on X axis to create a scrolling background effect.
             MoveOffsetRight();
         }
-        // If the instance is the menu background.
-        else if (isMenuBackground)
+        else if (characterRigidbody.velocity.x < zeroVelocity)
         {
-            if (characterRigidbody.velocity.x > float.Epsilon)
-            {
-                MoveOffsetRight();
-            }
-            else
-            {
-                MoveOffsetLeft();
-            }
+            MoveOffsetLeft();
         }
+
+        backgroundRenderer.material.mainTextureOffset = backgroundNewPosition;
     }
 
     private void MoveOffsetRight()
     {
-        backgroundRenderer.material.mainTextureOffset += Vector2.right * backgroundSpeed * Time.deltaTime;
+        backgroundNewPosition = new Vector2(Mathf.SmoothDamp(backgroundRendererOffsetX, backgroundRendererOffsetX + UNITS_TO_OFFSET, ref yVelocity, offsetSmooth), 0);
     }
 
     private void MoveOffsetLeft()
     {
-        backgroundRenderer.material.mainTextureOffset += Vector2.left * backgroundSpeed * Time.deltaTime;
+        backgroundNewPosition = new Vector2(Mathf.SmoothDamp(backgroundRendererOffsetX, backgroundRendererOffsetX - UNITS_TO_OFFSET, ref yVelocity, offsetSmooth), 0);
     }
 }
