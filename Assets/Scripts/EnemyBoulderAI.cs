@@ -5,10 +5,8 @@ using UnityEngine.Assertions;
 public class EnemyBoulderAI : MonoBehaviour
 {
     private UIManager uiManager = default;
-
     [SerializeField]
     private LayerMask groundLayer = default;
-
     private Rigidbody2D rigidBody = default;
 
     [SerializeField]
@@ -16,10 +14,8 @@ public class EnemyBoulderAI : MonoBehaviour
 
     [SerializeField]
     private float verticalSpeed = 5f;
-
     [SerializeField]
     private float hitDetectionDistance = 1f;
-
     [SerializeField]
     private float startSpeed = 3f;
 
@@ -30,13 +26,13 @@ public class EnemyBoulderAI : MonoBehaviour
     {
         // Find the Manager prefab manually, to prevent having to select it for every instance manually.
         uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
+        rigidBody = GetComponent<Rigidbody2D>();
 
         // Assert that the reference is not null, and only run this in the Unity editor.
         #if UNITY_EDITOR
         Assert.IsNotNull(uiManager);
+        Assert.IsNotNull(rigidBody);
         #endif
-
-        rigidBody = GetComponent<Rigidbody2D>();
 
         // Add slight force to the object on spawn so it won't remain stationary.
         rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
@@ -47,13 +43,11 @@ public class EnemyBoulderAI : MonoBehaviour
         if (!oneDirection)
         {
             RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
-
             RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, hitDetectionDistance, groundLayer);
 
             // Draw debug rays for the raycasts in the Unity editor.
             #if UNITY_EDITOR
             Debug.DrawRay(transform.position, Vector2.right * hitDetectionDistance, Color.white);
-
             Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);
             #endif
 

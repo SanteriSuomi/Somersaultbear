@@ -12,7 +12,6 @@ public class ColliderInfo : MonoBehaviour
         // Find the Manager prefab manually, to prevent having to select it for every instance manually.
         spawnManager = GameObject.Find("PRE_SpawnManager").GetComponent<SpawnManager>();
 
-        // Assert that the reference is not null, and only run this in the Unity editor.
         #if UNITY_EDITOR
         Assert.IsNotNull(spawnManager);
         #endif
@@ -34,7 +33,6 @@ public class ColliderInfo : MonoBehaviour
 
 			// Change alreadyHit to true to prevent this from activating again in this instance of the prefab.
 			alreadyHit = true;
-
             // Spawn a new scene prefab using the method in spawnManager.
 			spawnManager.SpawnNewScenePrefab();
 		}

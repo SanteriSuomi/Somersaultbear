@@ -5,7 +5,6 @@ public class ColliderMenuAnim : MonoBehaviour
 {
     [SerializeField]
     private GameObject player = default;
-
     private MainMenuAnim mmAnim;
 
     private void Start()
@@ -13,6 +12,7 @@ public class ColliderMenuAnim : MonoBehaviour
         mmAnim = player.GetComponent<MainMenuAnim>();
 
         #if UNITY_EDITOR
+        Assert.IsNotNull(player);
         Assert.IsNotNull(mmAnim);
         #endif
     }

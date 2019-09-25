@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class EnemyWaspAI : MonoBehaviour
 {
     private UIManager uiManager;
-
     private SpriteRenderer spriteRenderer;
-
-    //private Rigidbody2D rigidBody;
 
     private Vector3 target;
 
@@ -16,20 +14,23 @@ public class EnemyWaspAI : MonoBehaviour
     private void Start()
     {
         uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
-
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        //rigidBody = GetComponent<Rigidbody2D>();
+        #if UNITY_EDITOR
+        Assert.IsNotNull(uiManager);
+        Assert.IsNotNull(spriteRenderer);
+        #endif
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.transform.CompareTag("Player"))
         {
+            #if UNITY_EDITOR
             Debug.Log($"{gameObject.name} hit {other.name}");
+            #endif
 
             target = other.transform.position;
-
             transform.position = Vector3.Lerp(transform.position, target, moveSpeed * Time.deltaTime);
         }
     }

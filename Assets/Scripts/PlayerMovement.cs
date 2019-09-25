@@ -5,20 +5,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private LayerMask groundLayer = default;
-
     private Rigidbody2D rigidBody = default;
-
     private AudioSource audioSource = default;
 
     [SerializeField]
     private float verticalSpeed = 3f;
-
     [SerializeField]
     private float maxVerticalSpeed = 6.5f;
-
     [SerializeField]
     private float jumpModifier = 8f;
-
     [SerializeField]
     private float jumpDetectionHeight = 0.715f;
 
@@ -29,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -45,15 +39,15 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
         }
-
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
+        #if UNITY_EDITOR
         Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
+        #endif
 
         if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX)
         {
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
-
             audioSource.Play();
         }
     }
