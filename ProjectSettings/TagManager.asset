@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Button
+  - WaspCollider
   layers:
   - Default
   - TransparentFX
