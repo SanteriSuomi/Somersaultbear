@@ -24,6 +24,7 @@ public class EnemyWaspAI : MonoBehaviour
 
     private void Update()
     {
+        // Flip the sprite direction.
         if (target.x > transform.position.x)
         {
             spriteRenderer.flipX = true;
@@ -36,12 +37,15 @@ public class EnemyWaspAI : MonoBehaviour
 
     public void ColliderBody()
     {
+        // Show the death menu.
         uiManager.ShowMenuItemsDeath();
     }
 
     public void ColliderFollow(Collider2D collision)
     {
+        // Target is the player's position.
         target = collision.transform.position;
+        // Smoothly move the enemy towards player.
         transform.position = Vector3.Lerp(transform.position, target, moveSpeed * Time.deltaTime);
     }
 }

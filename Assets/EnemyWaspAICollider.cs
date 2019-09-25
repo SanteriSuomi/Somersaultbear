@@ -18,6 +18,7 @@ public class EnemyWaspAICollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Compare the gameObject's name for this instance of the script.
             if (gameObject.name == "Collider")
             {
                 enemyWaspAI.ColliderBody();
@@ -32,18 +33,4 @@ public class EnemyWaspAICollider : MonoBehaviour
             }
         }
     }
-
-    #if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        if (gameObject.name == "Collider")
-        {
-            Gizmos.DrawWireSphere(transform.position, 0.35f);
-        }
-        else if (gameObject.name == "Collider (1)")
-        {
-            Gizmos.DrawWireSphere(transform.position, 10f);
-        }
-    }
-    #endif
 }
