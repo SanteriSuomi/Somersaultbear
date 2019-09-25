@@ -2,7 +2,7 @@
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyAI : MonoBehaviour
+public class EnemyBoulderAI : MonoBehaviour
 {
     private UIManager uiManager = default;
 

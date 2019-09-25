@@ -1,40 +1,56 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyWaspAI : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
+    private UIManager uiManager;
+
+    private SpriteRenderer spriteRenderer;
+
+    //private Rigidbody2D rigidBody;
 
     private Vector3 target;
 
-    private bool isInArea = false;
+    [SerializeField]
+    private float moveSpeed = 1f;
 
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();    
+        uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        //rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.transform.CompareTag("Player"))
         {
+            Debug.Log($"{gameObject.name} hit {other.name}");
+
             target = other.transform.position;
 
-            Vector3.Lerp(transform.position, target, 0.5f);
-        }
-        else
-        {
-
+            transform.position = Vector3.Lerp(transform.position, target, moveSpeed * Time.deltaTime);
         }
     }
 
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-        if (isInArea)
+        if (collision.transform.CompareTag("Player"))
         {
-            Vector3.Lerp(transform.position, target, 0.5f);
+            uiManager.ShowMenuItemsDeath();
         }
-        */
+    }
+
+    private void Update()
+    {
+        if (target.x > transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 }
