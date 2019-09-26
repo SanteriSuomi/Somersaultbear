@@ -13,7 +13,10 @@ public class ButterflyWander : MonoBehaviour
     private float distance;
 
     Vector2 target;
+    
+    private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
 
+    // Character AI states.
     private enum State
     {
         Wander,
@@ -25,6 +28,7 @@ public class ButterflyWander : MonoBehaviour
     private void OnEnable()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        // Get a starting point.
         GetNewPoint();
     }
 
@@ -38,6 +42,7 @@ public class ButterflyWander : MonoBehaviour
             case State.Stop:
                 break;
         }
+        // Flip the sprite depending on it's direction.
         if (target.x > transform.position.x)
         {
             spriteRenderer.flipX = true;
@@ -50,9 +55,11 @@ public class ButterflyWander : MonoBehaviour
 
     private IEnumerator Move()
     {
+        // Calculate the distance between the butterfly and the target point.
         distance = Vector2.Distance(transform.position, target);
+        // Lerp the 
         transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
-        yield return new WaitUntil(() => distance <= 0.2f);
+        yield return new WaitUntil(() => distance <= MAX_DISTANCE_FROM_TARGET);
         GetNewPoint();
     }
 
