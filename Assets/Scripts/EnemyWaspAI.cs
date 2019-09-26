@@ -3,6 +3,8 @@ using UnityEngine.Assertions;
 
 public class EnemyWaspAI : MonoBehaviour
 {
+    public int HitPoints { get; set; } = 3;
+
     private UIManager uiManager;
     private SpriteRenderer spriteRenderer;
 
@@ -10,8 +12,6 @@ public class EnemyWaspAI : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed = 1f;
-
-    public int HitPoints { get; set; } = 3;
 
     private void OnEnable()
     {
