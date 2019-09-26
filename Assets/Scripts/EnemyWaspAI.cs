@@ -11,7 +11,7 @@ public class EnemyWaspAI : MonoBehaviour
     private Vector3 target;
 
     [SerializeField]
-    private float moveSpeed = 1f;
+    private float moveSpeed = 6f;
 
 
     private void OnEnable()
@@ -60,6 +60,6 @@ public class EnemyWaspAI : MonoBehaviour
         // Target is the player's position.
         target = collision.transform.position;
         // Smoothly move the enemy towards player.
-        transform.position = Vector3.Lerp(transform.position, target, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
     }
 }

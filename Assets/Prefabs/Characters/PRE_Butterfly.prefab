@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3152559613458312948}
   - component: {fileID: 3152559613458312949}
   - component: {fileID: 3152559613458312950}
-  - component: {fileID: 6457784548162781174}
+  - component: {fileID: -6424967752075747974}
   m_Layer: 0
-  m_Name: PRE_Butterfly_Yellow
+  m_Name: PRE_Butterfly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6457784548162781174
+--- !u!114 &-6424967752075747974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b3ede685424e147ae34aeed3f36e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  radius: 3
+  moveSpeed: 3.5
+  radius: 6

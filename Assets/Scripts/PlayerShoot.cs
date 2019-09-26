@@ -32,13 +32,14 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             // Update the target of the projectile by transforming the mouseclick from screen to world space.
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
             // Set the Z vector 0 zero since it's a 2D game.
             target.z = 0f;
-
+            // Indicate that left click has been pressed.
             pressedLeftClick = true;
         }
         else

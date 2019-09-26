@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public class ButterflyWander : MonoBehaviour
+public class ButterflyWanderAI : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
 
@@ -9,7 +10,6 @@ public class ButterflyWander : MonoBehaviour
     private float moveSpeed = 5f;
     [SerializeField]
     private float radius = 2.5f;
-
     private float distance;
 
     Vector2 target;
@@ -28,6 +28,11 @@ public class ButterflyWander : MonoBehaviour
     private void OnEnable()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        #if UNITY_EDITOR
+        Assert.IsNotNull(spriteRenderer);
+        #endif
+
         // Get a starting point.
         GetNewPoint();
     }
@@ -57,7 +62,7 @@ public class ButterflyWander : MonoBehaviour
     {
         // Calculate the distance between the butterfly and the target point.
         distance = Vector2.Distance(transform.position, target);
-        // Lerp the 
+        // Start moving (Lerp) towards the new target.
         transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         yield return new WaitUntil(() => distance <= MAX_DISTANCE_FROM_TARGET);
         GetNewPoint();
@@ -65,6 +70,7 @@ public class ButterflyWander : MonoBehaviour
 
     private void GetNewPoint()
     {
+        // Assign a random vector value to target around a circle.
         target = Random.insideUnitCircle * radius;
     }
 
@@ -75,6 +81,7 @@ public class ButterflyWander : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // Draw a gizmo towards earch new target.
         Gizmos.DrawLine(transform.position, target);
     }
 }
