@@ -3,29 +3,25 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class MainMenuAnim : MonoBehaviour
 {
-    // true == right, false == left.
+    // True == right, false == left.
     public bool Direction { get; set; } = false;
 
     [SerializeField]
     private LayerMask groundLayer = default;
 
     private Rigidbody2D rigidBody;
-
     private AudioSource audioSource;
 
     [SerializeField]
     private float jumpDetectionHeight = 0.715f;
-
     [SerializeField]
     private float verticalSpeed = 2.5f;
-
     [SerializeField]
     private float jumpModifier = 5f;
 
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -33,7 +29,9 @@ public class MainMenuAnim : MonoBehaviour
     {
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
+        #if UNITY_EDITOR
         Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
+        #endif
 
         if (!Direction)
         {
@@ -54,7 +52,6 @@ public class MainMenuAnim : MonoBehaviour
     private void Jump()
     {
         rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
-
         audioSource.Play();
     }
 }

@@ -8,9 +8,8 @@ public class Projectile : MonoBehaviour
     {
         // Get the screen bounds from pixel size to game world size.
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
         // Deactivate projectile if it goes too far from screen bounds.
-        if (gameObject.transform.position.x > screenBounds.x || gameObject.transform.position.y > screenBounds.y)
+        if (transform.position.x > screenBounds.x || transform.position.y > screenBounds.y)
         {
             gameObject.SetActive(false);
 

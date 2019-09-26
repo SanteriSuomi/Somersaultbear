@@ -6,23 +6,17 @@ public class ScrollingBackground : MonoBehaviour
 {
     [SerializeField]
     private GameObject character = default;
-
     private Rigidbody2D characterRigidbody = default;
-
     private Renderer backgroundRenderer = default;
 
     private Vector2 backgroundNewPosition;
 
     [SerializeField]
     private float offsetSmooth = 1f;
-
     [SerializeField]
     private float unitsToOffset = 1f;
-
     private float backgroundRendererOffsetX;
-
     private float currentMaxX;
-
     private float yVelocity = 0;
 
     private bool wasMaxUpdated = false;

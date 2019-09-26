@@ -10,20 +10,16 @@ public class CameraSizeChanger : MonoBehaviour
 
     [SerializeField]
     private GameObject player = default;
-
     [SerializeField]
     private CinemachineVirtualCamera cinemachine = default;
 
     [SerializeField]
     private float lensSmoothTime = 0.5f;
-
     [SerializeField]
     private float detectionHeight = 1.25125f;
-
     private float yVelocity = 0f;
 
     private const float maxLensSize = 7f;
-
     private const float minLensSize = 5f;
 
     private void FixedUpdate()

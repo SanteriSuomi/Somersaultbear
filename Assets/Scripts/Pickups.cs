@@ -40,6 +40,7 @@ public class Pickups : MonoBehaviour
 
     private void RandomiseSprite()
     {
+        // Randomise the sprite to a random sprite in the sprites array.
         random = Random.Range(0, sprites.Length);
         spriteRenderer.sprite = sprites[random];
     }
