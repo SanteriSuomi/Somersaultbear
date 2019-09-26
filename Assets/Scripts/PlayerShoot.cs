@@ -48,8 +48,18 @@ public class PlayerShoot : MonoBehaviour
     {
         if (pressedLeftClick)
         {
-            var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(target.x * projectileSpeed, target.y * projectileSpeed);
+            var projectile = projectiles.Where(p => !p.activeSelf).First();
+
+            Assert.IsNotNull(projectile);
+            Debug.Log($"Launched {projectile.name}");
+
+            projectile.SetActive(true);
+
+            projectile.transform.position = transform.position;
+            projectile.transform.rotation = Quaternion.identity;
+
+            var projectileRigidbody = projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(target.x * projectileSpeed, target.y * projectileSpeed);
+            Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
         }
     }
 }

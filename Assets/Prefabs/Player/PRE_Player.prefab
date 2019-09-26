@@ -289,5 +289,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8638048287221463073, guid: 16d680dcc13122d40acb689c67712b02,
     type: 3}
-  amountToPool: 25
+  amountToPool: 100
   projectileSpeed: 4
