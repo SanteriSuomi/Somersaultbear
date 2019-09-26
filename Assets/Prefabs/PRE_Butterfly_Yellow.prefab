@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3152559613458312950}
   - component: {fileID: 6457784548162781174}
   m_Layer: 0
-  m_Name: PRE_Butterfly
+  m_Name: PRE_Butterfly_Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b3ede685424e147ae34aeed3f36e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 2
+  radius: 3
