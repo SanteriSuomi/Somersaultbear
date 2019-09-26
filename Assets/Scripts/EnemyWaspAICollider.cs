@@ -29,7 +29,9 @@ public class EnemyWaspAICollider : MonoBehaviour
             }
             else
             {
+                #if UNITY_EDITOR
                 Debug.Log("Collider name not found in EnemyWaspAICollider");
+                #endif
             }
         }
     }

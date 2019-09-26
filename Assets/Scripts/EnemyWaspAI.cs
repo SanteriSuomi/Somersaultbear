@@ -11,6 +11,13 @@ public class EnemyWaspAI : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 1f;
 
+    public int HitPoints { get; set; } = 3;
+
+    private void OnEnable()
+    {
+        HitPoints = 3;
+    }
+
     private void Start()
     {
         uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
@@ -24,6 +31,12 @@ public class EnemyWaspAI : MonoBehaviour
 
     private void Update()
     {
+        // Deactivate enemy when hitpoints are zero.
+        if (HitPoints <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
         // Flip the sprite direction.
         if (target.x > transform.position.x)
         {
