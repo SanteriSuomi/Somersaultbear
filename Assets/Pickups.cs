@@ -10,7 +10,7 @@ public class Pickups : MonoBehaviour
 
     [SerializeField]
     private int scoreToGive = 10000;
-    private int randomSprite;
+    private int random = 0;
 
     private void Start()
     {
@@ -22,7 +22,10 @@ public class Pickups : MonoBehaviour
 
     private void OnEnable()
     {
-        RandomiseSprite();
+        if (random != 0)
+        {
+            RandomiseSprite();
+        }
         gameObject.SetActive(true);
     }
 
@@ -37,8 +40,7 @@ public class Pickups : MonoBehaviour
 
     private void RandomiseSprite()
     {
-        randomSprite = Random.Range(0, sprites.Length);
-
-        spriteRenderer.sprite = sprites[randomSprite];
+        random = Random.Range(0, sprites.Length);
+        spriteRenderer.sprite = sprites[random];
     }
 }
