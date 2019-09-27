@@ -49,10 +49,6 @@ public class PlayerShoot : MonoBehaviour
             // Indicate that left click has been pressed.
             pressedLeftClick = true;
         }
-        else
-        {
-            pressedLeftClick = false;
-        }
     }
 
     private void FixedUpdate()
