@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 public class EnemyBoulderAI : MonoBehaviour
@@ -21,6 +22,8 @@ public class EnemyBoulderAI : MonoBehaviour
     [SerializeField]
     private bool oneDirection = false;
     private bool addedForce = false;
+
+    private const float DESTROY_TIME = 20f;
 
     private void Start()
     {
@@ -72,5 +75,11 @@ public class EnemyBoulderAI : MonoBehaviour
         {
             uiManager.ShowMenuItemsDeath();
         }
+    }
+    // Destroy the game object after a certain time.
+    private IEnumerator DestroyTimer()
+    {
+        yield return new WaitForSeconds(DESTROY_TIME);
+        Destroy(gameObject);
     }
 }

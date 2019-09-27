@@ -15,6 +15,7 @@ public class ButterflyWanderAI : MonoBehaviour
     private float distance;
 
     private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
+    private const float DESTROY_TIME = 20f;
 
     private void Start()
     {
@@ -59,6 +60,8 @@ public class ButterflyWanderAI : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+
+        StartCoroutine(DestroyTimer());
     }
 
     private IEnumerator Move()
@@ -69,6 +72,13 @@ public class ButterflyWanderAI : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         yield return new WaitUntil(() => distance <= MAX_DISTANCE_FROM_TARGET);
         GetNewPoint();
+    }
+
+    // Destroy the game object after a certain time.
+    private IEnumerator DestroyTimer()
+    {
+        yield return new WaitForSeconds(DESTROY_TIME);
+        Destroy(gameObject);
     }
 
     private void GetNewPoint()

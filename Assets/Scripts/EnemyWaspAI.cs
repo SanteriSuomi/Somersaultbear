@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 public class EnemyWaspAI : MonoBehaviour
@@ -12,6 +13,8 @@ public class EnemyWaspAI : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed = 6f;
+
+    private const float DESTROY_TIME = 20f;
 
     private void Start()
     {
@@ -29,7 +32,7 @@ public class EnemyWaspAI : MonoBehaviour
         // Deactivate enemy when hitpoints are zero.
         if (HitPoints <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         // Flip the sprite direction.
         if (target.x > transform.position.x)
@@ -40,6 +43,12 @@ public class EnemyWaspAI : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+    // Destroy the game object after a certain time.
+    private IEnumerator DestroyTimer()
+    {
+        yield return new WaitForSeconds(DESTROY_TIME);
+        Destroy(gameObject);
     }
 
     // Methods that get called from the child colliders.
