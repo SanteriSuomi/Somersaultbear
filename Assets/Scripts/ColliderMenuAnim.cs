@@ -5,7 +5,7 @@ public class ColliderMenuAnim : MonoBehaviour
 {
     [SerializeField]
     private GameObject player = default;
-    private MainMenuAnim mmAnim;
+    private MainMenuAnim mmAnim = default;
 
     private void Start()
     {
