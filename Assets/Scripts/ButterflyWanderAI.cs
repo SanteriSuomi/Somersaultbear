@@ -85,5 +85,6 @@ public class ButterflyWanderAI : MonoBehaviour
     {
         // Draw a gizmo towards earch new target.
         Gizmos.DrawLine(transform.position, target);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

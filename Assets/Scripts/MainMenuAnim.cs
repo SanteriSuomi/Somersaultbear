@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MainMenuAnim : MonoBehaviour
@@ -11,6 +12,7 @@ public class MainMenuAnim : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     private AudioSource audioSource;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField]
     private float jumpDetectionHeight = 0.715f;
@@ -25,6 +27,13 @@ public class MainMenuAnim : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        #if UNITY_EDITOR
+        Assert.IsNotNull(rigidBody);
+        Assert.IsNotNull(audioSource);
+        Assert.IsNotNull(spriteRenderer);
+        #endif
     }
 
     // Add a random force to the character when clicked on.
@@ -50,11 +59,19 @@ public class MainMenuAnim : MonoBehaviour
         {
             rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
         }
-
         // Jump every time the raycast hits the ground layer.
         if (rayHit)
         {
             Jump();
+        }
+        // Switch the sprite's direction according to the direction it's going.
+        if (rigidBody.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (rigidBody.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
         }
     }
 
