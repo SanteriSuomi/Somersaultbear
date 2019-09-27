@@ -7,7 +7,6 @@ public class ButterflyWanderAI : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private Vector2 target;
-    private Vector3 spawnPos;
 
     [SerializeField]
     private float moveSpeed = 5f;
@@ -16,11 +15,6 @@ public class ButterflyWanderAI : MonoBehaviour
     private float distance;
 
     private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
-
-    private void Awake()
-    {
-        spawnPos = transform.position;
-    }
 
     private void Start()
     {
@@ -31,14 +25,7 @@ public class ButterflyWanderAI : MonoBehaviour
         #endif
     }
 
-    private void OnEnable()
-    {
-        transform.position = spawnPos;
-        // Get a starting point when activated.
-        GetNewPoint();
-        gameObject.SetActive(true);
-    }
-
+    // AI states.
     private enum State
     {
         Wander,
@@ -47,6 +34,7 @@ public class ButterflyWanderAI : MonoBehaviour
 
     private State currentState;
 
+    // Method for changing the state.
     private void ChangeState(State state)
     {
         currentState = state;

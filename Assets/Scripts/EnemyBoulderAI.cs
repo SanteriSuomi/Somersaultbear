@@ -20,11 +20,7 @@ public class EnemyBoulderAI : MonoBehaviour
 
     [SerializeField]
     private bool oneDirection = false;
-
-    private void OnEnable()
-    {
-        rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
-    }
+    private bool addedForce = false;
 
     private void Start()
     {
@@ -37,13 +33,17 @@ public class EnemyBoulderAI : MonoBehaviour
         Assert.IsNotNull(uiManager);
         Assert.IsNotNull(rigidBody);
         #endif
-
-        // Add slight force to the object on spawn so it won't remain stationary.
-        rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()
     {
+        if (!addedForce)
+        {
+            // Add slight force to the object on spawn so it won't remain stationary.
+            rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
+            addedForce = true;
+        }
+
         if (!oneDirection)
         {
             RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);

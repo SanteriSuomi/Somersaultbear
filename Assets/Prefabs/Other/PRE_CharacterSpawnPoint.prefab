@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4072898383131206981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8800678519239242714}
+  - component: {fileID: 3499520718631111567}
+  m_Layer: 0
+  m_Name: PRE_CharacterSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8800678519239242714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072898383131206981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3499520718631111567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072898383131206981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a44b307c7f50ed43a8545b59cd748d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBoulderSpawn: 0
+  characters:
+  - {fileID: 8232459914263792970, guid: 46032a8c5b08b594590e396ca84e5251, type: 3}
+  - {fileID: 3152559613458312951, guid: 61a9e68223282a14283b26bb7a35217d, type: 3}
+  - {fileID: 5989050987121521317, guid: baa836c6657bcef48a0231da61dd9178, type: 3}
+  boulder: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a, type: 3}

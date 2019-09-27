@@ -132,11 +132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -341,11 +336,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
@@ -794,11 +784,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -880,11 +865,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -959,11 +939,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
@@ -1045,11 +1020,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
@@ -1211,11 +1181,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1296,11 +1261,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
@@ -1799,11 +1759,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Scene_1_Grid (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1884,11 +1839,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_Start_Grid
-      objectReference: {fileID: 0}
-    - target: {fileID: 4130638512373154967, guid: 10ec4b03630f1e340be92ca1789d5033,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4130638512373154960, guid: 10ec4b03630f1e340be92ca1789d5033,
         type: 3}
@@ -2572,16 +2522,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 223707787211815928, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 223707787211815875, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 223707787211815934, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2637,33 +2577,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: jumpModifier
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: maxVerticalSpeed
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: verticalSpeed
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: enemyBoulderAI
-      value: 
-      objectReference: {fileID: 2845666995273794508, guid: b29934522c7954844a3e469aee802e4a,
-        type: 3}
-    - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
-        type: 3}
-      propertyPath: enemyBoulder
-      value: 
-      objectReference: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
 --- !u!1001 &249831292133714338
@@ -3338,11 +3251,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_1_Grid
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}
