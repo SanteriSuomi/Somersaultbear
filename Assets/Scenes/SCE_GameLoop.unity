@@ -2575,7 +2575,7 @@ PrefabInstance:
     - target: {fileID: 223707787211815934, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.65
+      value: -0.49
       objectReference: {fileID: 0}
     - target: {fileID: 223707787211815934, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
@@ -2626,7 +2626,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 98e7a90509d22a842b6f955ba891983c, type: 2}
+      objectReference: {fileID: 9100000, guid: d3a02379c817dcc408a93eecc73cafe7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
 --- !u!1001 &249831292133714338
@@ -2898,7 +2898,7 @@ PrefabInstance:
     - target: {fileID: 1616202544842047289, guid: 0e7c28035ee93a94bb385453ff8f80ba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.15
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 1616202544842047289, guid: 0e7c28035ee93a94bb385453ff8f80ba,
         type: 3}
@@ -2954,6 +2954,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 918740418}
+    - target: {fileID: 1616202545220264532, guid: 0e7c28035ee93a94bb385453ff8f80ba,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7c28035ee93a94bb385453ff8f80ba, type: 3}
 --- !u!20 &1616202545012787130 stripped
@@ -3280,6 +3285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PRE_Scene_1_Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319586941177798036, guid: c523f08ffbff72f4590090f33587674e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319586941177798035, guid: c523f08ffbff72f4590090f33587674e,
         type: 3}

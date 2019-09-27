@@ -45,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
-#endif
+        #endif
 
         if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX)
         {
@@ -61,6 +61,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayAnimJump()
     {
+        if (rigidBody.velocity.y > 1.5f)
+        {
+            animator.SetTrigger("Jump");
+            rigidBody.freezeRotation = true;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            rigidBody.freezeRotation = false;
+        }
+        /*
         if (rigidBody.velocity.y >= 1.5f)
         {
             animator.SetBool("isJumping", true);
@@ -84,8 +95,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isFalling", false);
             rigidBody.freezeRotation = false;
         }
-
-
+        */
         /*
         if (rigidBody.velocity.y > 1f)
         {

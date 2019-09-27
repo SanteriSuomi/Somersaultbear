@@ -320,8 +320,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   verticalSpeed: 3
-  maxVerticalSpeed: 6.5
-  jumpModifier: 8
+  maxVerticalSpeed: 7.5
+  jumpModifier: 6
   jumpDetectionHeight: 0.715
 --- !u!114 &795536896924751662
 MonoBehaviour:
