@@ -21,6 +21,11 @@ public class EnemyBoulderAI : MonoBehaviour
     [SerializeField]
     private bool oneDirection = false;
 
+    private void OnEnable()
+    {
+        rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
+    }
+
     private void Start()
     {
         // Find the Manager prefab manually, to prevent having to select it for every instance manually.

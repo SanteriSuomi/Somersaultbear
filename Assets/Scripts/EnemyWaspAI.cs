@@ -9,13 +9,14 @@ public class EnemyWaspAI : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private Vector3 target;
+    private Vector3 spawnPos;
 
     [SerializeField]
     private float moveSpeed = 6f;
 
-    private void OnEnable()
+    private void Awake()
     {
-        HitPoints = 2;
+        spawnPos = transform.position;
     }
 
     private void Start()
@@ -27,6 +28,13 @@ public class EnemyWaspAI : MonoBehaviour
         Assert.IsNotNull(uiManager);
         Assert.IsNotNull(spriteRenderer);
         #endif
+    }
+
+    private void OnEnable()
+    {
+        transform.position = spawnPos;
+        HitPoints = 2;
+        gameObject.SetActive(true);
     }
 
     private void Update()

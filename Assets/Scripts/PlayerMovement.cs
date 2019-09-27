@@ -22,9 +22,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool pressedSpace = false;
     // Prevent double jumping with small velocity check.
-    private const float RB_Y_VELOCITY_MAX = 0.5f;
+    private const float RB_Y_VELOCITY_MAX_JUMP = 0.5f;
     private const float RB_Y_VELOCITY_MAX_ANIMS = 1f;
-    private const float REDUCE_AIR_VELOCITY = 2.75f;
+    //private const float REDUCE_AIR_VELOCITY = 3f;
 
     private void Start()
     {
@@ -48,22 +48,23 @@ public class PlayerMovement : MonoBehaviour
     {
         // Cast a raycast downwards for ground detection.
         rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+
+        #if UNITY_EDITOR
+        Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
+        #endif
+
         // Continuously move player to the right.
         if (rigidBody.velocity.x < maxVerticalSpeed)
         {
             rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
         }
 
-        #if UNITY_EDITOR
-        Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
-        #endif
-
-        if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX)
+        if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX_JUMP)
         {
             // Add a force for jump.
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
             // Add force backwards to reduce the drag on air.
-            rigidBody.AddForce(Vector2.left * REDUCE_AIR_VELOCITY, ForceMode2D.Impulse);
+            rigidBody.AddForce(new Vector3(-1.5f, 0.5f, 0), ForceMode2D.Impulse);
             audioSource.Play();
         }
 

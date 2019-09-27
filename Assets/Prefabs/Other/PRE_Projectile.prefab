@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8638048287221463084}
   - component: {fileID: -2230943285183381099}
   - component: {fileID: -7606624747958005214}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PRE_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,5 +132,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41add005023a6c640a4c31f9b7b97053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBoulderAI: {fileID: 2845666995273794508, guid: b29934522c7954844a3e469aee802e4a,
-    type: 3}

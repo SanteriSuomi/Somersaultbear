@@ -75,6 +75,8 @@ public class PlayerShoot : MonoBehaviour
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(target.x * projectileSpeed, target.y * projectileSpeed);
             // Ignore the collisions between the player and the spawned projectile.
             Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+            // Ignore collisions between the projectile and boulders using layers.
+            Physics2D.IgnoreLayerCollision(10, 11);
         }
     }
 }

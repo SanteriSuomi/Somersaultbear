@@ -4,9 +4,10 @@ using UnityEngine.Assertions;
 
 public class ButterflyWanderAI : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
-    Vector2 target;
+    private Vector2 target;
+    private Vector3 spawnPos;
 
     [SerializeField]
     private float moveSpeed = 5f;
@@ -15,18 +16,10 @@ public class ButterflyWanderAI : MonoBehaviour
     private float distance;
 
     private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
-    // Character AI states.
-    private enum State
-    {
-        Wander,
-        Stop
-    }
 
-    private State currentState;
-
-    private void ChangeState(State state)
+    private void Awake()
     {
-        currentState = state;
+        spawnPos = transform.position;
     }
 
     private void Start()
@@ -40,8 +33,23 @@ public class ButterflyWanderAI : MonoBehaviour
 
     private void OnEnable()
     {
+        transform.position = spawnPos;
         // Get a starting point when activated.
         GetNewPoint();
+        gameObject.SetActive(true);
+    }
+
+    private enum State
+    {
+        Wander,
+        Stop
+    }
+
+    private State currentState;
+
+    private void ChangeState(State state)
+    {
+        currentState = state;
     }
 
     private void Update()

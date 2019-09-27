@@ -2572,6 +2572,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815928, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815875, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 223707787211815934, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2630,17 +2640,17 @@ PrefabInstance:
     - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: jumpModifier
-      value: 7.25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: maxVerticalSpeed
-      value: 7.25
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: verticalSpeed
-      value: 3.75
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
