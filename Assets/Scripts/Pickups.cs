@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Pickups : MonoBehaviour
@@ -13,6 +14,8 @@ public class Pickups : MonoBehaviour
     [SerializeField]
     private int scoreToGive = 10000;
     private int random;
+
+    private const float DESTROY_DELAY = 0.5f;
 
     private void Start()
     {
@@ -35,8 +38,14 @@ public class Pickups : MonoBehaviour
         {
             scoreManager.CurrentScore += scoreToGive;
             audioSource.Play();
-            gameObject.SetActive(false);
+            StartCoroutine(DestroyDelay());
         }
+    }
+
+    private IEnumerator DestroyDelay()
+    {
+        yield return new WaitForSeconds(DESTROY_DELAY);
+        Destroy(gameObject);
     }
 
     private void RandomiseSprite()

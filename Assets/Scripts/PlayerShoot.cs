@@ -44,7 +44,7 @@ public class PlayerShoot : MonoBehaviour
         {
             // Update the target of the projectile by transforming the mouseclick from screen to world space.
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
-            // Set the Z vector 0 zero since it's a 2D game.
+            // Set the Z vector 0 zero just in case.
             target.z = 0f;
             // Indicate that left click has been pressed.
             pressedLeftClick = true;
@@ -72,7 +72,7 @@ public class PlayerShoot : MonoBehaviour
             projectile.transform.position = transform.position;
             projectile.transform.rotation = Quaternion.identity;
             // Give the spawned prefab some velocity according to the target's X and Y values.
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(target.x * projectileSpeed, target.y * projectileSpeed);
+            projectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(target.x * projectileSpeed, target.y * projectileSpeed), ForceMode2D.Impulse);
             // Ignore the collisions between the player and the spawned projectile.
             Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
             // Ignore collisions between the projectile and boulders using layers.
