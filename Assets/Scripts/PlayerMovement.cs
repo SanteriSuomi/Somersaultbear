@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayAnimJump()
     {
-        if (rigidBody.velocity.y > 1.5f)
+        if (rigidBody.velocity.y > 1.25f)
         {
             animator.SetTrigger("Jump");
             rigidBody.freezeRotation = true;
@@ -72,51 +72,15 @@ public class PlayerMovement : MonoBehaviour
             rigidBody.freezeRotation = false;
         }
         /*
-        if (rigidBody.velocity.y >= 1.5f)
+        if (rigidBody.velocity.y < -1.25f)
         {
-            animator.SetBool("isJumping", true);
+            animator.SetTrigger("Fall");
             rigidBody.freezeRotation = true;
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
         else
         {
-            animator.SetBool("isJumping", false);
             rigidBody.freezeRotation = false;
-        }
-
-        if (rigidBody.velocity.y <= -1.5f)
-        {
-            animator.SetBool("isFalling", true);
-            rigidBody.freezeRotation = true;
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else
-        {
-            animator.SetBool("isFalling", false);
-            rigidBody.freezeRotation = false;
-        }
-        */
-        /*
-        if (rigidBody.velocity.y > 1f)
-        {
-            animator.SetBool("isJumping", true);
-            rigidBody.freezeRotation = true;
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else if (rigidBody.velocity.y < -1.5f)
-        {
-            animator.SetBool("isJumping", false);
-            animator.SetBool("isFalling", true);
-            rigidBody.freezeRotation = false;
-
-            RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
-
-            if (rayHit)
-            {
-                Debug.Log("ASDASDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-                animator.SetBool("isFalling", false);
-                animator.SetBool("HitGround", true);
-            }
         }
         */
     }
