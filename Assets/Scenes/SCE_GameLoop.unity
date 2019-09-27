@@ -2642,6 +2642,18 @@ PrefabInstance:
       propertyPath: verticalSpeed
       value: 3.75
       objectReference: {fileID: 0}
+    - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: enemyBoulderAI
+      value: 
+      objectReference: {fileID: 2845666995273794508, guid: b29934522c7954844a3e469aee802e4a,
+        type: 3}
+    - target: {fileID: 795536896924751662, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: enemyBoulder
+      value: 
+      objectReference: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
 --- !u!1001 &249831292133714338

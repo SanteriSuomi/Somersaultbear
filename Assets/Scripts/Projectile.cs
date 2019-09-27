@@ -2,6 +2,7 @@
 
 public class Projectile : MonoBehaviour
 {
+    private EnemyWaspAI enemyWaspAI;
     private Vector2 screenBounds;
 
     private void Update()
@@ -21,10 +22,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
             // Get the hit enemy's Hitpoints value and decrease it every hit.
-            EnemyWaspAI enemyWaspAI = collision.gameObject.transform.parent.gameObject.GetComponent<EnemyWaspAI>();
+            enemyWaspAI = collision.gameObject.transform.parent.gameObject.GetComponent<EnemyWaspAI>();
             enemyWaspAI.HitPoints -= 1;
         }
     }

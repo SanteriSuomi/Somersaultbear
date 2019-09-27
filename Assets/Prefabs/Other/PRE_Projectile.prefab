@@ -132,3 +132,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41add005023a6c640a4c31f9b7b97053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyBoulderAI: {fileID: 2845666995273794508, guid: b29934522c7954844a3e469aee802e4a,
+    type: 3}

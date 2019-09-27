@@ -137,6 +137,6 @@ MonoBehaviour:
     m_Bits: 256
   startDirection: {x: -1, y: 0}
   verticalSpeed: 5.5
-  hitDetectionDistance: 1
+  hitDetectionDistance: 1.2
   startSpeed: 3.5
   oneDirection: 0
