@@ -1,43 +1,67 @@
 fileFormatVersion: 2
-guid: e765b7a404eec1542abd0386b3a4fa90
+guid: 07c502b99a66f7849b172eba863800bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4794867880556227788
-    second: SPR_Raccoon_SS_02_0
+      213: 7272915764283432700
+    second: SPR_Raccoon_SS_03_0
   - first:
-      213: 6341313790235432429
-    second: SPR_Raccoon_SS_02_1
+      213: -1889185500239084522
+    second: SPR_Raccoon_SS_03_1
   - first:
-      213: -4547118442432106569
-    second: SPR_Raccoon_SS_02_2
+      213: -5119246543417444650
+    second: SPR_Raccoon_SS_03_2
   - first:
-      213: 2493107793748065067
-    second: SPR_Raccoon_SS_02_3
+      213: 8762127865288643119
+    second: SPR_Raccoon_SS_03_3
   - first:
-      213: -5611870215040243085
-    second: SPR_Raccoon_SS_02_4
+      213: -5691018109099690696
+    second: SPR_Raccoon_SS_03_4
   - first:
-      213: -757646161660470873
-    second: SPR_Raccoon_SS_02_5
+      213: 3048030706310847448
+    second: SPR_Raccoon_SS_03_5
   - first:
-      213: -6076006808197589795
-    second: SPR_Raccoon_SS_02_6
+      213: 4977278026100684164
+    second: SPR_Raccoon_SS_03_6
   - first:
-      213: 3245096935930365797
-    second: SPR_Raccoon_SS_02_7
+      213: 2873007761635094378
+    second: SPR_Raccoon_SS_03_7
   - first:
-      213: 5830846110372394936
-    second: SPR_Raccoon_SS_02_8
+      213: 6839923459744442202
+    second: SPR_Raccoon_SS_03_8
   - first:
-      213: -7284015216796960019
-    second: SPR_Raccoon_SS_02_9
+      213: -3327773658544839637
+    second: SPR_Raccoon_SS_03_9
   - first:
-      213: 4930080784600148092
-    second: SPR_Raccoon_SS_02_10
+      213: 3197771474616251038
+    second: SPR_Raccoon_SS_03_10
   - first:
-      213: 3413272183202245200
-    second: SPR_Raccoon_SS_02_11
+      213: 7434374981744566964
+    second: SPR_Raccoon_SS_03_11
+  - first:
+      213: -9222373452276698058
+    second: SPR_Raccoon_SS_03_12
+  - first:
+      213: -4589043749015095956
+    second: SPR_Raccoon_SS_03_13
+  - first:
+      213: -7413768196520141310
+    second: SPR_Raccoon_SS_03_14
+  - first:
+      213: -4718076201137879860
+    second: SPR_Raccoon_SS_03_15
+  - first:
+      213: 8258893940683988776
+    second: SPR_Raccoon_SS_03_16
+  - first:
+      213: -4031889493214214082
+    second: SPR_Raccoon_SS_03_17
+  - first:
+      213: -3712446235865854724
+    second: SPR_Raccoon_SS_03_18
+  - first:
+      213: 120523956091821763
+    second: SPR_Raccoon_SS_03_19
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -170,13 +194,223 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_0
+      name: SPR_Raccoon_SS_03_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 21
+        y: 384
+        width: 85
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87be63c4a8858aa479fcc9af4cea773a
+      internalID: 7272915764283432700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 385
+        width: 101
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb7841e265ab4a4bb6200023bd6eba0
+      internalID: -1889185500239084522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_2
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 385
+        width: 115
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aafbab7521cbd7e41b4fa031e39fd15b
+      internalID: -5119246543417444650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_3
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 385
+        width: 122
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801b374ced662a341b14810bb9c15d0d
+      internalID: 8762127865288643119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_4
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 385
+        width: 125
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef82dacb3843e724ca65c038a3c18757
+      internalID: -5691018109099690696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_5
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 256
+        width: 104
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d9a1a2fe7bc3e499d4b4816df21815
+      internalID: 3048030706310847448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_6
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 257
+        width: 99
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff1db63fb1427634ba274138ff892276
+      internalID: 4977278026100684164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_7
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 257
+        width: 97
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ddefbca3c4918f4d970f33a0b62f9da
+      internalID: 2873007761635094378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_8
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 256
+        width: 85
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966bf7a0406ba954db2f6e73a943c686
+      internalID: 6839923459744442202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_9
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 256
+        width: 92
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 815585538520f26479704af97e19448f
+      internalID: -3327773658544839637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_10
+      rect:
+        serializedVersion: 2
+        x: 10
         y: 128
-        width: 128
-        height: 128
+        width: 113
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +418,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14e850a1a47212747a4c56f48fa9de5f
-      internalID: 4794867880556227788
+      spriteID: 96bc65d64d22be047b0ad76cb7302f36
+      internalID: 3197771474616251038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_1
+      name: SPR_Raccoon_SS_03_11
       rect:
         serializedVersion: 2
-        x: 128
+        x: 129
         y: 128
-        width: 128
-        height: 128
+        width: 124
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +439,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3511a2bdd350c54293e42ca9a14022a
-      internalID: 6341313790235432429
+      spriteID: cd4262b082898a848b9b7c56f0455a82
+      internalID: 7434374981744566964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_2
+      name: SPR_Raccoon_SS_03_12
       rect:
         serializedVersion: 2
-        x: 256
+        x: 259
+        y: 129
+        width: 124
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f35fa94b75453949a1b05d74e8af5d4
+      internalID: -9222373452276698058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_13
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 127
+        width: 118
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f1a421f338bb149b11301e674cae88
+      internalID: -4589043749015095956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Raccoon_SS_03_14
+      rect:
+        serializedVersion: 2
+        x: 524
         y: 128
-        width: 128
-        height: 128
+        width: 103
+        height: 114
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,83 +502,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7af25210c96581642a37b73b03c78fce
-      internalID: -4547118442432106569
+      spriteID: 9480ce0491cc666468be00218ab1bc9e
+      internalID: -7413768196520141310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_3
+      name: SPR_Raccoon_SS_03_15
       rect:
         serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e42aa217b5de8843ac6b878a11346a6
-      internalID: 2493107793748065067
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_4
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11765b4cd429bf74ca4b72730074b50e
-      internalID: -5611870215040243085
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_5
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 343bf4114d3acde49a2f7ac9b0669e8a
-      internalID: -757646161660470873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_6
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 13
         y: 0
-        width: 128
-        height: 128
+        width: 98
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,19 +523,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6207729bf0b2d174687e97522f0d1e53
-      internalID: -6076006808197589795
+      spriteID: 891c78a1153c9914fbad2f03e316fa62
+      internalID: -4718076201137879860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_7
+      name: SPR_Raccoon_SS_03_16
       rect:
         serializedVersion: 2
-        x: 128
+        x: 141
         y: 0
-        width: 128
+        width: 93
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -331,20 +544,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a1232df9304be44c912cba7403a8704
-      internalID: 3245096935930365797
+      spriteID: 96ff354bd6b0bca49b9b7556f1d7bcc6
+      internalID: 8258893940683988776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_8
+      name: SPR_Raccoon_SS_03_17
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
+        x: 261
+        y: 1
+        width: 108
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,20 +565,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f0bdbae90dde484a9b7d80a75db77ff
-      internalID: 5830846110372394936
+      spriteID: 57c976f5ba09153408aab865991becde
+      internalID: -4031889493214214082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_9
+      name: SPR_Raccoon_SS_03_18
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
+        x: 393
+        y: 3
+        width: 104
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,20 +586,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 047f33212a805b443b8d680b73dd97d2
-      internalID: -7284015216796960019
+      spriteID: 153f2883a7534484b8daee94b6ffee18
+      internalID: -3712446235865854724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_10
+      name: SPR_Raccoon_SS_03_19
       rect:
         serializedVersion: 2
-        x: 512
+        x: 520
         y: 0
-        width: 128
-        height: 128
+        width: 109
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,29 +607,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fe9daad804fe7344bf803f003d2407f
-      internalID: 4930080784600148092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPR_Raccoon_SS_02_11
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1c991324a23d814c9660127a0055115
-      internalID: 3413272183202245200
+      spriteID: 10f323a1056103c49ae87fe4f4be7768
+      internalID: 120523956091821763
       vertices: []
       indices: 
       edges: []

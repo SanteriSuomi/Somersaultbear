@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ACL_Raccoon_Hit
+  m_Name: ACL_Raccoon_HitGround
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 3413272183202245200, guid: e765b7a404eec1542abd0386b3a4fa90,
+      value: {fileID: 120523956091821763, guid: 07c502b99a66f7849b172eba863800bb,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -41,7 +41,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 3413272183202245200, guid: e765b7a404eec1542abd0386b3a4fa90, type: 3}
+    - {fileID: 120523956091821763, guid: 07c502b99a66f7849b172eba863800bb, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
