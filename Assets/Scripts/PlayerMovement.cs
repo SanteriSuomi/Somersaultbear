@@ -61,13 +61,39 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayAnimJump()
     {
+        if (rigidBody.velocity.y >= 1.5f)
+        {
+            animator.SetBool("isJumping", true);
+            rigidBody.freezeRotation = true;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
+            rigidBody.freezeRotation = false;
+        }
+
+        if (rigidBody.velocity.y <= -1.5f)
+        {
+            animator.SetBool("isFalling", true);
+            rigidBody.freezeRotation = true;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            animator.SetBool("isFalling", false);
+            rigidBody.freezeRotation = false;
+        }
+
+
+        /*
         if (rigidBody.velocity.y > 1f)
         {
             animator.SetBool("isJumping", true);
             rigidBody.freezeRotation = true;
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        else if (rigidBody.velocity.y < -2f)
+        else if (rigidBody.velocity.y < -1.5f)
         {
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);
@@ -77,9 +103,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (rayHit)
             {
+                Debug.Log("ASDASDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
                 animator.SetBool("isFalling", false);
                 animator.SetBool("HitGround", true);
             }
         }
+        */
     }
 }
