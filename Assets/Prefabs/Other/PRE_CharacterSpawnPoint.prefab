@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoulderSpawn: 0
+  isPickupSpawn: 0
   characters:
   - {fileID: 8232459914263792970, guid: 46032a8c5b08b594590e396ca84e5251, type: 3}
   - {fileID: 3152559613458312951, guid: 61a9e68223282a14283b26bb7a35217d, type: 3}
   - {fileID: 5989050987121521317, guid: baa836c6657bcef48a0231da61dd9178, type: 3}
   boulder: {fileID: 6061388375931740284, guid: b29934522c7954844a3e469aee802e4a, type: 3}
+  pickUp: {fileID: 7079142800866532782, guid: ddfba0e4ba585fe48a88ffe8e89afb5f, type: 3}

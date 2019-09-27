@@ -12,7 +12,7 @@ public class Pickups : MonoBehaviour
 
     [SerializeField]
     private int scoreToGive = 10000;
-    private int random = 0;
+    private int random;
 
     private void Start()
     {
@@ -27,14 +27,6 @@ public class Pickups : MonoBehaviour
         #endif
 
         RandomiseSprite();
-    }
-
-    private void OnEnable()
-    {
-        if (random != 0)
-        {
-            RandomiseSprite();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

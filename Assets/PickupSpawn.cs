@@ -1,33 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-public class CharacterSpawn : MonoBehaviour
+public class PickupSpawn : MonoBehaviour
 {
     // Flag for if this instance is a spawn point for a boulder.
     [SerializeField]
     private bool isBoulderSpawn = false;
-    [SerializeField]
-    private bool isPickupSpawn = false;
 
     [SerializeField]
-    private GameObject[] characters = default;
+    GameObject[] characters = default;
     [SerializeField]
-    private GameObject boulder = default;
-    [SerializeField]
-    private GameObject pickUp = default;
+    GameObject boulder = default;
 
     private void Start()
     {
         #if UNITY_EDITOR
         Assert.IsNotNull(characters);    
-        Assert.IsNotNull(boulder);  
-        Assert.IsNotNull(pickUp);    
+        Assert.IsNotNull(boulder);    
         #endif
     }
 
     private void OnEnable()
     {
-        if (!isBoulderSpawn && !isPickupSpawn)
+        if (!isBoulderSpawn)
         {
             // Get a random number.
             int random = Random.Range(0, characters.Length);
@@ -38,13 +33,8 @@ public class CharacterSpawn : MonoBehaviour
         }
         else if (isBoulderSpawn)
         {
-            GameObject item = Instantiate(boulder);
-            item.transform.position = gameObject.transform.position;
-        }
-        else if (isPickupSpawn)
-        {
-            GameObject pickup = Instantiate(pickUp);
-            pickup.transform.position = gameObject.transform.position;
+            GameObject character = Instantiate(boulder);
+            character.transform.position = gameObject.transform.position;
         }
     }
 }
