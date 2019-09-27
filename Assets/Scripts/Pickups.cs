@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Pickups : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class Pickups : MonoBehaviour
         scoreManager = GameObject.Find("PRE_ScoreManager").GetComponent<ScoreManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        #if UNITY_EDITOR
+        Assert.IsNotNull(scoreManager);
+        Assert.IsNotNull(spriteRenderer);
+        #endif
+
         RandomiseSprite();
     }
 
@@ -26,6 +32,7 @@ public class Pickups : MonoBehaviour
         {
             RandomiseSprite();
         }
+
         gameObject.SetActive(true);
     }
 

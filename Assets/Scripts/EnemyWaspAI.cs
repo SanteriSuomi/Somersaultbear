@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 public class EnemyWaspAI : MonoBehaviour
 {
-    public int HitPoints { get; set; } = 3;
+    public int HitPoints { get; set; } = 2;
 
     private UIManager uiManager;
     private SpriteRenderer spriteRenderer;
@@ -16,7 +16,7 @@ public class EnemyWaspAI : MonoBehaviour
 
     private void OnEnable()
     {
-        HitPoints = 3;
+        HitPoints = 2;
     }
 
     private void Start()
@@ -49,6 +49,7 @@ public class EnemyWaspAI : MonoBehaviour
         }
     }
 
+    // Methods that get called from the child colliders.
     public void ColliderBody()
     {
         // Show the death menu.

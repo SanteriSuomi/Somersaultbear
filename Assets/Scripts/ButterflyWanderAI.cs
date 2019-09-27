@@ -13,7 +13,7 @@ public class ButterflyWanderAI : MonoBehaviour
     private float distance;
 
     Vector2 target;
-    
+
     private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
 
     // Character AI states.
@@ -24,6 +24,11 @@ public class ButterflyWanderAI : MonoBehaviour
     }
 
     private State currentState;
+
+    private void ChangeState(State state)
+    {
+        currentState = state;
+    }
 
     private void OnEnable()
     {
@@ -74,10 +79,6 @@ public class ButterflyWanderAI : MonoBehaviour
         target = Random.insideUnitCircle * radius;
     }
 
-    private void ChangeState(State state)
-    {
-        currentState = state;
-    }
 
     private void OnDrawGizmos()
     {

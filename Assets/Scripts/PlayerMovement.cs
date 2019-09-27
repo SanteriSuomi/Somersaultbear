@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Rigidbody2D), (typeof(AudioSource)))]
 public class PlayerMovement : MonoBehaviour
@@ -21,15 +22,19 @@ public class PlayerMovement : MonoBehaviour
     private float jumpDetectionHeight = 0.715f;
 
     private bool pressedSpace = false;
-
     // Prevent double jumping with small velocity check.
     private const float RB_Y_VELOCITY_MAX = 0.5f;
+    private const float REDUCE_AIR_VELOCITY = 2.5f;
 
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+
+        #if UNITY_EDITOR
+        Assert.IsNotNull(animator);
+        #endif
     }
 
     private void Update()
@@ -39,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Cast a raycast downwards for ground detection.
         rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
         // Continuously move player to the right.
@@ -54,7 +60,9 @@ public class PlayerMovement : MonoBehaviour
         if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX)
         {
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector2.left * REDUCE_AIR_VELOCITY, ForceMode2D.Impulse);
             audioSource.Play();
+
         }
 
         PlayAnimations();
@@ -65,8 +73,7 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody.velocity.y > 1f)
         {
             animator.SetTrigger("Jump");
-            rigidBody.freezeRotation = true;
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            FreezeAndResetRotation();
         }
         else
         {
@@ -76,13 +83,18 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody.velocity.y < -1f)
         {
             animator.SetBool("Fall", true);
-            rigidBody.freezeRotation = true;
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            FreezeAndResetRotation();
         }
-        else
+        else if (rayHit)
         {
             animator.SetBool("Fall", false);
             rigidBody.freezeRotation = false;
         }
+    }
+
+    private void FreezeAndResetRotation()
+    {
+        rigidBody.freezeRotation = true;
+        transform.eulerAngles = new Vector3(0, 0, 0);
     }
 }

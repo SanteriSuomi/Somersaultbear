@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     private float updateScoreTime = 0.5f;
     private int time;
 
-    private const int DIVIDE_SCORE_BY = 10;
+    private const int DIVIDE_SCORE_BY = 20;
     private const float MIN_X_VELOCITY = 3;
     private const string SCORE_STRING = "Score: ";
 
