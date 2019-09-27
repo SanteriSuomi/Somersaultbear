@@ -57,11 +57,10 @@ public class PlayerMovement : MonoBehaviour
             audioSource.Play();
         }
 
-        // Play animations.
-        PlayAnimJump();
+        PlayAnimations();
     }
 
-    private void PlayAnimJump()
+    private void PlayAnimations()
     {
         if (rigidBody.velocity.y > 1f)
         {
@@ -80,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             rigidBody.freezeRotation = true;
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        else if (rayHit)
+        else
         {
             animator.SetBool("Fall", false);
             rigidBody.freezeRotation = false;
