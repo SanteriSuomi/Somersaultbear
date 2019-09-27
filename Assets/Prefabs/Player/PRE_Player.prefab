@@ -321,7 +321,7 @@ MonoBehaviour:
     m_Bits: 256
   verticalSpeed: 3
   maxVerticalSpeed: 7.5
-  jumpModifier: 6
+  jumpModifier: 6.5
   jumpDetectionHeight: 0.715
 --- !u!114 &795536896924751662
 MonoBehaviour:
@@ -337,5 +337,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8638048287221463073, guid: 16d680dcc13122d40acb689c67712b02,
     type: 3}
-  amountToPool: 50
+  amountToPool: 40
   projectileSpeed: 4

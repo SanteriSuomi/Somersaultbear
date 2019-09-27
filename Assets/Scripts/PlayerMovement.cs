@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource = default;
     private Animator animator = default;
 
+    RaycastHit2D rayHit;
+
     [SerializeField]
     private float verticalSpeed = 3f;
     [SerializeField]
@@ -37,13 +39,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+
         // Continuously move player to the right.
         if (rigidBody.velocity.x < maxVerticalSpeed)
         {
             rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
         }
-
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
         #if UNITY_EDITOR
         Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
@@ -61,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayAnimJump()
     {
-        if (rigidBody.velocity.y > 1.25f)
+        if (rigidBody.velocity.y > 1f)
         {
             animator.SetTrigger("Jump");
             rigidBody.freezeRotation = true;
@@ -71,17 +73,17 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody.freezeRotation = false;
         }
-        /*
-        if (rigidBody.velocity.y < -1.25f)
+
+        if (rigidBody.velocity.y < -1f)
         {
-            animator.SetTrigger("Fall");
+            animator.SetBool("Fall", true);
             rigidBody.freezeRotation = true;
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        else
+        else if (rayHit)
         {
+            animator.SetBool("Fall", false);
             rigidBody.freezeRotation = false;
         }
-        */
     }
 }
