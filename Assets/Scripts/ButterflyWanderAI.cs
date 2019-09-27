@@ -6,16 +6,15 @@ public class ButterflyWanderAI : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
 
+    Vector2 target;
+
     [SerializeField]
     private float moveSpeed = 5f;
     [SerializeField]
     private float radius = 2.5f;
     private float distance;
 
-    Vector2 target;
-
     private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
-
     // Character AI states.
     private enum State
     {
@@ -30,15 +29,18 @@ public class ButterflyWanderAI : MonoBehaviour
         currentState = state;
     }
 
-    private void OnEnable()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         #if UNITY_EDITOR
         Assert.IsNotNull(spriteRenderer);
         #endif
+    }
 
-        // Get a starting point.
+    private void OnEnable()
+    {
+        // Get a starting point when activated.
         GetNewPoint();
     }
 
@@ -78,7 +80,6 @@ public class ButterflyWanderAI : MonoBehaviour
         // Assign a random vector value to target around a circle.
         target = Random.insideUnitCircle * radius;
     }
-
 
     private void OnDrawGizmos()
     {

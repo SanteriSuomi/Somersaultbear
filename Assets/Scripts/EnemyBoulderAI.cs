@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyBoulderAI : MonoBehaviour
 {
     private UIManager uiManager = default;
@@ -45,7 +44,6 @@ public class EnemyBoulderAI : MonoBehaviour
             RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
             RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, hitDetectionDistance, groundLayer);
 
-            // Draw debug rays for the raycasts in the Unity editor.
             #if UNITY_EDITOR
             Debug.DrawRay(transform.position, Vector2.right * hitDetectionDistance, Color.white);
             Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);

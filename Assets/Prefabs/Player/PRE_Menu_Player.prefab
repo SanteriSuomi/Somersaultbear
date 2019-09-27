@@ -138,7 +138,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.645
+  m_Radius: 0.5
 --- !u!50 &3180217357159031044
 Rigidbody2D:
   serializedVersion: 4
@@ -189,7 +189,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7e7acd8aa8abb0d4aaf78008c8c6ac55, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 0.8
   Loop: 0

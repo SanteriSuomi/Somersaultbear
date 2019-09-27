@@ -13,7 +13,6 @@ public class EnemyWaspAI : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 6f;
 
-
     private void OnEnable()
     {
         HitPoints = 2;
@@ -37,7 +36,6 @@ public class EnemyWaspAI : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
         // Flip the sprite direction.
         if (target.x > transform.position.x)
         {

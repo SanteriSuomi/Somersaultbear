@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-[RequireComponent(typeof(Rigidbody2D), (typeof(AudioSource)))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
@@ -24,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private bool pressedSpace = false;
     // Prevent double jumping with small velocity check.
     private const float RB_Y_VELOCITY_MAX = 0.5f;
-    private const float REDUCE_AIR_VELOCITY = 2.5f;
+    private const float RB_Y_VELOCITY_MAX_ANIMS = 0.1f;
+    private const float REDUCE_AIR_VELOCITY = 2f;
 
     private void Start()
     {
@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         #if UNITY_EDITOR
+        Assert.IsNotNull(rigidBody);
+        Assert.IsNotNull(audioSource);
         Assert.IsNotNull(animator);
         #endif
     }
@@ -46,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Cast a raycast downwards for ground detection.
         rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
-
         // Continuously move player to the right.
         if (rigidBody.velocity.x < maxVerticalSpeed)
         {
@@ -59,10 +60,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX)
         {
+            // Add a force for jump.
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+            // Add force backwards to reduce the drag on air.
             rigidBody.AddForce(Vector2.left * REDUCE_AIR_VELOCITY, ForceMode2D.Impulse);
             audioSource.Play();
-
         }
 
         PlayAnimations();
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayAnimations()
     {
-        if (rigidBody.velocity.y > 1f)
+        if (rigidBody.velocity.y > RB_Y_VELOCITY_MAX_ANIMS)
         {
             animator.SetTrigger("Jump");
             FreezeAndResetRotation();
@@ -80,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             rigidBody.freezeRotation = false;
         }
 
-        if (rigidBody.velocity.y < -1f)
+        if (rigidBody.velocity.y < -RB_Y_VELOCITY_MAX_ANIMS)
         {
             animator.SetBool("Fall", true);
             FreezeAndResetRotation();
@@ -94,7 +96,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FreezeAndResetRotation()
     {
+        // Freeze the rotation for the jump.
         rigidBody.freezeRotation = true;
+        // Reset rotation to default for the jump.
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 }

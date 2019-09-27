@@ -19,10 +19,19 @@ public class MainMenuAnim : MonoBehaviour
     [SerializeField]
     private float jumpModifier = 5f;
 
+    private const int RANDOM_MOUSECLICK_FORCE = 20;
+
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    // Add a random force to the character when clicked on.
+    private void OnMouseDown()
+    {
+        int random = Random.Range(-RANDOM_MOUSECLICK_FORCE, RANDOM_MOUSECLICK_FORCE);
+        rigidBody.AddForce(new Vector2(random, random), ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-[RequireComponent(typeof(MeshRenderer))]
 public class ScrollingBackground : MonoBehaviour
 {
     [SerializeField]
@@ -26,35 +25,32 @@ public class ScrollingBackground : MonoBehaviour
     private void Start()
     {
         characterRigidbody = character.GetComponent<Rigidbody2D>();
-
         backgroundRenderer = GetComponent<MeshRenderer>();
-
-        currentMaxX = character.transform.position.x;
 
         #if UNITY_EDITOR
         Assert.IsNotNull(character);
+        Assert.IsNotNull(characterRigidbody);
         Assert.IsNotNull(backgroundRenderer);
         #endif
+
+        currentMaxX = character.transform.position.x;
     }
 
     private void Update()
     {
         // Update the current material offset X to the field.
         backgroundRendererOffsetX = backgroundRenderer.material.mainTextureOffset.x;
-
         // Determine if the current character's position is higher than the highest it has been.
         if (character.transform.position.x > currentMaxX)
         {
             // Update the highest max position with the current one.
             currentMaxX = character.transform.position.x;
-
             // Signal that it has indeed been updated.
             wasMaxUpdated = true;
         }
         else if (character.transform.position.x < currentMaxX)
         {
             currentMaxX = character.transform.position.x;
-
             wasMaxUpdated = false;
         }
 
@@ -71,7 +67,6 @@ public class ScrollingBackground : MonoBehaviour
         {
             MoveOffsetLeft();
         }
-
         // Update the texture offset after the method calls.
         backgroundRenderer.material.mainTextureOffset = backgroundNewPosition;
     }

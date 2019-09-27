@@ -26,10 +26,6 @@ public class Projectile : MonoBehaviour
             // Get the hit enemy's Hitpoints value and decrease it every hit.
             EnemyWaspAI enemyWaspAI = collision.gameObject.transform.parent.gameObject.GetComponent<EnemyWaspAI>();
             enemyWaspAI.HitPoints -= 1;
-
-            #if UNITY_EDITOR
-            Debug.Log($"{collision.gameObject.name} killed");
-            #endif
         }
     }
 }

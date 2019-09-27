@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private GameObject projectilePrefab = default;
     private List<GameObject> projectiles = default;
+    private AudioSource[] audioSources = default;
 
     private Vector3 target;
 
@@ -20,6 +21,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Start()
     {
+        audioSources = GetComponents<AudioSource>();
         // Instantiate the object pool with the projectile prefabs.
         projectiles = new List<GameObject>();
         for (int i = 0; i < amountToPool; i++)
@@ -28,11 +30,16 @@ public class PlayerShoot : MonoBehaviour
             obj.SetActive(false);
             projectiles.Add(obj);
         }
+
+        #if UNITY_EDITOR
+        Assert.IsNotNull(projectilePrefab);
+        Assert.IsNotNull(projectiles);
+        Assert.IsNotNull(audioSources);
+        #endif
     }
 
     private void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
             // Update the target of the projectile by transforming the mouseclick from screen to world space.
@@ -52,12 +59,16 @@ public class PlayerShoot : MonoBehaviour
     {
         if (pressedLeftClick)
         {
+            // Prevent accidental double clicking.
+            pressedLeftClick = false;
+            // Play the throwing sound (second audiosource on the gameobject).
+            audioSources[1].Play();
             // Select the first deactivated prefab from the pool.
             GameObject projectile = projectiles.Where(p => !p.activeSelf).First();
 
             #if UNITY_EDITOR
             Assert.IsNotNull(projectile);
-            Debug.Log($"Launched {projectile.name}");
+            Debug.Log($"Launched {projectile.name}.");
             #endif
 
             projectile.SetActive(true);
