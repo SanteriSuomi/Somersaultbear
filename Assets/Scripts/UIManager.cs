@@ -73,9 +73,9 @@ public class UIManager : MonoBehaviour
             // Disable/enable the UI score text.
             scoreManager.TextScore.enabled = false;
             // Get the Text component from the array.
-            var totalScoreText = menuItems[3].GetComponent<Text>();
+            Text totalScoreText = menuItems[3].GetComponent<Text>();
             // Update the score to represent the current score.
-            totalScoreText.text = $"Score: {scoreManager.CurrentScore}";
+            totalScoreText.text = $"Score: {scoreManager.CurrentScore / scoreManager.scoreDivideAmount}";
             // Show all menu items.
             item.SetActive(true);
         }

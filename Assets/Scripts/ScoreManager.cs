@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     private float updateScoreTime = 0.5f;
     private int time;
 
-    private const int DIVIDE_SCORE_BY = 100;
+    public int scoreDivideAmount = 100;
     private const float MIN_X_VELOCITY = 3;
     private const string SCORE_STRING = "Score: ";
 
@@ -32,21 +32,21 @@ public class ScoreManager : MonoBehaviour
         Assert.IsNotNull(playerRigidbody);
         #endif
 
-        textScore.text = SCORE_STRING;
+       textScore.text = SCORE_STRING;
     }
 
     private void Update()
     {
         // Update the time and round the time to integer continuously.
         time = Mathf.RoundToInt(Time.fixedTime);
-        // Update score using the time value.
         if (!PauseScoreCounting && playerRigidbody.velocity.x > MIN_X_VELOCITY)
         {
+            // Update the score using time.
             CurrentScore += time;
             // Update the UI score string every updateScoreTime.
             if (time % updateScoreTime == 0)
             {
-                textScore.text = $"{SCORE_STRING} {CurrentScore / DIVIDE_SCORE_BY}";
+                textScore.text = $"{SCORE_STRING} {CurrentScore / scoreDivideAmount}";
             }
         }
     }

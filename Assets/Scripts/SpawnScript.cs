@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-public class CharacterSpawn : MonoBehaviour
+public class SpawnScript : MonoBehaviour
 {
     // Flag for if this instance is a spawn point for a boulder.
     [SerializeField]
