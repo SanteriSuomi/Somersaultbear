@@ -12,7 +12,7 @@ public class Pickups : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField]
-    private int scoreToGive = 10000;
+    private int scoreToGive = 100;
     private int random;
 
     private const float DESTROY_DELAY = 0.5f;

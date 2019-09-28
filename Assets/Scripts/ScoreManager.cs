@@ -17,12 +17,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private Rigidbody2D playerRigidbody = default;
 
-    [SerializeField]
-    private float updateScoreTime = 0.5f;
-    private int time;
-
-    public int scoreDivideAmount = 100;
     private const float MIN_X_VELOCITY = 3;
+    private const int UPDATE_SCORE_TIME = 10;
     private const string SCORE_STRING = "Score: ";
 
     private void Start()
@@ -31,22 +27,19 @@ public class ScoreManager : MonoBehaviour
         Assert.IsNotNull(textScore);
         Assert.IsNotNull(playerRigidbody);
         #endif
-
-       textScore.text = SCORE_STRING;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // Update the time and round the time to integer continuously.
-        time = Mathf.RoundToInt(Time.fixedTime);
         if (!PauseScoreCounting && playerRigidbody.velocity.x > MIN_X_VELOCITY)
         {
-            // Update the score using time.
-            CurrentScore += time;
+            // Update the score.
+            CurrentScore += 1;    
             // Update the UI score string every updateScoreTime.
-            if (time % updateScoreTime == 0)
+            if (CurrentScore % UPDATE_SCORE_TIME == 0)
             {
-                textScore.text = $"{SCORE_STRING} {CurrentScore / scoreDivideAmount}";
+                // Update the score text.
+                textScore.text = $"{SCORE_STRING} {CurrentScore}";
             }
         }
     }

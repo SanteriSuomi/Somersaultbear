@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
             // Get the Text component from the array.
             Text totalScoreText = menuItems[3].GetComponent<Text>();
             // Update the score to represent the current score.
-            totalScoreText.text = $"Score: {scoreManager.CurrentScore / scoreManager.scoreDivideAmount}";
+            totalScoreText.text = $"Score: {scoreManager.CurrentScore}";
             // Show all menu items.
             item.SetActive(true);
         }
