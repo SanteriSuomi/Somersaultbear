@@ -14,7 +14,7 @@ public class EnemyWaspAI : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 6f;
 
-    private const float DESTROY_TIME = 20f;
+    private const float DESTROY_TIME = 15f;
 
     private void Start()
     {

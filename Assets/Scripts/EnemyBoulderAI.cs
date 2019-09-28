@@ -23,7 +23,7 @@ public class EnemyBoulderAI : MonoBehaviour
     private bool oneDirection = false;
     private bool addedForce = false;
 
-    private const float DESTROY_TIME = 20f;
+    private const float DESTROY_TIME = 15f;
 
     private void Start()
     {
@@ -36,6 +36,8 @@ public class EnemyBoulderAI : MonoBehaviour
         Assert.IsNotNull(uiManager);
         Assert.IsNotNull(rigidBody);
         #endif
+
+        StartCoroutine(DestroyTimer());
     }
 
     private void FixedUpdate()
@@ -76,6 +78,7 @@ public class EnemyBoulderAI : MonoBehaviour
             uiManager.ShowMenuItemsDeath();
         }
     }
+
     // Destroy the game object after a certain time.
     private IEnumerator DestroyTimer()
     {

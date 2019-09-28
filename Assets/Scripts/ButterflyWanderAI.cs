@@ -15,7 +15,7 @@ public class ButterflyWanderAI : MonoBehaviour
     private float distance;
 
     private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
-    private const float DESTROY_TIME = 20f;
+    private const float DESTROY_TIME = 15f;
 
     private void Start()
     {
@@ -24,6 +24,8 @@ public class ButterflyWanderAI : MonoBehaviour
         #if UNITY_EDITOR
         Assert.IsNotNull(spriteRenderer);
         #endif
+
+        StartCoroutine(DestroyTimer());
     }
 
     // AI states.
@@ -60,8 +62,6 @@ public class ButterflyWanderAI : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-
-        StartCoroutine(DestroyTimer());
     }
 
     private IEnumerator Move()

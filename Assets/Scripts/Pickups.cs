@@ -16,6 +16,7 @@ public class Pickups : MonoBehaviour
     private int random;
 
     private const float DESTROY_DELAY = 0.5f;
+    private const float DESTROY_TIME = 15f;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class Pickups : MonoBehaviour
         #endif
 
         RandomiseSprite();
+        StartCoroutine(DestroyTimer());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,9 +44,17 @@ public class Pickups : MonoBehaviour
         }
     }
 
+    // Destroy the object on delay.
     private IEnumerator DestroyDelay()
     {
         yield return new WaitForSeconds(DESTROY_DELAY);
+        Destroy(gameObject);
+    }
+
+    // If player doesn't pick the item up, destroy in with a timer.
+    private IEnumerator DestroyTimer()
+    {
+        yield return new WaitForSeconds(DESTROY_TIME);
         Destroy(gameObject);
     }
 
