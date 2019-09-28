@@ -219,4 +219,4 @@ MonoBehaviour:
   - {fileID: -6766788377324264681, guid: ddca3647b897192408ff9dace51dc243, type: 3}
   - {fileID: 3467977716513878996, guid: ddca3647b897192408ff9dace51dc243, type: 3}
   - {fileID: -2533751702933526959, guid: ddca3647b897192408ff9dace51dc243, type: 3}
-  scoreToGive: 30000
+  scoreToGive: 50000
