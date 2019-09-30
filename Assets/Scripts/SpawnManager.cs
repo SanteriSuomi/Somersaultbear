@@ -62,6 +62,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator Wait(GameObject prefab)
     {
+        // Wait the specified amount of seconds until activating the prefab.
         yield return new WaitForSeconds(1);
         prefab.SetActive(true);
     }

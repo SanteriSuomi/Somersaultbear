@@ -29,7 +29,7 @@ public class Pickups : MonoBehaviour
         Assert.IsNotNull(spriteRenderer);
         Assert.IsNotNull(audioSource);
         #endif
-
+        // Randomise the sprite when the object gets instantiated, and start the destroy timer.
         RandomiseSprite();
         StartCoroutine(DestroyTimer());
     }
@@ -38,13 +38,15 @@ public class Pickups : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            // On trigger, add score to the player's total.
             scoreManager.CurrentScore += scoreToGive;
             audioSource.Play();
+            // Destroy the object with small delay to allow the audiosource time to play.
             StartCoroutine(DestroyDelay());
         }
     }
 
-    // Destroy the object on delay.
+    // Destroy the object on with a small delay.
     private IEnumerator DestroyDelay()
     {
         yield return new WaitForSeconds(DESTROY_DELAY);

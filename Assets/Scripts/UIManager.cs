@@ -7,21 +7,20 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private ScoreManager scoreManager = default;
     [SerializeField]
-    private AudioSource[] audioSources = default;
-    [SerializeField]
     private GameObject[] menuItems = default;
+    private AudioSource[] audioSources;
 
     private void Start()
     {
         #if UNITY_EDITOR
         Assert.IsNotNull(scoreManager);
-        Assert.IsNotNull(audioSources);
         Assert.IsNotNull(menuItems);
         #endif
     }
 
     private void Update()
     {
+        // Continuously scan and wait for the user input "ESC".
         if (Input.GetButtonDown("Cancel"))
         {
             ShowMenuItems();
@@ -38,7 +37,8 @@ public class UIManager : MonoBehaviour
                 scoreManager.PauseScoreCounting = false;
                 // Game freeze control.
                 Time.timeScale = 1;
-                // Game music control.
+                // Find all the active audiosources in the scene and mute them.
+                var audioSources = FindAudioSources();
                 foreach (var audioSrc in audioSources)
                 {
                     audioSrc.mute = false;
@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
             {
                 scoreManager.PauseScoreCounting = true;
                 Time.timeScale = 0;
+                var audioSources = FindAudioSources();
                 foreach (var audioSrc in audioSources)
                 {
                     audioSrc.mute = true;
@@ -65,7 +66,9 @@ public class UIManager : MonoBehaviour
         {
             scoreManager.PauseScoreCounting = true;
             Time.timeScale = 0;
-            // Stop game music.
+            // Find all the active audiosources in the scene.
+            var audioSources = FindAudioSources();
+            // Then iterate over the array and mute all audiosources.
             foreach (var audioSrc in audioSources)
             {
                 audioSrc.mute = true;
@@ -79,5 +82,10 @@ public class UIManager : MonoBehaviour
             // Show all menu items.
             item.SetActive(true);
         }
+    }
+
+    private AudioSource[] FindAudioSources()
+    {
+        return FindObjectsOfType<AudioSource>();
     }
 }

@@ -33,6 +33,7 @@ public class ScrollingBackground : MonoBehaviour
         Assert.IsNotNull(backgroundRenderer);
         #endif
 
+        // Set the initial max X vector value to the character's X value.
         currentMaxX = character.transform.position.x;
     }
 
@@ -48,6 +49,7 @@ public class ScrollingBackground : MonoBehaviour
             // Signal that it has indeed been updated.
             wasMaxUpdated = true;
         }
+        // Else if the current position doesn't exceed the max position, keep the current value.
         else if (character.transform.position.x < currentMaxX)
         {
             currentMaxX = character.transform.position.x;
@@ -65,6 +67,7 @@ public class ScrollingBackground : MonoBehaviour
         }
         else if (!wasMaxUpdated)
         {
+            // Else move the texture to the left.
             MoveOffsetLeft();
         }
         // Update the texture offset after the method calls.
@@ -73,7 +76,7 @@ public class ScrollingBackground : MonoBehaviour
 
     private void MoveOffsetRight()
     {
-        // Smoothly transition the image with SmoothDamp.
+        // Smoothly transition the image with SmoothDamp on X vector.
         backgroundNewPosition = new Vector2(Mathf.SmoothDamp(backgroundRendererOffsetX, backgroundRendererOffsetX + unitsToOffset, ref yVelocity, offsetSmooth), 0);
     }
 
