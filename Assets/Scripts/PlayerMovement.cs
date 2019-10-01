@@ -26,10 +26,7 @@ public class PlayerMovement : MonoBehaviour
     // Prevent double jumping with small velocity check.
     private const float RB_Y_VELOCITY_MAX_JUMP = 0.5f;
     private const float RB_Y_VELOCITY_MAX_ANIMS = 1f;
-<<<<<<< HEAD
-=======
     private const float JUMP_DRAW_REDUCTION = 1.5f;
->>>>>>> 80c99525be2bd5149b4e5ffa8eb7fd962660f4d4
 
     private void Start()
     {

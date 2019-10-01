@@ -45,12 +45,7 @@ public class Pickups : MonoBehaviour
             StartCoroutine(DestroyDelay());
         }
     }
-<<<<<<< HEAD
-    // Destroy the object on delay.
-=======
-
     // Destroy the object on with a small delay.
->>>>>>> 80c99525be2bd5149b4e5ffa8eb7fd962660f4d4
     private IEnumerator DestroyDelay()
     {
         yield return new WaitForSeconds(DESTROY_DELAY);
