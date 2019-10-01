@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
         Assert.IsNotNull(prefabPool);
         #endif
 
-        // Initialise the currentPosition with the first scene prefab in the game.
+        // Initialize the currentPosition with the first scene prefab in the game.
         currentPosition = prefabStart.transform;
     }
 
@@ -37,13 +37,13 @@ public class SpawnManager : MonoBehaviour
         // Otherwise select the first deactivated prefab in the pool.
         else
         {
-            var findActive = prefabPool.Where(p => !p.activeSelf).FirstOrDefault();
+            // Linq query to get the first active prefab in the pool.
+            GameObject findActive = prefabPool.Where(prefab => !prefab.activeSelf).FirstOrDefault();
 
-            #if UNITY_EDITOR
-            Assert.IsNotNull(findActive);
-            #endif
-
-            ActivatePrefab(findActive);
+            if (findActive != null)
+            {
+                ActivatePrefab(findActive);
+            }
         }
     }
 
@@ -53,16 +53,17 @@ public class SpawnManager : MonoBehaviour
         Debug.Log($"Activating {prefab}.");
         #endif
 
-        // Spawn scene prefabs ahead the player using the currentPosition.
-        prefab.transform.position = currentPosition.position + new Vector3(SPAWN_X_LENGTH, 0f, 0f);
-        // Re-initialise the current position again using the spawned prefab.
+        // Spawn scene prefabs ahead the currentPosition.
+        prefab.transform.position = currentPosition.position + new Vector3(SPAWN_X_LENGTH, 0, 0);
+        // Re-initialize the current position again using the spawned prefab.
         currentPosition = prefab.transform;
         StartCoroutine(Wait(prefab));
     }
 
     private IEnumerator Wait(GameObject prefab)
     {
-        yield return new WaitForSeconds(1);
+        // Wait the specified amount of seconds until activating the prefab.
+        yield return new WaitForSeconds(WAIT_ACTIVATE_TIME);
         prefab.SetActive(true);
     }
 }

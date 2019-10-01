@@ -39,12 +39,14 @@ public class MainMenuAnim : MonoBehaviour
     // Add a random force to the character when clicked on.
     private void OnMouseDown()
     {
+        // Get a random number and add use it to move the prefab.
         int random = Random.Range(-RANDOM_MOUSECLICK_FORCE, RANDOM_MOUSECLICK_FORCE);
         rigidBody.AddForce(new Vector2(random, random), ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()
     {
+        // Raycast for the jump
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
         #if UNITY_EDITOR

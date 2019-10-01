@@ -18,7 +18,7 @@ public class EnemyWaspAICollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Compare the gameObject's name for this instance of the script.
+            // Call methods on the main enemyWaspAI script 
             if (gameObject.name == "Collider")
             {
                 enemyWaspAI.ColliderBody();
@@ -27,12 +27,12 @@ public class EnemyWaspAICollider : MonoBehaviour
             {
                 enemyWaspAI.ColliderFollow(collision);
             }
+            #if UNITY_EDITOR
             else
             {
-                #if UNITY_EDITOR
                 Debug.Log("Collider name not found in EnemyWaspAICollider");
-                #endif
             }
+            #endif
         }
     }
 }

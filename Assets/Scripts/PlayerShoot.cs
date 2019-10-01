@@ -42,7 +42,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // Update the target of the projectile by transforming the mouseclick from screen to world space.
+            // Update the target of the projectile by transforming the mouseclick position from screen to world space.
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
             // Set the Z vector 0 zero just in case.
             target.z = 0f;
@@ -67,6 +67,7 @@ public class PlayerShoot : MonoBehaviour
             Debug.Log($"Launched {projectile.name}.");
             #endif
 
+            // Activate the prefab.
             projectile.SetActive(true);
             // Set the activated prefab's position and transform to the player that shoots it.
             projectile.transform.position = transform.position;

@@ -17,6 +17,7 @@ public class ColliderDeath : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Show the death menu on player collide.
         if (collision.CompareTag("Player"))
         {
             uiManager.ShowMenuItemsDeath();
