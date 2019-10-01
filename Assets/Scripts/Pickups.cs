@@ -43,14 +43,12 @@ public class Pickups : MonoBehaviour
             StartCoroutine(DestroyDelay());
         }
     }
-
     // Destroy the object on delay.
     private IEnumerator DestroyDelay()
     {
         yield return new WaitForSeconds(DESTROY_DELAY);
         Destroy(gameObject);
     }
-
     // If player doesn't pick the item up, destroy in with a timer.
     private IEnumerator DestroyTimer()
     {
