@@ -3,7 +3,6 @@ using UnityEngine.Assertions;
 
 public class SpawnScript : MonoBehaviour
 {
-    // Flag for if this instance is a spawn point for a boulder.
     [SerializeField]
     private bool isBoulderSpawn = false;
     [SerializeField]
@@ -27,6 +26,7 @@ public class SpawnScript : MonoBehaviour
 
     private void OnEnable()
     {
+        // Determine what type this spawnscript instance should be - boulder, pick up or normal enemy spawn using the bool flags.
         if (!isBoulderSpawn && !isPickupSpawn)
         {
             // Get a random number.

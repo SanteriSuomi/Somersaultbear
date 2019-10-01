@@ -24,7 +24,7 @@ public class ButterflyWanderAI : MonoBehaviour
         #if UNITY_EDITOR
         Assert.IsNotNull(spriteRenderer);
         #endif
-
+        // Start the destroy timer when prefab gets instantiated.
         StartCoroutine(DestroyTimer());
     }
 
@@ -71,10 +71,11 @@ public class ButterflyWanderAI : MonoBehaviour
         // Start moving (Lerp) towards the new target.
         transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         yield return new WaitUntil(() => distance <= MAX_DISTANCE_FROM_TARGET);
+        // Get a new 
         GetNewPoint();
     }
 
-    // Destroy the game object after a certain time.
+    // Destroy the game object after a certain amount of time.
     private IEnumerator DestroyTimer()
     {
         yield return new WaitForSeconds(DESTROY_TIME);
@@ -91,6 +92,7 @@ public class ButterflyWanderAI : MonoBehaviour
     {
         // Draw a gizmo towards earch new target.
         Gizmos.DrawLine(transform.position, target);
+        // Draw a detection radius.
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

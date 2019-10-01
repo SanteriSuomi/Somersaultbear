@@ -17,7 +17,7 @@ public class CameraSizeChanger : MonoBehaviour
     [SerializeField]
     private float detectionHeight = 1.25125f;
     private float yVelocity = 0f;
-
+    // Max and min of the camera size.
     private const float maxLensSize = 7f;
     private const float minLensSize = 5f;
 
@@ -36,7 +36,7 @@ public class CameraSizeChanger : MonoBehaviour
         #if UNITY_EDITOR
         Debug.DrawRay(player.transform.position, Vector2.down * detectionHeight, Color.black);
         #endif
-
+        // If the raycast hits the ground layer.
         if (rayHit)
         {
             CameraSmall();

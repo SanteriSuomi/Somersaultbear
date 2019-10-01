@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private LayerMask groundLayer = default;
+
     private Rigidbody2D rigidBody = default;
     private AudioSource audioSource = default;
     private Animator animator = default;
@@ -24,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
     // Prevent double jumping with small velocity check.
     private const float RB_Y_VELOCITY_MAX_JUMP = 0.5f;
     private const float RB_Y_VELOCITY_MAX_ANIMS = 1f;
+<<<<<<< HEAD
+=======
+    private const float JUMP_DRAW_REDUCTION = 1.5f;
+>>>>>>> 80c99525be2bd5149b4e5ffa8eb7fd962660f4d4
 
     private void Start()
     {
@@ -63,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             // Add a force for jump.
             rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
             // Add force backwards to reduce the drag on air.
-            rigidBody.AddForce(new Vector3(-1.5f, 0.5f, 0), ForceMode2D.Impulse);
+            rigidBody.AddForce(new Vector3(-JUMP_DRAW_REDUCTION, 0, 0), ForceMode2D.Impulse);
             audioSource.Play();
         }
 
@@ -74,11 +80,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rigidBody.velocity.y > RB_Y_VELOCITY_MAX_ANIMS)
         {
+            // Set the corresponding trigger in the animator.
             animator.SetTrigger("Jump");
+            // Freeze and reset the rotation so the animation doesn't spin.
             FreezeAndResetRotation();
         }
         else
         {
+            // Unfreeze after.
             rigidBody.freezeRotation = false;
         }
 
@@ -96,9 +105,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FreezeAndResetRotation()
     {
-        // Freeze the rotation for the jump.
+        // Freeze the rotation for the jump animation.
         rigidBody.freezeRotation = true;
-        // Reset rotation to default for the jump.
+        // Reset rotation to default for the jump animation.
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 }

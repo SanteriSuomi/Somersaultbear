@@ -4,9 +4,10 @@ using UnityEngine.Assertions;
 
 public class EnemyBoulderAI : MonoBehaviour
 {
-    private UIManager uiManager = default;
     [SerializeField]
     private LayerMask groundLayer = default;
+
+    private UIManager uiManager = default;
     private Rigidbody2D rigidBody = default;
 
     [SerializeField]
@@ -31,12 +32,11 @@ public class EnemyBoulderAI : MonoBehaviour
         uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
         rigidBody = GetComponent<Rigidbody2D>();
 
-        // Assert that the reference is not null, and only run this in the Unity editor.
         #if UNITY_EDITOR
         Assert.IsNotNull(uiManager);
         Assert.IsNotNull(rigidBody);
         #endif
-
+        // Run a timer for self-destroy.
         StartCoroutine(DestroyTimer());
     }
 
@@ -51,6 +51,7 @@ public class EnemyBoulderAI : MonoBehaviour
 
         if (!oneDirection)
         {
+            // Draw a raycast for both right and left directions.
             RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
             RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, hitDetectionDistance, groundLayer);
 

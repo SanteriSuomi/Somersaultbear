@@ -1790,6 +1790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRE_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815875, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 223707787211815934, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1854,6 +1859,26 @@ PrefabInstance:
         type: 3}
       propertyPath: projectileSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: maxVerticalSpeed
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: verticalSpeed
+      value: 13.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: jumpDetectionHeight
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: jumpModifier
+      value: 7.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e910b234c0009b4abc1b56dea37a005, type: 3}
@@ -1972,6 +1997,11 @@ PrefabInstance:
     - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
         type: 3}
       propertyPath: audioSources.Array.data[1]
+      value: 
+      objectReference: {fileID: 247176066}
+    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
+        type: 3}
+      propertyPath: audioSources.Array.data[2]
       value: 
       objectReference: {fileID: 247176066}
     m_RemovedComponents: []

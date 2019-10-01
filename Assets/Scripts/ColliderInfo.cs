@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 public class ColliderInfo : MonoBehaviour
 {
 	private SpawnManager spawnManager = default;
-
+    // Prevent double spawning prefabs with a bool.
 	private bool alreadyHit = false;
 
     private void Start()
