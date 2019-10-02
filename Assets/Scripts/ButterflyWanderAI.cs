@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class ButterflyWanderAI : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
@@ -9,8 +10,7 @@ public class ButterflyWanderAI : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed = 5f;
-    [SerializeField] [Range(0, 15)]
-    private float randomMoveRange = 8f;
+    private int randomMoveRange = 8;
     private float distance;
 
     private const float MAX_DISTANCE_FROM_TARGET = 0.2f;
@@ -80,16 +80,16 @@ public class ButterflyWanderAI : MonoBehaviour
 
     private void GetNewPoint()
     {
-        randomMoveRange = Random.Range(0, 8);
+        randomMoveRange = Random.Range(0, 6);
         // Assign random values to the X and Y vectors of the target.
-        if (randomMoveRange <= randomMoveRange / 2)
+        if (randomMoveRange <= 2)
         {
-            target.x = transform.position.x - randomMoveRange;
+            target.x = transform.position.x + randomMoveRange;
             target.y = transform.position.y + randomMoveRange;
         }
         else
         {
-            target.x = transform.position.x + randomMoveRange;
+            target.x = transform.position.x - randomMoveRange;
             target.y = transform.position.y - randomMoveRange;
         }
     }

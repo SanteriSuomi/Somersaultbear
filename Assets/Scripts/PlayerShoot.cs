@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField]
@@ -16,7 +17,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private float projectileSpeed = 10f;
 
-    private float time;
+    private float timer;
 
     private bool pressedLeftClick = false;
 
@@ -39,10 +40,13 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && time >= 0.175)
+        // Update timer time.
+        timer += Time.deltaTime;
+        // Check if mouse button is pressed and timer above a certain value.
+        if (Input.GetMouseButtonDown(0) && timer >= 0.125)
         {
-            time = 0;
+            // Reset the timer.
+            timer = 0;
             // Update the target of the projectile by transforming the mouseclick position from screen to world space.
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
             // Set the Z vector 0 zero just in case.

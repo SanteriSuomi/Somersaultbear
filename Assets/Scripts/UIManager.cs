@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     {
         // Lock cursor to the game window.
         Cursor.lockState = CursorLockMode.Confined;
+        // Initialize the audiosources array by finding all audiosources active in the scene.
+        audioSources = FindObjectsOfType<AudioSource>();
     }
 
     private void Update()
@@ -27,27 +29,18 @@ public class UIManager : MonoBehaviour
     {
         foreach (var item in menuItems)
         {
-            if (item.activeSelf && item.CompareTag("Button"))
+            if (item.activeSelf)
             {
-                scoreManager.PauseScoreCounting = false;
-                Time.timeScale = 1;
-                // Find all audio sources in the active scene.
-                var audioSources = FindAudioSources();
-                foreach (var audioSrc in audioSources)
-                {
-                    audioSrc.mute = false;
-                }
+                PauseScoreCounting(false);
+                PauseGame(1);
+                MuteAudio(false);
                 item.SetActive(false);
             }
-            else if (item.CompareTag("Button"))
+            else
             {
-                scoreManager.PauseScoreCounting = true;
-                Time.timeScale = 0;
-                var audioSources = FindAudioSources();
-                foreach (var audioSrc in audioSources)
-                {
-                    audioSrc.mute = true;
-                }
+                PauseScoreCounting(true);
+                PauseGame(0);
+                MuteAudio(true);
                 item.SetActive(true);
             }
         }
@@ -57,13 +50,10 @@ public class UIManager : MonoBehaviour
     {
         foreach (var item in menuItems)
         {
-            scoreManager.PauseScoreCounting = true;
-            Time.timeScale = 0;
-            var audioSources = FindAudioSources();
-            foreach (var audioSrc in audioSources)
-            {
-                audioSrc.mute = true;
-            }
+            PauseScoreCounting(true);
+            PauseGame(0);
+            MuteAudio(true);
+            // Enable the game over score display.
             scoreManager.TextScore.enabled = false;
             // Get the Text component from the array.
             Text totalScoreText = menuItems[3].GetComponent<Text>();
@@ -71,9 +61,22 @@ public class UIManager : MonoBehaviour
             item.SetActive(true);
         }
     }
-
-    private AudioSource[] FindAudioSources()
+    // Audio mute control.
+    private void MuteAudio(bool mute)
     {
-        return FindObjectsOfType<AudioSource>();
+        foreach (var audSrc in audioSources)
+        {
+            audSrc.mute = mute;
+        }
+    }
+    // Time scale control.
+    private void PauseGame(int pause)
+    {
+        Time.timeScale = pause;
+    }
+
+    private void PauseScoreCounting(bool pause)
+    {
+        scoreManager.PauseScoreCounting = pause;
     }
 }

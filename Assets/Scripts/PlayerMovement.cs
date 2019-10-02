@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(AudioSource), typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]

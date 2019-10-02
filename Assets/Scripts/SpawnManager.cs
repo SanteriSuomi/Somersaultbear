@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Linq;
-using UnityEngine.Assertions;
 using System.Collections;
 
 public class SpawnManager : MonoBehaviour

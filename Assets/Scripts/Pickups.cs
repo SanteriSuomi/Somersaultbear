@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer), typeof(AudioSource))]
 public class Pickups : MonoBehaviour
 {
     ScoreManager scoreManager;

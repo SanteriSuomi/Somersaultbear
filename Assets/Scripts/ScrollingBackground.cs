@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
 public class ScrollingBackground : MonoBehaviour
 {
     [SerializeField]
