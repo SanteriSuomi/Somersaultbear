@@ -5183,6 +5183,11 @@ PrefabInstance:
       propertyPath: isPickupSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
+        type: 3}
+      propertyPath: spawnType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 897cd58787db4ff4281a5040609fa2c7, type: 3}
 --- !u!4 &8271477348952819947 stripped
@@ -6028,6 +6033,11 @@ PrefabInstance:
       propertyPath: isBoulderSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
+        type: 3}
+      propertyPath: spawnType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 897cd58787db4ff4281a5040609fa2c7, type: 3}
 --- !u!4 &307205428665928797 stripped
@@ -6176,6 +6186,11 @@ PrefabInstance:
     - target: {fileID: 8800678519239242714, guid: 897cd58787db4ff4281a5040609fa2c7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
+        type: 3}
+      propertyPath: spawnType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

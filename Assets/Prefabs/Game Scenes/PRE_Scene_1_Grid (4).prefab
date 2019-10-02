@@ -7534,6 +7534,11 @@ PrefabInstance:
       propertyPath: isPickupSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
+        type: 3}
+      propertyPath: spawnType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 897cd58787db4ff4281a5040609fa2c7, type: 3}
 --- !u!4 &2195355986609610653 stripped
@@ -7923,6 +7928,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isPickupSpawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
+        type: 3}
+      propertyPath: spawnType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 897cd58787db4ff4281a5040609fa2c7, type: 3}

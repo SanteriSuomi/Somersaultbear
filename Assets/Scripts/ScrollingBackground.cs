@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 
 public class ScrollingBackground : MonoBehaviour
 {
@@ -22,17 +21,14 @@ public class ScrollingBackground : MonoBehaviour
 
     private const float RB_VELOCITY_RANGE = 0.15f;
 
-    private void Start()
+    private void Awake()
     {
         characterRigidbody = character.GetComponent<Rigidbody2D>();
         backgroundRenderer = GetComponent<MeshRenderer>();
+    }
 
-        #if UNITY_EDITOR
-        Assert.IsNotNull(character);
-        Assert.IsNotNull(characterRigidbody);
-        Assert.IsNotNull(backgroundRenderer);
-        #endif
-
+    private void Start()
+    {
         // Set the initial max X vector value to the character's X value.
         currentMaxX = character.transform.position.x;
     }
@@ -46,7 +42,6 @@ public class ScrollingBackground : MonoBehaviour
         {
             // Update the highest max position with the current one.
             currentMaxX = character.transform.position.x;
-            // Signal that it has indeed been updated.
             wasMaxUpdated = true;
         }
         // Else if the current position doesn't exceed the max position, keep the current value.
@@ -58,16 +53,14 @@ public class ScrollingBackground : MonoBehaviour
 
         if (characterRigidbody.velocity.x > -RB_VELOCITY_RANGE && characterRigidbody.velocity.x < RB_VELOCITY_RANGE)
         {
-            // Do nothing if player is close to stationary.
+            // Do nothing if player velocity is within range (close to stationary).
         }
         else if (wasMaxUpdated)
         {
-            // Move the repeating texture on the quad on X axis.
             MoveOffsetRight();
         }
         else if (!wasMaxUpdated)
         {
-            // Else move the texture to the left.
             MoveOffsetLeft();
         }
         // Update the texture offset after the method calls.

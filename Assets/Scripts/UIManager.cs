@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Assertions;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,15 +11,12 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        #if UNITY_EDITOR
-        Assert.IsNotNull(scoreManager);
-        Assert.IsNotNull(menuItems);
-        #endif
+        // Lock cursor to the game window.
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
     {
-        // Continuously scan and wait for the user input "ESC".
         if (Input.GetButtonDown("Cancel"))
         {
             ShowMenuItems();
@@ -33,17 +29,14 @@ public class UIManager : MonoBehaviour
         {
             if (item.activeSelf && item.CompareTag("Button"))
             {
-                // Score counting control.
                 scoreManager.PauseScoreCounting = false;
-                // Game freeze control.
                 Time.timeScale = 1;
-                // Find all the active audiosources in the scene and mute them.
+                // Find all audio sources in the active scene.
                 var audioSources = FindAudioSources();
                 foreach (var audioSrc in audioSources)
                 {
                     audioSrc.mute = false;
                 }
-                // Show/hide menu buttons.
                 item.SetActive(false);
             }
             else if (item.CompareTag("Button"))
@@ -66,20 +59,15 @@ public class UIManager : MonoBehaviour
         {
             scoreManager.PauseScoreCounting = true;
             Time.timeScale = 0;
-            // Find all the active audiosources in the scene.
             var audioSources = FindAudioSources();
-            // Then iterate over the array and mute all audiosources.
             foreach (var audioSrc in audioSources)
             {
                 audioSrc.mute = true;
             }
-            // Disable/enable the UI score text.
             scoreManager.TextScore.enabled = false;
             // Get the Text component from the array.
             Text totalScoreText = menuItems[3].GetComponent<Text>();
-            // Update the score to represent the current score.
             totalScoreText.text = $"Score: {scoreManager.CurrentScore}";
-            // Show all menu items.
             item.SetActive(true);
         }
     }

@@ -5,13 +5,9 @@ public class EnemyWaspAICollider : MonoBehaviour
 {
     private EnemyWaspAI enemyWaspAI;
 
-    private void Start()
+    private void Awake()
     {
         enemyWaspAI = GetComponentInParent<EnemyWaspAI>();
-
-        #if UNITY_EDITOR
-        Assert.IsNotNull(enemyWaspAI);
-        #endif
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -27,12 +23,12 @@ public class EnemyWaspAICollider : MonoBehaviour
             {
                 enemyWaspAI.ColliderFollow(collision);
             }
-            #if UNITY_EDITOR
             else
             {
+                #if UNITY_EDITOR
                 Debug.Log("Collider name not found in EnemyWaspAICollider");
+                #endif
             }
-            #endif
         }
     }
 }

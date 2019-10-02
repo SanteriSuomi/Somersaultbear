@@ -17,11 +17,6 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        #if UNITY_EDITOR
-        Assert.IsNotNull(prefabStart);
-        Assert.IsNotNull(prefabPool);
-        #endif
-
         // Initialize the currentPosition with the first scene prefab in the game.
         currentPosition = prefabStart.transform;
     }

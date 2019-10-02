@@ -5951,6 +5951,11 @@ PrefabInstance:
       propertyPath: isPickupSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
+        type: 3}
+      propertyPath: spawnType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 897cd58787db4ff4281a5040609fa2c7, type: 3}
 --- !u!4 &5789599928489899828 stripped
@@ -6254,6 +6259,11 @@ PrefabInstance:
     - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
         type: 3}
       propertyPath: isBoulderSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499520718631111567, guid: 897cd58787db4ff4281a5040609fa2c7,
+        type: 3}
+      propertyPath: spawnType
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

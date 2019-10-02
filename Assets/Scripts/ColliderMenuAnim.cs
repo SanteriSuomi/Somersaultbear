@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 
 public class ColliderMenuAnim : MonoBehaviour
 {
@@ -7,14 +6,9 @@ public class ColliderMenuAnim : MonoBehaviour
     private GameObject player = default;
     private MainMenuAnim mmAnim = default;
 
-    private void Start()
+    private void Awake()
     {
         mmAnim = player.GetComponent<MainMenuAnim>();
-
-        #if UNITY_EDITOR
-        Assert.IsNotNull(player);
-        Assert.IsNotNull(mmAnim);
-        #endif
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,17 +26,11 @@ public class PlayerMovement : MonoBehaviour
     private const float RB_Y_VELOCITY_MAX_ANIMS = 1f;
     private const float JUMP_DRAW_REDUCTION = 1.5f;
 
-    private void Start()
+    private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-
-        #if UNITY_EDITOR
-        Assert.IsNotNull(rigidBody);
-        Assert.IsNotNull(audioSource);
-        Assert.IsNotNull(animator);
-        #endif
     }
 
     private void Update()

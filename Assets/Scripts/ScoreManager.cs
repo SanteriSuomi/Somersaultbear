@@ -21,14 +21,6 @@ public class ScoreManager : MonoBehaviour
     private const int UPDATE_SCORE_TIME = 10;
     private const string SCORE_STRING = "Score: ";
 
-    private void Start()
-    {
-        #if UNITY_EDITOR
-        Assert.IsNotNull(textScore);
-        Assert.IsNotNull(playerRigidbody);
-        #endif
-    }
-
     private void FixedUpdate()
     {
         if (!PauseScoreCounting && playerRigidbody.velocity.x > MIN_X_VELOCITY)

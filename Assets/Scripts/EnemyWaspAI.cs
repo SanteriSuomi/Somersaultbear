@@ -17,17 +17,16 @@ public class EnemyWaspAI : MonoBehaviour
 
     private const float DESTROY_TIME = 15f;
 
-    private void Start()
+    private void Awake()
     {
-        // Find the Manager prefab manually, to prevent having to select it for every instance manually.
         uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audSource = GetComponent<AudioSource>();
+    }
 
-        #if UNITY_EDITOR
-        Assert.IsNotNull(uiManager);
-        Assert.IsNotNull(spriteRenderer);
-        #endif
+    private void Start()
+    {
+        Destroy(gameObject, DESTROY_TIME);
     }
 
     private void Update()
@@ -47,12 +46,6 @@ public class EnemyWaspAI : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-    // Destroy the game object after a certain time.
-    private IEnumerator DestroyTimer()
-    {
-        yield return new WaitForSeconds(DESTROY_TIME);
-        Destroy(gameObject);
-    }
     // Methods that get called from the child colliders.
     public void ColliderBody()
     {
@@ -63,7 +56,9 @@ public class EnemyWaspAI : MonoBehaviour
     public void ColliderFollow(Collider2D collision)
     {
         if (!audSource.isPlaying)
-        audSource.Play();
+        {
+            audSource.Play();
+        }
         // Target is the player's position.
         target = collision.transform.position;
         // Smoothly move the enemy towards player.

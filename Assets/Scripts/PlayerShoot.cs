@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.Assertions;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -17,11 +16,17 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private float projectileSpeed = 10f;
 
+    private float time;
+
     private bool pressedLeftClick = false;
+
+    private void Awake()
+    {
+        audioSources = GetComponents<AudioSource>();
+    }
 
     private void Start()
     {
-        audioSources = GetComponents<AudioSource>();
         // Instantiate the object pool with the projectile prefabs.
         projectiles = new List<GameObject>();
         for (int i = 0; i < amountToPool; i++)
@@ -30,18 +35,14 @@ public class PlayerShoot : MonoBehaviour
             obj.SetActive(false);
             projectiles.Add(obj);
         }
-
-        #if UNITY_EDITOR
-        Assert.IsNotNull(projectilePrefab);
-        Assert.IsNotNull(projectiles);
-        Assert.IsNotNull(audioSources);
-        #endif
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        time += Time.deltaTime;
+        if (Input.GetMouseButtonDown(0) && time >= 0.175)
         {
+            time = 0;
             // Update the target of the projectile by transforming the mouseclick position from screen to world space.
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
             // Set the Z vector 0 zero just in case.
@@ -63,7 +64,6 @@ public class PlayerShoot : MonoBehaviour
             GameObject projectile = projectiles.Where(p => !p.activeSelf).First();
 
             #if UNITY_EDITOR
-            Assert.IsNotNull(projectile);
             Debug.Log($"Launched {projectile.name}.");
             #endif
 

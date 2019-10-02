@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine;
 
 public class EnemyBoulderAI : MonoBehaviour
 {
@@ -26,18 +24,16 @@ public class EnemyBoulderAI : MonoBehaviour
 
     private const float DESTROY_TIME = 15f;
 
-    private void Start()
+    private void Awake()
     {
-        // Find the Manager prefab manually, to prevent having to select it for every instance manually.
         uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
         rigidBody = GetComponent<Rigidbody2D>();
+    }
 
-        #if UNITY_EDITOR
-        Assert.IsNotNull(uiManager);
-        Assert.IsNotNull(rigidBody);
-        #endif
+    private void Start()
+    {
         // Run a timer for self-destroy.
-        StartCoroutine(DestroyTimer());
+        Destroy(gameObject, DESTROY_TIME);
     }
 
     private void FixedUpdate()
@@ -78,12 +74,5 @@ public class EnemyBoulderAI : MonoBehaviour
         {
             uiManager.ShowMenuItemsDeath();
         }
-    }
-
-    // Destroy the game object after a certain time.
-    private IEnumerator DestroyTimer()
-    {
-        yield return new WaitForSeconds(DESTROY_TIME);
-        Destroy(gameObject);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Cinemachine;
-using UnityEngine.Assertions;
 
 public class CameraSizeChanger : MonoBehaviour
 {
@@ -21,21 +20,15 @@ public class CameraSizeChanger : MonoBehaviour
     private const float maxLensSize = 7f;
     private const float minLensSize = 5f;
 
-    private void Start()
-    {
-        #if UNITY_EDITOR
-        Assert.IsNotNull(player);
-        Assert.IsNotNull(cinemachine);
-        #endif
-    }
-
     private void FixedUpdate()
     {
+        // Raycast down to check if camera size should change.
         RaycastHit2D rayHit = Physics2D.Raycast(player.transform.position, Vector2.down, detectionHeight, groundLayer);
 
         #if UNITY_EDITOR
         Debug.DrawRay(player.transform.position, Vector2.down * detectionHeight, Color.black);
         #endif
+
         // If the raycast hits the ground layer.
         if (rayHit)
         {

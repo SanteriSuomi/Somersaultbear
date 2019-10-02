@@ -1,23 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 
 public class ColliderInfo : MonoBehaviour
 {
 	private SpawnManager spawnManager = default;
-    // Prevent double spawning prefabs with a bool.
-	private bool alreadyHit = false;
 
-    private void Start()
+    private bool alreadyHit = false;
+
+    private void Awake()
     {
-        // Find the Manager prefab manually, to prevent having to select it for every instance manually.
         spawnManager = GameObject.Find("PRE_SpawnManager").GetComponent<SpawnManager>();
-
-        #if UNITY_EDITOR
-        Assert.IsNotNull(spawnManager);
-        #endif
     }
 
-	private void OnEnable()
+    private void OnEnable()
 	{
         // Every time the gameObject is enabled, alreadyHit should be false.
 		alreadyHit = false;

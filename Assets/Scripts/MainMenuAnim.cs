@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(AudioSource), typeof(SpriteRenderer))]
 public class MainMenuAnim : MonoBehaviour
 {
     // True == right, false == left.
@@ -23,17 +22,11 @@ public class MainMenuAnim : MonoBehaviour
 
     private const int RANDOM_MOUSECLICK_FORCE = 20;
 
-    private void Start()
+    private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        #if UNITY_EDITOR
-        Assert.IsNotNull(rigidBody);
-        Assert.IsNotNull(audioSource);
-        Assert.IsNotNull(spriteRenderer);
-        #endif
     }
 
     // Add a random force to the character when clicked on.
