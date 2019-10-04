@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource = default;
     private Animator animator = default;
 
-    RaycastHit2D rayHit;
+    private RaycastHit2D rayHit;
 
     [SerializeField]
     private float verticalSpeed = 3f;

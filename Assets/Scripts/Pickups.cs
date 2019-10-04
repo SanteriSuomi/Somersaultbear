@@ -3,12 +3,11 @@
 [RequireComponent(typeof(SpriteRenderer), typeof(AudioSource))]
 public class Pickups : MonoBehaviour
 {
-    ScoreManager scoreManager;
-
     [SerializeField]
     private Sprite[] sprites = default;
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
+    private ScoreManager scoreManager;
 
     [SerializeField]
     private int scoreToGive = 100;
