@@ -1,78 +1,92 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(AudioSource), typeof(SpriteRenderer))]
-public class MainMenuAnim : MonoBehaviour
+namespace Somersaultbear
 {
-    // True == right, false == left.
-    public bool Direction { get; set; } = false;
-
-    [SerializeField]
-    private LayerMask groundLayer = default;
-
-    private Rigidbody2D rigidBody;
-    private AudioSource audioSource;
-    private SpriteRenderer spriteRenderer;
-
-    [SerializeField]
-    private float jumpDetectionHeight = 0.715f;
-    [SerializeField]
-    private float verticalSpeed = 2.5f;
-    [SerializeField]
-    private float jumpModifier = 5f;
-
-    private const int RANDOM_MOUSECLICK_FORCE = 20;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D), typeof(AudioSource), typeof(SpriteRenderer))]
+    public class MainMenuAnim : MonoBehaviour
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        // True == right, false == left.
+        public bool Direction { get; set; } = false;
 
-    // Add a random force to the character when clicked on.
-    private void OnMouseDown()
-    {
-        // Get a random number and add use it to move the prefab.
-        int random = Random.Range(-RANDOM_MOUSECLICK_FORCE, RANDOM_MOUSECLICK_FORCE);
-        rigidBody.AddForce(new Vector2(random, random), ForceMode2D.Impulse);
-    }
+        [SerializeField]
+        private LayerMask groundLayer = default;
+        private Rigidbody2D rigidBody;
+        private AudioSource audioSource;
+        private SpriteRenderer spriteRenderer;
 
-    private void FixedUpdate()
-    {
-        // Raycast for the jump
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+        [SerializeField]
+        private float jumpDetectionHeight = 0.715f;
+        [SerializeField]
+        private float verticalSpeed = 2.5f;
+        [SerializeField]
+        private float jumpModifier = 5f;
 
-        #if UNITY_EDITOR
-        Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
-        #endif
+        private const int RANDOM_MOUSECLICK_FORCE = 20;
 
-        if (!Direction)
+        private void Awake()
         {
-            rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Force);
+            rigidBody = GetComponent<Rigidbody2D>();
+            audioSource = GetComponent<AudioSource>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        else
-        {
-            rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
-        }
-        // Jump every time the raycast hits the ground layer.
-        if (rayHit)
-        {
-            Jump();
-        }
-        // Switch the sprite's direction according to the direction it's going.
-        if (rigidBody.velocity.x > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (rigidBody.velocity.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-    }
 
-    private void Jump()
-    {
-        rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
-        audioSource.Play();
+        // Add a random force to the character when clicked on.
+        private void OnMouseDown()
+        {
+            // Get a random number and add use it to move the prefab.
+            int random = Random.Range(-RANDOM_MOUSECLICK_FORCE, RANDOM_MOUSECLICK_FORCE);
+            rigidBody.AddForce(new Vector2(random, random), ForceMode2D.Impulse);
+        }
+
+        private void FixedUpdate()
+        {
+            // Raycast for the jump
+            RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+
+            #if UNITY_EDITOR
+            Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
+            #endif
+
+            MoveCharacterAccordingToDirection();
+
+            // Jump every time the raycast hits the ground layer.
+            if (rayHit)
+            {
+                Jump();
+            }
+
+            FlipSprite();
+        }
+
+        private void MoveCharacterAccordingToDirection()
+        {
+            if (!Direction)
+            {
+                rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Force);
+            }
+            else
+            {
+                rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
+            }
+        }
+
+        private void FlipSprite()
+        {
+            // Switch the sprite's direction according to the direction it's going.
+            if (rigidBody.velocity.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (rigidBody.velocity.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+        }
+
+        private void Jump()
+        {
+            rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+            audioSource.Play();
+        }
     }
 }

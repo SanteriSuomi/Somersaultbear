@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 
-public class ColliderDeath : MonoBehaviour
+namespace Somersaultbear
 {
-    private UIManager uiManager = default;
-
-    private void Awake()
+    public class ColliderDeath : MonoBehaviour
     {
-        uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
-    }
+        private UIManager uiManager = default;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Show the death menu on player collide.
-        if (collision.CompareTag("Player"))
+        private void Awake()
         {
-            uiManager.ShowMenuItemsDeath();
+            uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            // Show the death menu on player collide.
+            if (collision.CompareTag("Player"))
+            {
+                uiManager.ShowMenuItemsDeath();
+            }
         }
     }
 }

@@ -1,32 +1,32 @@
 ﻿using UnityEngine;
 
-public class EnemyWaspAICollider : MonoBehaviour
+namespace Somersaultbear
 {
-    private EnemyWaspAI enemyWaspAI;
-
-    private void Awake()
+    public class EnemyWaspAICollider : MonoBehaviour
     {
-        enemyWaspAI = GetComponentInParent<EnemyWaspAI>();
-    }
+        private EnemyWaspAI enemyWaspAI;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        private void Awake() => enemyWaspAI = GetComponentInParent<EnemyWaspAI>();
+
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            // Call methods on the main enemyWaspAI script 
-            if (gameObject.name == "Collider")
+            if (collision.gameObject.CompareTag("Player"))
             {
-                enemyWaspAI.ColliderBody();
-            }
-            else if (gameObject.name == "Collider (1)")
-            {
-                enemyWaspAI.ColliderFollow(collision);
-            }
-            else
-            {
-                #if UNITY_EDITOR
-                Debug.Log("Collider name not found in EnemyWaspAICollider");
-                #endif
+                // Call methods on the main enemyWaspAI script 
+                if (gameObject.name == "Collider")
+                {
+                    enemyWaspAI.ColliderBody();
+                }
+                else if (gameObject.name == "Collider (1)")
+                {
+                    enemyWaspAI.ColliderFollow(collision);
+                }
+                else
+                {
+                    #if UNITY_EDITOR
+                    Debug.Log("Collider name not found in EnemyWaspAICollider");
+                    #endif
+                }
             }
         }
     }

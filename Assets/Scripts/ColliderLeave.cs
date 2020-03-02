@@ -1,30 +1,34 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ColliderLeave : MonoBehaviour
+namespace Somersaultbear
 {
-	[SerializeField] [Range(1, 20)]
-	private int maxRandomRange = 10;
-
-	private void OnTriggerExit2D(Collider2D collision)
+	public class ColliderLeave : MonoBehaviour
 	{
-		if (collision.CompareTag("Player"))
+		[SerializeField]
+		[Range(1, 20)]
+		private int maxRandomRange = 10;
+
+		private void OnTriggerExit2D(Collider2D collision)
 		{
-			StartCoroutine(RandomDelay());
+			if (collision.CompareTag("Player"))
+			{
+				StartCoroutine(RandomDelay());
+			}
 		}
-	}
 
-	private IEnumerator RandomDelay()
-	{
-		int random = Random.Range(0, maxRandomRange);
+		private IEnumerator RandomDelay()
+		{
+			int random = Random.Range(0, maxRandomRange);
 
-        #if UNITY_EDITOR
-		Debug.Log($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
-        #endif
+			#if UNITY_EDITOR
+			Debug.Log($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
+			#endif
 
-        // Wait for a random amount of seconds.
-		yield return new WaitForSeconds(random);
-		// Deactivate the whole scene prefab including the children.
-		gameObject.transform.parent.gameObject.SetActive(false);
+			// Wait for a random amount of seconds.
+			yield return new WaitForSeconds(random);
+			// Deactivate the whole scene prefab including the children.
+			gameObject.transform.parent.gameObject.SetActive(false);
+		}
 	}
 }

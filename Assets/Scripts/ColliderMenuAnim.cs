@@ -1,26 +1,26 @@
 ﻿using UnityEngine;
 
-public class ColliderMenuAnim : MonoBehaviour
+namespace Somersaultbear
 {
-    [SerializeField]
-    private GameObject player = default;
-    private MainMenuAnim mmAnim = default;
-
-    private void Awake()
+    public class ColliderMenuAnim : MonoBehaviour
     {
-        mmAnim = player.GetComponent<MainMenuAnim>();
-    }
+        [SerializeField]
+        private GameObject player = default;
+        private MainMenuAnim mmAnim = default;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        private void Awake() => mmAnim = player.GetComponent<MainMenuAnim>();
+
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            #if UNITY_EDITOR
-            Debug.Log($"{gameObject} collided with {collision.gameObject.name}");
-            #endif
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                #if UNITY_EDITOR
+                Debug.Log($"{gameObject} collided with {collision.gameObject.name}");
+                #endif
 
-            // New direction is the opposite direction to the current one.
-            mmAnim.Direction = !mmAnim.Direction;
+                // New direction is the opposite direction to the current one.
+                mmAnim.Direction = !mmAnim.Direction;
+            }
         }
     }
 }
