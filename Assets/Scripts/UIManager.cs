@@ -76,7 +76,10 @@ namespace Somersaultbear
             }
         }
 
-        public void ShowMenuItemsDeath()
+        /// <summary>
+        /// Menu that happens on death.
+        /// </summary>
+        public void DeathMenu()
         {
             foreach (GameObject item in menuItems)
             {

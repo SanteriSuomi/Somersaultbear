@@ -16,7 +16,7 @@ namespace Somersaultbear
             // Show the death menu on player collide.
             if (collision.CompareTag("Player"))
             {
-                uiManager.ShowMenuItemsDeath();
+                uiManager.DeathMenu();
             }
         }
     }

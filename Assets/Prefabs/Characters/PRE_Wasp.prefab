@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6566600338502918019}
   - component: {fileID: 8232459915205854445}
   m_Layer: 0
-  m_Name: Collider (1)
+  m_Name: ColliderFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59864fb5f4b93234393ccce50d6f256d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderType: 1
 --- !u!1 &8232459914263792970
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  hitPoints: 2
 --- !u!1 &9072343127116220187
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +289,7 @@ GameObject:
   - component: {fileID: 4526469695695180083}
   - component: {fileID: 8232459915205854446}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: ColliderBody
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,3 +337,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59864fb5f4b93234393ccce50d6f256d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderType: 0

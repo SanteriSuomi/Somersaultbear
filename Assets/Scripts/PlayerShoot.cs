@@ -57,7 +57,6 @@ namespace Somersaultbear
                 Debug.Log($"Launched {projectile.name}.");
                 #endif
 
-                projectile.gameObject.SetActive(true);
                 projectile.transform.position = transform.position;
                 projectile.transform.rotation = Quaternion.identity;
                 projectile.Rigidbody.AddForce(new Vector2(target.x * projectileSpeed,

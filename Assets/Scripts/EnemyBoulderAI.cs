@@ -3,17 +3,14 @@
 namespace Somersaultbear
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class EnemyBoulderAI : MonoBehaviour
+    public class EnemyBoulderAI : EnemyBase
     {
-        private UIManager uiManager = default;
-        private Rigidbody2D rigidBody = default;
+        private Rigidbody2D rigidBody;
         [SerializeField]
         private LayerMask groundLayer = default;
         [SerializeField]
         private Vector2 startDirection = Vector2.left;
 
-        [SerializeField]
-        private float verticalSpeed = 5;
         [SerializeField]
         private float hitDetectionDistance = 1;
         [SerializeField]
@@ -21,15 +18,9 @@ namespace Somersaultbear
 
         [SerializeField]
         private bool oneDirection = false;
-        private bool addedForce = false;
+        private bool addedAwakeForce;
 
-        private const float DESTROY_TIME = 15f;
-
-        private void Awake()
-        {
-            uiManager = FindObjectOfType<UIManager>();
-            rigidBody = GetComponent<Rigidbody2D>();
-        }
+        private void Awake() => rigidBody = GetComponent<Rigidbody2D>();
 
         private void Start() => Invoke(nameof(DestroyTimer), DESTROY_TIME);
 
@@ -37,9 +28,11 @@ namespace Somersaultbear
 
         private void FixedUpdate()
         {
-            if (!addedForce)
+            if (!addedAwakeForce)
             {
-                AddAwakeForce();
+                // Add slight force to the object on spawn so it won't remain stationary.
+                AddForce(startDirection * startSpeed);
+                addedAwakeForce = true;
             }
             else if (!oneDirection)
             {
@@ -53,34 +46,29 @@ namespace Somersaultbear
                 #endif
 
                 // Detect if the gameObject is hitting left or right using raycasts and move to the opposite direction.
-                MoveCharacterAccordingToHitDirection(hitRight, hitLeft);
+                MoveAccordingToHitDirection(hitRight, hitLeft);
             }
         }
 
-        private void AddAwakeForce()
-        {
-            // Add slight force to the object on spawn so it won't remain stationary.
-            rigidBody.AddForce(startDirection * startSpeed, ForceMode2D.Impulse);
-            addedForce = true;
-        }
-
-        private void MoveCharacterAccordingToHitDirection(RaycastHit2D hitRight, RaycastHit2D hitLeft)
+        private void MoveAccordingToHitDirection(RaycastHit2D hitRight, RaycastHit2D hitLeft)
         {
             if (hitRight)
             {
-                rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Impulse);
+                AddForce(Vector2.left * moveSpeed);
             }
             else if (hitLeft)
             {
-                rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Impulse);
+                AddForce(Vector2.right * moveSpeed);
             }
         }
+
+        private void AddForce(Vector2 force) => rigidBody.AddForce(force, ForceMode2D.Impulse);
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                uiManager.ShowMenuItemsDeath();
+                PlayerCollisionEvent();
             }
         }
     }

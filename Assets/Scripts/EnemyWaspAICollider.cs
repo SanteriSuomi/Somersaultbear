@@ -4,28 +4,35 @@ namespace Somersaultbear
 {
     public class EnemyWaspAICollider : MonoBehaviour
     {
+        private enum ColliderType
+        {
+            Body,
+            Follow
+        }
+
         private EnemyWaspAI enemyWaspAI;
+        [SerializeField]
+        private ColliderType colliderType = default;
 
         private void Awake() => enemyWaspAI = GetComponentInParent<EnemyWaspAI>();
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.CompareTag("Player"))
             {
                 // Call methods on the main enemyWaspAI script 
-                if (gameObject.name == "Collider")
+                switch (colliderType)
                 {
-                    enemyWaspAI.ColliderBody();
-                }
-                else if (gameObject.name == "Collider (1)")
-                {
-                    enemyWaspAI.ColliderFollow(collision);
-                }
-                else
-                {
-                    #if UNITY_EDITOR
-                    Debug.Log("Collider name not found in EnemyWaspAICollider");
-                    #endif
+                    case ColliderType.Body:
+                        enemyWaspAI.ColliderBody();
+                        break;
+
+                    case ColliderType.Follow:
+                        enemyWaspAI.ColliderFollow(collision);
+                        break;
+
+                    default:
+                        break;
                 }
             }
         }
