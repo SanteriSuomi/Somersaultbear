@@ -13,11 +13,11 @@ namespace Somersaultbear
         private Vector2 startDirection = Vector2.left;
 
         [SerializeField]
-        private float verticalSpeed = 5f;
+        private float verticalSpeed = 5;
         [SerializeField]
-        private float hitDetectionDistance = 1f;
+        private float hitDetectionDistance = 1;
         [SerializeField]
-        private float startSpeed = 3f;
+        private float startSpeed = 3;
 
         [SerializeField]
         private bool oneDirection = false;

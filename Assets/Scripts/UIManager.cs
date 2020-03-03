@@ -12,6 +12,7 @@ namespace Somersaultbear
         [SerializeField]
         private GameObject mobileMenu = default;
         private AudioSource[] audioSources;
+        private bool setMenusOnce;
 
         // Initialize the audiosources array by finding all audiosources active in the scene.
         private void Awake() => audioSources = FindObjectsOfType<AudioSource>();
@@ -34,7 +35,9 @@ namespace Somersaultbear
         {
             foreach (GameObject item in menuItems)
             {
-                if (item != null && item.activeSelf)
+                if (item == null) continue;
+
+                if (item.activeSelf)
                 {
                     SetResumeGame(item);
                 }
@@ -43,39 +46,51 @@ namespace Somersaultbear
                     SetPauseGame(item);
                 }
             }
+
+            setMenusOnce = false;
         }
 
         private void SetResumeGame(GameObject item)
         {
-            PauseScoreCounting(false);
-            PauseGame(1);
-            MuteAudio(false);
             item.SetActive(false);
-            ActivateMobileMenu(true);
+            if (!setMenusOnce)
+            {
+                setMenusOnce = true;
+                PauseScoreCounting(false);
+                PauseGame(1);
+                MuteAudio(false);
+                ActivateMobileMenu(true);
+            }
         }
 
         private void SetPauseGame(GameObject item)
         {
-            PauseScoreCounting(true);
-            PauseGame(0);
-            MuteAudio(true);
             item.SetActive(true);
-            ActivateMobileMenu(false);
+            if (!setMenusOnce)
+            {
+                setMenusOnce = true;
+                PauseScoreCounting(true);
+                PauseGame(0);
+                MuteAudio(true);
+                ActivateMobileMenu(false);
+            }
         }
 
         public void ShowMenuItemsDeath()
         {
             foreach (GameObject item in menuItems)
             {
-                if (item != null)
-                {
-                    item.SetActive(true);
-                }
+                item.SetActive(true);
             }
 
             PauseScoreCounting(true);
             PauseGame(0);
             MuteAudio(true);
+            EnableTextScore();
+        }
+
+        private void EnableTextScore()
+        {
             scoreManager.TextScore.enabled = false;
             Text totalScoreText = menuItems[3].GetComponent<Text>();
             totalScoreText.text = $"Score: {scoreManager.CurrentScore}";
@@ -91,9 +106,9 @@ namespace Somersaultbear
 
         private void MuteAudio(bool mute)
         {
-            foreach (AudioSource audSrc in audioSources)
+            foreach (AudioSource audioSource in audioSources)
             {
-                audSrc.mute = mute;
+                audioSource.mute = mute;
             }
         }
 

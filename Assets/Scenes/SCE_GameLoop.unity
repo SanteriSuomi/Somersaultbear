@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -221,12 +221,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!82 &227269809 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 58253140159673109, guid: bfc53c55832c9d846a630b38a7c79c70,
-    type: 3}
-  m_PrefabInstance: {fileID: 58253139984215972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &227269810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 58253140159673110, guid: bfc53c55832c9d846a630b38a7c79c70,
@@ -236,12 +230,6 @@ Transform:
 --- !u!4 &245820338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6822613568954750394, guid: b00b586dcdc036d4a951eaaed2056e07,
-    type: 3}
-  m_PrefabInstance: {fileID: 6822613568931249672}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &247176066 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6822613568954750393, guid: b00b586dcdc036d4a951eaaed2056e07,
     type: 3}
   m_PrefabInstance: {fileID: 6822613568931249672}
   m_PrefabAsset: {fileID: 0}
@@ -3849,7 +3837,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4282,7 +4270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2090093140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4587,6 +4575,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2130182095}
     m_Modifications:
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: verticalSpeed
+      value: 12.5
+      objectReference: {fileID: 0}
     - target: {fileID: 223707787211815928, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: m_Name
@@ -4718,24 +4711,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
         type: 3}
-      propertyPath: menuItems.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
-        type: 3}
-      propertyPath: audioSources.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
-        type: 3}
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 6756189374769294615}
-    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 227269809}
     - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
         type: 3}
       propertyPath: menuItems.Array.data[0]
@@ -4756,21 +4734,6 @@ PrefabInstance:
       propertyPath: menuItems.Array.data[3]
       value: 
       objectReference: {fileID: 1995009520}
-    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
-        type: 3}
-      propertyPath: audioSources.Array.data[0]
-      value: 
-      objectReference: {fileID: 227269809}
-    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
-        type: 3}
-      propertyPath: audioSources.Array.data[1]
-      value: 
-      objectReference: {fileID: 247176066}
-    - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
-        type: 3}
-      propertyPath: audioSources.Array.data[2]
-      value: 
-      objectReference: {fileID: 247176066}
     - target: {fileID: 249831292181989423, guid: 629d3eb0ce4fc2c4ebb330a7e32c3ba7,
         type: 3}
       propertyPath: mobileMenu

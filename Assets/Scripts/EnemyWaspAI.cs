@@ -8,18 +8,18 @@ namespace Somersaultbear
 
         private UIManager uiManager;
         private SpriteRenderer spriteRenderer;
-        private AudioSource audSource;
+        private AudioSource audioSource;
         private Vector3 target;
 
         [SerializeField]
-        private float moveSpeed = 6f;
-        private const float DESTROY_TIME = 15f;
+        private float moveSpeed = 3;
+        private const float DESTROY_TIME = 15;
 
         private void Awake()
         {
             uiManager = GameObject.Find("PRE_UIManager").GetComponent<UIManager>();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            audSource = GetComponent<AudioSource>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void Start() => Invoke(nameof(DestroyTimer), DESTROY_TIME);
@@ -63,9 +63,9 @@ namespace Somersaultbear
 
         public void ColliderFollow(Collider2D collision)
         {
-            if (!audSource.isPlaying)
+            if (!audioSource.isPlaying)
             {
-                audSource.Play();
+                audioSource.Play();
             }
 
             // Target is the player's position.
