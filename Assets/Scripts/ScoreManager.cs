@@ -5,7 +5,7 @@ namespace Somersaultbear
 {
     public class ScoreManager : MonoBehaviour
     {
-        public bool PauseScoreCounting { private get; set; } = false;
+        public bool PauseScoreCounting { get; set; } = false;
         public int CurrentScore { get; set; }
 
         [SerializeField]
