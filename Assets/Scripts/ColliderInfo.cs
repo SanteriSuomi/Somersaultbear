@@ -4,7 +4,7 @@ namespace Somersaultbear
 {
 	public class ColliderInfo : MonoBehaviour
 	{
-		private SpawnManager spawnManager = default;
+		private SpawnManager spawnManager;
 		private bool alreadyHit = false;
 
 		private void Awake() => spawnManager = FindObjectOfType<SpawnManager>();
