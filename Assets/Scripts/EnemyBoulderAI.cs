@@ -20,7 +20,11 @@ namespace Somersaultbear
         private bool oneDirection = false;
         private bool addedAwakeForce;
 
-        private void Awake() => rigidBody = GetComponent<Rigidbody2D>();
+        protected override void Awake()
+        {
+            base.Awake();
+            rigidBody = GetComponent<Rigidbody2D>();
+        }
 
         private void Start() => Invoke(nameof(DestroyTimer), DESTROY_TIME);
 

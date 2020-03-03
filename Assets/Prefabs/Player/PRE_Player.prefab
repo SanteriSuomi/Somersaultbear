@@ -391,7 +391,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  verticalSpeed: 13.75
+  verticalSpeed: 12.5
   maxVerticalSpeed: 5.5
   jumpModifier: 7.1
   jumpDetectionHeight: 0.76
@@ -407,8 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed294166fe74f3a4392df13c06eaad50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: -7606624747958005214, guid: 16d680dcc13122d40acb689c67712b02,
-    type: 3}
-  amountToPool: 60
   projectileSpeed: 25
   shootCooldown: 0.125
+  boulderLayer: 10
+  projectileLayer: 11

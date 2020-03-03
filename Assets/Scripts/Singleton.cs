@@ -73,6 +73,7 @@ namespace Somersaultbear
 
         private static void ActivateInstance(T newInstance)
         {
+            if (newInstance == null) return;
             BaseInstance = newInstance;
             newInstance.gameObject.SetActive(true);
             DontDestroyOnLoad(newInstance.gameObject);

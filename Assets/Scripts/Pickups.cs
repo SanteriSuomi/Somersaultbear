@@ -38,11 +38,13 @@ namespace Somersaultbear
             {
                 // On trigger, add score to the player's total.
                 scoreManager.CurrentScore += scoreToGive;
-                audioSource.Play();
+                PlayPickupSound();
                 // Destroy the object with small delay to allow the audiosource time to play.
                 Invoke(nameof(DestroyTimer), DESTROY_DELAY);
             }
         }
+
+        private void PlayPickupSound() => audioSource.Play();
 
         private void DestroyTimer() => Destroy(gameObject);
 

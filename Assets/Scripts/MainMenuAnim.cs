@@ -35,7 +35,7 @@ namespace Somersaultbear
         public void OnPointerClick(PointerEventData eventData)
         {
             int random = Random.Range(-RANDOM_MOUSECLICK_FORCE, RANDOM_MOUSECLICK_FORCE);
-            rigidBody.AddForce(new Vector2(random, random), ForceMode2D.Impulse);
+            AddForce(new Vector2(random, random));
         }
 
         private void FixedUpdate()
@@ -62,17 +62,17 @@ namespace Somersaultbear
         {
             if (!Direction)
             {
-                rigidBody.AddForce(Vector2.left * verticalSpeed, ForceMode2D.Force);
+                AddForce(Vector2.left * verticalSpeed);
             }
             else
             {
-                rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
+                AddForce(Vector2.right * verticalSpeed);
             }
         }
 
         private void Jump()
         {
-            rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+            AddForce(Vector2.up * jumpModifier);
             audioSource.Play();
         }
 
@@ -88,6 +88,8 @@ namespace Somersaultbear
                 spriteRenderer.flipX = true;
             }
         }
+
+        private void AddForce(Vector2 force) => rigidBody.AddForce(force, ForceMode2D.Impulse);
 
         #region Mandatory but not used
         public void OnPointerUp(PointerEventData eventData)

@@ -274,5 +274,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpDetectionHeight: 0.715
-  verticalSpeed: 3
-  jumpModifier: 6
+  verticalSpeed: 0.04
+  jumpModifier: 7

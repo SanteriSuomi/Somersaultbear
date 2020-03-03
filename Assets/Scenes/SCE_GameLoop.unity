@@ -4580,6 +4580,16 @@ PrefabInstance:
       propertyPath: verticalSpeed
       value: 12.5
       objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: jumpModifier
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 223707787211815874, guid: 8e910b234c0009b4abc1b56dea37a005,
+        type: 3}
+      propertyPath: maxVerticalSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 223707787211815928, guid: 8e910b234c0009b4abc1b56dea37a005,
         type: 3}
       propertyPath: m_Name

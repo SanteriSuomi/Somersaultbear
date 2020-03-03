@@ -12,8 +12,9 @@ namespace Somersaultbear
         private AudioSource audioSource;
         private Vector3 target;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             spriteRenderer = GetComponent<SpriteRenderer>();
             audioSource = GetComponent<AudioSource>();
             HitPoints = hitPoints;

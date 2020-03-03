@@ -10,7 +10,7 @@ namespace Somersaultbear
         protected float moveSpeed = 3;
         protected const float DESTROY_TIME = 15;
 
-        private void Awake() => uiManager = FindObjectOfType<UIManager>();
+        protected virtual void Awake() => uiManager = FindObjectOfType<UIManager>();
 
         protected void PlayerCollisionEvent() => uiManager.DeathMenu();
     }
