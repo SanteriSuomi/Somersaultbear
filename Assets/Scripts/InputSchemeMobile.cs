@@ -18,12 +18,7 @@ namespace Somersaultbear
 
         protected override (bool, Vector2) GetShootInput()
         {
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                return (true, touch.position);
-            }
-
+            // Handled from UI
             return (false, Vector2.zero);
         }
     }

@@ -2,6 +2,7 @@
 
 namespace Somersaultbear
 {
+#pragma warning disable S2259 // Variable is not null in the execution path
     [RequireComponent(typeof(AudioSource))]
     public class PlayerShoot : MonoBehaviour
     {
@@ -38,6 +39,45 @@ namespace Somersaultbear
                 PlayShootSound();
                 LaunchProjectile();
             }
+        }
+
+        public void OnShootMobile()
+        {
+            if (timer >= shootCooldown)
+            {
+                timer = 0;
+
+                (bool, Vector2) position = GetPositionInRadius();
+                if (position.Item1)
+                {
+                    TransformPositionToWorld(position.Item2);
+                    PlayShootSound();
+                    LaunchProjectile();
+                }
+            }
+        }
+
+        private (bool, Vector2) GetPositionInRadius()
+        {
+            Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, 20);
+            if (results.Length > 0)
+            {
+                Transform enemyTransform = null;
+                float currentSmallestDistance = Mathf.Infinity;
+                for (int i = 0; i < results.Length - 1; i++)
+                {
+                    float distance = (results[i].transform.position - transform.position).sqrMagnitude;
+                    if (distance < currentSmallestDistance)
+                    {
+                        currentSmallestDistance = distance;
+                        enemyTransform = results[i].transform;
+                    }
+                }
+
+                return (true, enemyTransform.position);
+            }
+
+            return (false, Vector2.zero);
         }
 
         private void TransformPositionToWorld(Vector2 position)

@@ -21,8 +21,8 @@ namespace Somersaultbear
         private float verticalSpeed = 2.5f;
         [SerializeField]
         private float jumpModifier = 5f;
-
-        private const int RANDOM_MOUSECLICK_FORCE = 20;
+        [SerializeField]
+        private float clickRandomForce = 20;
 
         private void Awake()
         {
@@ -34,7 +34,7 @@ namespace Somersaultbear
         // Add a random force to the character when clicked on.
         public void OnPointerClick(PointerEventData eventData)
         {
-            int random = Random.Range(-RANDOM_MOUSECLICK_FORCE, RANDOM_MOUSECLICK_FORCE);
+            float random = Random.Range(-clickRandomForce, clickRandomForce);
             AddForce(new Vector2(random, random));
         }
 

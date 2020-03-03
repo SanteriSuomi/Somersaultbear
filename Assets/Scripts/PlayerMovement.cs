@@ -10,6 +10,7 @@ namespace Somersaultbear
         private Rigidbody2D rigidBody = default;
         private AudioSource audioSource = default;
         private Animator animator = default;
+        private RaycastHit2D rayHit;
 
         [SerializeField]
         private float verticalSpeed = 3f;
@@ -19,11 +20,12 @@ namespace Somersaultbear
         private float jumpModifier = 8f;
         [SerializeField]
         private float jumpDetectionHeight = 0.715f;
-
-        // Prevent double jumping with small velocity check.
-        private const float RB_Y_VELOCITY_MAX_JUMP = 0.5f;
-        private const float RB_Y_VELOCITY_MAX_ANIMS = 1f;
-        private const float JUMP_DRAW_REDUCTION = 1.5f;
+        [SerializeField]
+        private float maxJumpVelocity = 0.5f;
+        [SerializeField]
+        private float animationMaxVelocity = 1.5f;
+        [SerializeField]
+        private float jumpAirDragReduction = 1.5f;
 
         private void Awake()
         {
@@ -34,13 +36,22 @@ namespace Somersaultbear
 
         private void Start() => InputManager.Instance.InputScheme.JumpEvent += OnJump;
 
-        public void OnJump() // Public because also activated from mobile jump button
+        public void OnJump() => Jump(); // Public because also activated from mobile jump button
+
+        private void Jump()
         {
-            // Cast a raycast downwards for ground detection.
-            RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
-            Jump(rayHit);
-            PlayAnimations(rayHit);
+            if (rayHit && rigidBody.velocity.y < maxJumpVelocity)
+            {
+                AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+                AddForce(Vector3.right * -jumpAirDragReduction, ForceMode2D.Impulse);
+                PlayJumpSound();
+            }
         }
+
+        private void PlayJumpSound() => audioSource.Play();
+
+        private void Update() 
+            => rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
         private void FixedUpdate()
         {
@@ -49,51 +60,34 @@ namespace Somersaultbear
             #endif
 
             MoveForward();
+            JumpAnimation();
+            FallAnimation();
         }
 
         private void MoveForward()
         {
-            // Continuously move player to the right.
             if (rigidBody.velocity.x < maxVerticalSpeed)
             {
                 rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
             }
         }
 
-        private void Jump(RaycastHit2D rayHit)
+        private void JumpAnimation()
         {
-            if (rayHit && rigidBody.velocity.y < RB_Y_VELOCITY_MAX_JUMP)
-            {
-                rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
-                // Add force backwards to reduce the drag on air.
-                rigidBody.AddForce(new Vector3(-JUMP_DRAW_REDUCTION, 0, 0), ForceMode2D.Impulse);
-                audioSource.Play();
-            }
-        }
-
-        private void PlayAnimations(RaycastHit2D rayHit)
-        {
-            JumpAnim();
-            FallAnim(rayHit);
-        }
-
-        private void JumpAnim()
-        {
-            if (rigidBody.velocity.y > RB_Y_VELOCITY_MAX_ANIMS)
+            if (rigidBody.velocity.y > animationMaxVelocity)
             {
                 animator.SetTrigger("Jump");
                 FreezeAndResetRotation();
             }
             else
             {
-                // Unfreeze after.
                 rigidBody.freezeRotation = false;
             }
         }
 
-        private void FallAnim(RaycastHit2D rayHit)
+        private void FallAnimation()
         {
-            if (rigidBody.velocity.y < -RB_Y_VELOCITY_MAX_ANIMS)
+            if (rigidBody.velocity.y < -animationMaxVelocity)
             {
                 animator.SetBool("Fall", true);
                 FreezeAndResetRotation();
@@ -107,10 +101,10 @@ namespace Somersaultbear
 
         private void FreezeAndResetRotation()
         {
-            // Freeze the rotation for the jump animation.
             rigidBody.freezeRotation = true;
-            // Reset rotation to default for the jump animation.
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.eulerAngles = Vector3.zero;
         }
+
+        private void AddForce(Vector2 force, ForceMode2D mode) => rigidBody.AddForce(force, mode);
     }
 }
