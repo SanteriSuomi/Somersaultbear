@@ -20,8 +20,6 @@ namespace Somersaultbear
         [SerializeField]
         private float jumpDetectionHeight = 0.715f;
 
-        private bool pressedSpace = false;
-
         // Prevent double jumping with small velocity check.
         private const float RB_Y_VELOCITY_MAX_JUMP = 0.5f;
         private const float RB_Y_VELOCITY_MAX_ANIMS = 1f;
@@ -34,26 +32,26 @@ namespace Somersaultbear
             animator = GetComponent<Animator>();
         }
 
-        private void Update() => GetInput();
+        private void Start() => InputManager.Instance.InputScheme.JumpEvent += OnJump;
 
-        private void GetInput() => pressedSpace = Input.GetButton("Jump");
-
-        private void FixedUpdate()
+        public void OnJump() // Public because also activated from mobile jump button
         {
             // Cast a raycast downwards for ground detection.
             RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+            Jump(rayHit);
+            PlayAnimations(rayHit);
+        }
 
+        private void FixedUpdate()
+        {
             #if UNITY_EDITOR
             Debug.DrawRay(transform.position, Vector2.down * jumpDetectionHeight, Color.green);
             #endif
 
-            Move();
-            Jump(rayHit);
-
-            PlayAnimations(rayHit);
+            MoveForward();
         }
 
-        private void Move()
+        private void MoveForward()
         {
             // Continuously move player to the right.
             if (rigidBody.velocity.x < maxVerticalSpeed)
@@ -64,9 +62,8 @@ namespace Somersaultbear
 
         private void Jump(RaycastHit2D rayHit)
         {
-            if (rayHit && pressedSpace && rigidBody.velocity.y < RB_Y_VELOCITY_MAX_JUMP)
+            if (rayHit && rigidBody.velocity.y < RB_Y_VELOCITY_MAX_JUMP)
             {
-                // Add a force for jump.
                 rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
                 // Add force backwards to reduce the drag on air.
                 rigidBody.AddForce(new Vector3(-JUMP_DRAW_REDUCTION, 0, 0), ForceMode2D.Impulse);
@@ -84,9 +81,7 @@ namespace Somersaultbear
         {
             if (rigidBody.velocity.y > RB_Y_VELOCITY_MAX_ANIMS)
             {
-                // Set the corresponding trigger in the animator.
                 animator.SetTrigger("Jump");
-                // Freeze and reset the rotation so the animation doesn't spin.
                 FreezeAndResetRotation();
             }
             else

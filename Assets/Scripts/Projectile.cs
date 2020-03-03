@@ -4,12 +4,23 @@ namespace Somersaultbear
 {
     public class Projectile : MonoBehaviour
     {
-        public Rigidbody2D Rigidbody2D { get; private set; }
+        public Rigidbody2D Rigidbody { get; private set; }
+        public Collider2D Collider { get; private set; }
 
-        private void Awake() => Rigidbody2D = GetComponent<Rigidbody2D>();
-        
-        // Deactivate the projectile after it becomes invisible to the main camera.
-        private void OnBecameInvisible() => gameObject.SetActive(false);
+        [SerializeField]
+        private float maxTimeAlive = 5;
+
+        private void Awake()
+        {
+            Rigidbody = GetComponent<Rigidbody2D>();
+            Collider = GetComponent<Collider2D>();
+        }
+
+        private void OnEnable() => Invoke(nameof(DisableTimer), maxTimeAlive);
+
+        private void DisableTimer() => ReturnObject();
+
+        private void OnBecameInvisible() => ReturnObject();
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -20,5 +31,9 @@ namespace Somersaultbear
                 enemyWaspAI.HitPoints -= 1;
             }
         }
+
+        private void OnDisable() => CancelInvoke();
+
+        private void ReturnObject() => ProjectilePool.Instance.Return(this);
     }
 }

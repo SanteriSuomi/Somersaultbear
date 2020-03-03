@@ -53,6 +53,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -103,6 +104,7 @@ Tilemap:
   m_TileSpriteArray: []
   m_TileMatrixArray: []
   m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
@@ -157,7 +159,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 1.1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -389,10 +391,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  verticalSpeed: 6.5
-  maxVerticalSpeed: 6.5
-  jumpModifier: 6
-  jumpDetectionHeight: 0.715
+  verticalSpeed: 13.75
+  maxVerticalSpeed: 5.5
+  jumpModifier: 7.1
+  jumpDetectionHeight: 0.76
 --- !u!114 &795536896924751662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,7 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed294166fe74f3a4392df13c06eaad50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8638048287221463073, guid: 16d680dcc13122d40acb689c67712b02,
+  projectilePrefab: {fileID: -7606624747958005214, guid: 16d680dcc13122d40acb689c67712b02,
     type: 3}
-  amountToPool: 100
-  projectileSpeed: 4
+  amountToPool: 60
+  projectileSpeed: 25
+  shootCooldown: 0.125

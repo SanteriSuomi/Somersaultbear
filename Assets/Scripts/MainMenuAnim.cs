@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Somersaultbear
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(AudioSource), typeof(SpriteRenderer))]
-    public class MainMenuAnim : MonoBehaviour
+    public class MainMenuAnim : MonoBehaviour, IPointerDownHandler, IPointerClickHandler, IPointerUpHandler
     {
         // True == right, false == left.
         public bool Direction { get; set; } = false;
@@ -31,9 +32,8 @@ namespace Somersaultbear
         }
 
         // Add a random force to the character when clicked on.
-        private void OnMouseDown()
+        public void OnPointerClick(PointerEventData eventData)
         {
-            // Get a random number and add use it to move the prefab.
             int random = Random.Range(-RANDOM_MOUSECLICK_FORCE, RANDOM_MOUSECLICK_FORCE);
             rigidBody.AddForce(new Vector2(random, random), ForceMode2D.Impulse);
         }
@@ -70,6 +70,12 @@ namespace Somersaultbear
             }
         }
 
+        private void Jump()
+        {
+            rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
+            audioSource.Play();
+        }
+
         private void FlipSprite()
         {
             // Switch the sprite's direction according to the direction it's going.
@@ -83,10 +89,16 @@ namespace Somersaultbear
             }
         }
 
-        private void Jump()
+        #region Mandatory but not used
+        public void OnPointerUp(PointerEventData eventData)
         {
-            rigidBody.AddForce(Vector2.up * jumpModifier, ForceMode2D.Impulse);
-            audioSource.Play();
+            // Empty because IPointerClickHandler requires this to function.
         }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            // Empty because IPointerClickHandler requires this to function.
+        }
+        #endregion
     }
 }
