@@ -2,7 +2,6 @@
 
 namespace Somersaultbear
 {
-#pragma warning disable S2259 // Variable is not null in the execution path
     [RequireComponent(typeof(AudioSource))]
     public class PlayerShoot : MonoBehaviour
     {
@@ -41,40 +40,43 @@ namespace Somersaultbear
             }
         }
 
-        public void OnShootMobile()
+        public void OnShoot() // Mobile on shoot (from UI)
         {
             if (timer >= shootCooldown)
             {
                 timer = 0;
-
-                (bool, Vector2) position = GetPositionInRadius();
-                if (position.Item1)
+                (bool, Vector2) boolPos = GetEnemyPositionInRadius();
+                if (boolPos.Item1)
                 {
-                    TransformPositionToWorld(position.Item2);
+                    TransformPositionToWorld(boolPos.Item2);
                     PlayShootSound();
                     LaunchProjectile();
                 }
             }
         }
 
-        private (bool, Vector2) GetPositionInRadius()
+        private (bool, Vector2) GetEnemyPositionInRadius()
         {
             Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, 20);
             if (results.Length > 0)
             {
-                Transform enemyTransform = null;
-                float currentSmallestDistance = Mathf.Infinity;
-                for (int i = 0; i < results.Length - 1; i++)
+                Vector3 currentEnemyPosition = Vector3.zero;
+                float currentDistance = Mathf.Infinity;
+                int resultsLength = results.Length - 1;
+                for (int i = 0; i < resultsLength; i++)
                 {
-                    float distance = (results[i].transform.position - transform.position).sqrMagnitude;
-                    if (distance < currentSmallestDistance)
+                    if (results[i].CompareTag("Enemy"))
                     {
-                        currentSmallestDistance = distance;
-                        enemyTransform = results[i].transform;
+                        float distance = (results[i].transform.position - transform.position).sqrMagnitude;
+                        if (distance < currentDistance)
+                        {
+                            currentDistance = distance;
+                            currentEnemyPosition = results[i].transform.position;
+                        }
                     }
                 }
 
-                return (true, enemyTransform.position);
+                return (true, currentEnemyPosition);
             }
 
             return (false, Vector2.zero);
@@ -101,11 +103,11 @@ namespace Somersaultbear
                 projectile.transform.rotation = Quaternion.identity;
                 projectile.Rigidbody.AddForce(new Vector2(target.x * projectileSpeed,
                     target.y * projectileSpeed), ForceMode2D.Impulse);
-                IgnoreCollision(projectile);
+                IgnoreCollisionOn(projectile);
             }
         }
 
-        private void IgnoreCollision(Projectile projectile)
+        private void IgnoreCollisionOn(Projectile projectile)
         {
             Physics2D.IgnoreCollision(projectile.Collider, playerCollider);
             Physics2D.IgnoreLayerCollision(boulderLayer, projectileLayer);
