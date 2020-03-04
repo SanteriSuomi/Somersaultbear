@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5915187602413964739}
   - component: {fileID: 6566600338502918019}
   - component: {fileID: 8232459915205854445}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ColliderFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: -1628345129815395096}
   - component: {fileID: 8232459914263792969}
   - component: {fileID: 8232459914263792974}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PRE_Wasp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 2231870187575504823}
   - component: {fileID: 4526469695695180083}
   - component: {fileID: 8232459915205854446}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ColliderBody
   m_TagString: Enemy
   m_Icon: {fileID: 0}

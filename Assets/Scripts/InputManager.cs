@@ -10,6 +10,8 @@ namespace Somersaultbear
         private InputSchemeMobile inputSchemeMobile = default;
         [SerializeField]
         private GameObject mobileMenus = default;
+        [SerializeField]
+        private GameObject mobileMenuButton = default;
         public InputSchemeBase InputScheme { get; private set; }
 
         protected override void Awake()
@@ -30,9 +32,10 @@ namespace Somersaultbear
             {
                 InputScheme = inputSchemeMobile;
                 mobileMenus.SetActive(true); // Activate mobile menu button
+                mobileMenuButton.SetActive(true);
             }
 
-            InputScheme.gameObject.SetActive(true);
+            InputScheme.gameObject.SetActive(true); // Activate the gameobject that contains the input scheme
         }
     }
 }

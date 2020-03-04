@@ -22,14 +22,6 @@ namespace Somersaultbear
                     return null;
                 }
             }
-            protected set
-            {
-                BaseInstance = value;
-
-                #if UNITY_EDITOR
-                Debug.LogWarning("Something is setting the instance of this singleton. Is this a wanted behaviour?");
-                #endif
-            }
         }
 
         protected virtual void Awake()
@@ -86,8 +78,8 @@ namespace Somersaultbear
         #if UNITY_ANDROID || UNITY_IOS
         protected virtual void OnApplicationPause(bool hasPaused)
         {
-            if (hasPaused) { ApplicationIsQuitting = true; }
-            else { ApplicationIsQuitting = false; }
+            if (hasPaused) ApplicationIsQuitting = true;
+            else ApplicationIsQuitting = false;
         }
         #endif
     }

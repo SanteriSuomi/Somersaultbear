@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
-  menuItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  deathText: {fileID: 0}
+  totalScoreText: {fileID: 0}
+  resetButton: {fileID: 0}
+  mainMenuButton: {fileID: 0}
   mobileMenu: {fileID: 0}

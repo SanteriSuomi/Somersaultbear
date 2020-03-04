@@ -36,6 +36,7 @@ namespace Somersaultbear
 
 				case SceneType.MainScene:
 					SceneManager.LoadScene(sceneName);
+					AudioListener.volume = 1; // Make sure volume is on when loading main menu
 					break;
 
 				default:

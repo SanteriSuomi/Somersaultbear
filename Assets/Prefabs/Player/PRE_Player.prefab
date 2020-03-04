@@ -392,9 +392,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   verticalSpeed: 12.5
-  maxVerticalSpeed: 5
+  maxVerticalSpeed: 4.8
   jumpModifier: 7.5
   jumpDetectionHeight: 0.76
+  maxJumpVelocity: 0.5
+  animationMaxVelocity: 1.5
+  jumpAirDragReduction: 1.5
 --- !u!114 &795536896924751662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +410,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed294166fe74f3a4392df13c06eaad50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mobileShootMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  mobileShootRadiusOffset: {x: 3.75, y: 1.5, z: 0}
   projectileSpeed: 25
-  shootCooldown: 0.125
+  shootCooldown: 0.175
   boulderLayer: 10
   projectileLayer: 11
+  mobileShootRadius: 10

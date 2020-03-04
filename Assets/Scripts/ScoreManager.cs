@@ -5,7 +5,7 @@ namespace Somersaultbear
 {
     public class ScoreManager : MonoBehaviour
     {
-        public bool PauseScoreCounting { get; set; } = false;
+        public bool PauseScoreCounting { get; set; }
         public int CurrentScore { get; set; }
 
         [SerializeField]
@@ -14,22 +14,23 @@ namespace Somersaultbear
 
         [SerializeField]
         private Rigidbody2D playerRigidbody = default;
+        [SerializeField]
+        private float minVelocityForScoring = 3;
+        [SerializeField]
+        private int updateScoreRate = 10;
+        [SerializeField]
+        private string scoreString = "Score: ";
 
-        private const float MIN_X_VELOCITY = 3;
-        private const int UPDATE_SCORE_TIME = 10;
-        private const string SCORE_STRING = "Score: ";
+        private void FixedUpdate() => UpdateScore();
 
-        private void FixedUpdate()
+        private void UpdateScore()
         {
-            if (!PauseScoreCounting && playerRigidbody.velocity.x > MIN_X_VELOCITY)
+            if (!PauseScoreCounting && playerRigidbody.velocity.x > minVelocityForScoring)
             {
-                // Update the score.
                 CurrentScore += 1;
-                // Update the UI score string every updateScoreTime.
-                if (CurrentScore % UPDATE_SCORE_TIME == 0)
+                if (CurrentScore % updateScoreRate == 0)
                 {
-                    // Update the score text.
-                    textScore.text = $"{SCORE_STRING} {CurrentScore}";
+                    textScore.text = $"{scoreString} {CurrentScore}";
                 }
             }
         }

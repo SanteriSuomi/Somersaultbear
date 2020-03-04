@@ -8,6 +8,14 @@ namespace Somersaultbear
         private AudioSource[] audioSources = default;
         private Collider2D playerCollider;
         private Vector3 target;
+        [SerializeField]
+        private LayerMask mobileShootMask = default;
+        //[SerializeField]
+        //private LayerMask mobileShootRayMask = default;
+        [SerializeField]
+        private Vector3 mobileShootRadiusOffset = new Vector3(3.75f, 1.5f, 0);
+        [SerializeField]
+        private Vector3 mobileShootOffset = new Vector3(0, 0.5f, 0);
 
         [SerializeField]
         private float projectileSpeed = 10f;
@@ -17,6 +25,8 @@ namespace Somersaultbear
         private int boulderLayer = 10;
         [SerializeField]
         private int projectileLayer = 11;
+        [SerializeField]
+        private float mobileShootRadius = 10;
         private float timer;
 
         private void Awake()
@@ -34,9 +44,7 @@ namespace Somersaultbear
             if (timer >= shootCooldown)
             {
                 timer = 0;
-                TransformPositionToWorld(position);
-                PlayShootSound();
-                LaunchProjectile();
+                Shoot(position, true);
             }
         }
 
@@ -48,43 +56,57 @@ namespace Somersaultbear
                 (bool, Vector2) boolPos = GetEnemyPositionInRadius();
                 if (boolPos.Item1)
                 {
-                    TransformPositionToWorld(boolPos.Item2);
-                    PlayShootSound();
-                    LaunchProjectile();
+                    Shoot(boolPos.Item2, false);
                 }
             }
         }
 
         private (bool, Vector2) GetEnemyPositionInRadius()
         {
-            Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, 20);
-            if (results.Length > 0)
+            Collider2D[] circleResults = Physics2D.OverlapCircleAll(transform.position + mobileShootRadiusOffset, 
+                mobileShootRadius, mobileShootMask);
+            if (circleResults.Length > 0)
             {
-                Vector3 currentEnemyPosition = Vector3.zero;
-                float currentDistance = Mathf.Infinity;
-                int resultsLength = results.Length - 1;
-                for (int i = 0; i < resultsLength; i++)
-                {
-                    if (results[i].CompareTag("Enemy"))
-                    {
-                        float distance = (results[i].transform.position - transform.position).sqrMagnitude;
-                        if (distance < currentDistance)
-                        {
-                            currentDistance = distance;
-                            currentEnemyPosition = results[i].transform.position;
-                        }
-                    }
-                }
+                return (true, circleResults[0].transform.position);
 
-                return (true, currentEnemyPosition);
+                //int amountOfRayResults = Physics2D.LinecastNonAlloc(transform.position, circleResults[0].transform.position, 
+                //    null, mobileShootRayMask);
+                //Debug.Log("Amount of results : " + amountOfRayResults);
+                //if (amountOfRayResults == 1)
+                //{
+                //    return (true, circleResults[0].transform.position);
+                //}
+
+                //return (false, Vector2.zero);
             }
 
             return (false, Vector2.zero);
         }
 
-        private void TransformPositionToWorld(Vector2 position)
+        private void Shoot(Vector2 position, bool transformPoint)
         {
-            target = (Camera.main.ScreenToWorldPoint(position) - gameObject.transform.position).normalized;
+            TransformPositionToWorld(position, transformPoint);
+            PlayShootSound();
+            LaunchProjectile();
+        }
+
+        private void TransformPositionToWorld(Vector2 position, bool transformPoint)
+        {
+            if (transformPoint)
+            {
+                target = (Camera.main.ScreenToWorldPoint(position) - transform.position).normalized;
+            }
+            else
+            {
+                Vector3 positionAsVector3 = new Vector2(position.x, position.y); // Convert to vector3
+                target = (positionAsVector3 - transform.position).normalized;
+            }
+            
+            if (InputManager.Instance.InputScheme.InputType == InputType.Mobile)
+            {
+                target += mobileShootOffset; // Offset the shoot pos to account for projectile drop (on mobile)
+            }
+
             target.z = 0f;
         }
 
@@ -112,5 +134,10 @@ namespace Somersaultbear
             Physics2D.IgnoreCollision(projectile.Collider, playerCollider);
             Physics2D.IgnoreLayerCollision(boulderLayer, projectileLayer);
         }
+
+        #if UNITY_EDITOR
+        private void OnDrawGizmos() 
+            => Gizmos.DrawWireSphere(transform.position + mobileShootRadiusOffset, mobileShootRadius);
+        #endif
     }
 }

@@ -22,7 +22,8 @@ namespace Somersaultbear
             }
 
             (bool, Vector2) shootTuple = GetShootInput();
-            if (shootTuple.Item1)
+            if (shootTuple.Item1 
+                && shootTuple.Item2.sqrMagnitude != 0) // Make sure vector is not 0
             {
                 ShootEvent?.Invoke(shootTuple.Item2);
             }

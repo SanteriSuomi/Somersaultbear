@@ -50,9 +50,6 @@ namespace Somersaultbear
 
         private void PlayJumpSound() => audioSource.Play();
 
-        private void Update() 
-            => rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
-
         private void FixedUpdate()
         {
             #if UNITY_EDITOR
@@ -60,8 +57,6 @@ namespace Somersaultbear
             #endif
 
             MoveForward();
-            JumpAnimation();
-            FallAnimation();
         }
 
         private void MoveForward()
@@ -70,6 +65,13 @@ namespace Somersaultbear
             {
                 rigidBody.AddForce(Vector2.right * verticalSpeed, ForceMode2D.Force);
             }
+        }
+
+        private void Update()
+        {
+            rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
+            JumpAnimation();
+            FallAnimation();
         }
 
         private void JumpAnimation()

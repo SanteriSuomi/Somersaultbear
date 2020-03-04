@@ -32,8 +32,10 @@ namespace Somersaultbear
             }
         }
 
-        private void OnDisable() => CancelInvoke();
-
-        private void ReturnObject() => ProjectilePool.Instance.Return(this);
+        private void ReturnObject()
+        {
+            CancelInvoke();
+            ProjectilePool.Instance.Return(this);
+        } 
     }
 }
