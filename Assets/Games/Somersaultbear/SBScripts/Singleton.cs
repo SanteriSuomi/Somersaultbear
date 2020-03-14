@@ -34,10 +34,11 @@ namespace Somersaultbear
 
         private static bool ValidateInstance()
         {
-            if (BaseInstance != null) { return true; }
+            if (!(BaseInstance is null)) { return true; }
 
             T[] instances = FindObjectsOfType<T>();
-            if (instances.Length <= 0)
+            if (instances.Length <= 0 
+                && !ApplicationIsQuitting)
             {
                 GameObject typeGameObject = new GameObject($"{typeof(T).Name}");
                 ActivateInstance(typeGameObject.AddComponent<T>());
@@ -65,6 +66,7 @@ namespace Somersaultbear
 
         private static void ActivateInstance(T newInstance)
         {
+            if (newInstance is null) return;
             BaseInstance = newInstance;
             newInstance.gameObject.SetActive(true);
             if (newInstance.transform.parent is null)

@@ -4602,6 +4602,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
         type: 3}
+      propertyPath: pcInputSchemePlatformNames.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
       propertyPath: mobileMenus
       value: 
       objectReference: {fileID: 2090093139}
@@ -4610,6 +4615,46 @@ PrefabInstance:
       propertyPath: mobileMenuButton
       value: 
       objectReference: {fileID: 952178031}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: pcInputSchemePlatformNames.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: pcInputSchemePlatformNames.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: pcInputSchemePlatformNames.Array.data[2]
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: pcInputSchemePlatformNames.Array.data[3]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: pcInputSchemePlatformNames.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: pcInputSchemePlatformNames.Array.data[6]
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: mobileInputSchemePlatformNames.Array.data[0]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324148643817732356, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
+        type: 3}
+      propertyPath: mobileInputSchemePlatformNames.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3324148643817732378, guid: b181dfd1d4c77a94d8b0de55df5f35b4,
         type: 3}
       propertyPath: m_Name

@@ -14,9 +14,9 @@ namespace Somersaultbear
         [SerializeField]
         private GameObject mobileMenuButton = default;
         [SerializeField]
-        private string[] pcInputSchemePlatformNames = default;
+        private RuntimePlatform[] pcInputSchemePlatformNames = default;
         [SerializeField]
-        private string[] mobileInputSchemePlatformNames = default;
+        private RuntimePlatform[] mobileInputSchemePlatformNames = default;
 
         protected override void Awake()
         {
@@ -26,8 +26,7 @@ namespace Somersaultbear
 
         private void SetInputScheme()
         {
-            string platformName = Application.platform.ToString();
-            InputScheme = SelectInputScheme(platformName);
+            InputScheme = SelectInputScheme(Application.platform);
 
             #if UNITY_EDITOR
             if (InputScheme is null)
@@ -39,19 +38,19 @@ namespace Somersaultbear
             InputScheme.gameObject.SetActive(true); // Activate the gameobject that contains the input scheme
         }
 
-        private InputSchemeBase SelectInputScheme(string platformName)
+        private InputSchemeBase SelectInputScheme(RuntimePlatform platform)
         {
-            for (int i = 0; i < pcInputSchemePlatformNames.Length; i++)
+            foreach (RuntimePlatform item in pcInputSchemePlatformNames)
             {
-                if (pcInputSchemePlatformNames[i].Contains(platformName))
+                if (item == platform)
                 {
                     return inputSchemePC;
                 }
             }
 
-            for (int i = 0; i < mobileInputSchemePlatformNames.Length; i++)
+            foreach (RuntimePlatform item in mobileInputSchemePlatformNames)
             {
-                if (pcInputSchemePlatformNames[i].Contains(platformName))
+                if (item == platform)
                 {
                     mobileMenus.SetActive(true); // Activate mobile menu button
                     mobileMenuButton.SetActive(true);
@@ -59,7 +58,7 @@ namespace Somersaultbear
                 }
             }
 
-            return null;
+            return inputSchemePC; // Default to PC input scheme.
         }
     }
 }
