@@ -19,18 +19,17 @@ namespace Somersaultbear
         [SerializeField]
         private GameObject mobileMenuButton = default;
 
-        private bool GameIsPaused { get { return Mathf.Abs(Time.timeScale) <= float.Epsilon; } }
+        private bool GameIsPaused => Mathf.Abs(Time.timeScale) <= float.Epsilon;
 
-        // Initialize the audiosources array by finding all audiosources active in the scene.
         private void Awake() => scoreManager = FindObjectOfType<ScoreManager>();
 
         private void Start()
         {
             InputManager.Instance.InputScheme.MenuEvent += OnMenu;
-            GetCursorLockstate();
+            InitialCursorLockstate();
         }
 
-        private static void GetCursorLockstate()
+        private static void InitialCursorLockstate()
             => Cursor.lockState = CursorLockMode.Confined;
 
         public void OnMenuMobile() => OnMenu(); // Public because also accessed by mobile menu button
@@ -52,8 +51,8 @@ namespace Somersaultbear
             resetButton.SetActive(false);
             mainMenuButton.SetActive(false);
             ActivateMobileMenu(true);
-            MuteAudio(1);
-            PauseGame(1);
+            ChangeVolumeTo(1);
+            ChangeTimeScaleTo(1);
             PauseScoreCounting(false);
         }
 
@@ -62,8 +61,8 @@ namespace Somersaultbear
             resetButton.SetActive(true);
             mainMenuButton.SetActive(true);
             ActivateMobileMenu(false);
-            MuteAudio(0);
-            PauseGame(0);
+            ChangeVolumeTo(0);
+            ChangeTimeScaleTo(0);
             PauseScoreCounting(true);
         }
 
@@ -75,9 +74,6 @@ namespace Somersaultbear
             }
         }
 
-        /// <summary>
-        /// Menu that happens on death.
-        /// </summary>
         public void DeathMenu()
         {
             deathText.gameObject.SetActive(true);
@@ -88,8 +84,8 @@ namespace Somersaultbear
             mobileMenu.SetActive(false);
             mobileMenuButton.SetActive(false);
 
-            MuteAudio(0);
-            PauseGame(0);
+            ChangeVolumeTo(0);
+            ChangeTimeScaleTo(0);
             PauseScoreCounting(true);
         }
 
@@ -100,10 +96,13 @@ namespace Somersaultbear
             totalScoreText.text = $"Score: {scoreManager.CurrentScore}";
         }
 
-        private void MuteAudio(int mute) => AudioListener.volume = mute;
+        private void ChangeVolumeTo(int volume) 
+            => AudioListener.volume = volume;
 
-        private void PauseGame(int pause) => Time.timeScale = pause;
+        private void ChangeTimeScaleTo(int timeScale) 
+            => Time.timeScale = timeScale;
 
-        private void PauseScoreCounting(bool pause) => scoreManager.PauseScoreCounting = pause;
+        private void PauseScoreCounting(bool pause) 
+            => scoreManager.PauseScoreCounting = pause;
     }
 }

@@ -12,16 +12,16 @@ namespace Somersaultbear
         private Vector2 backgroundNewPosition;
 
         [SerializeField]
-        private float offsetSmooth = 1f;
+        private float offsetSmooth = 1;
         [SerializeField]
-        private float unitsToOffset = 1f;
+        private float unitsToOffset = 1;
+        [SerializeField]
+        private float minMoveVelocityRange = 0.15f;
         private float backgroundRendererOffsetX;
         private float currentMaxX;
         private float yVelocity = 0;
 
         private bool wasMaxUpdated = false;
-
-        private const float RB_VELOCITY_RANGE = 0.15f;
 
         private void Awake()
         {
@@ -31,7 +31,6 @@ namespace Somersaultbear
 
         private void Start() => SetInitialMaxXPos();
 
-        // Set the initial max X vector value to the character's X value.
         private void SetInitialMaxXPos() => currentMaxX = character.transform.position.x;
 
         private void Update()
@@ -42,19 +41,16 @@ namespace Somersaultbear
             SetNewBackgroundOffset();
         }
 
-        // Update the current material offset X to the field.
-        private void UpdateBackgroundOffset() => backgroundRendererOffsetX = backgroundRenderer.material.mainTextureOffset.x;
+        private void UpdateBackgroundOffset() 
+            => backgroundRendererOffsetX = backgroundRenderer.material.mainTextureOffset.x;
 
         private void UpdateCurrentMaxX()
         {
-            // Determine if the current character's position is higher than the highest it has been.
             if (character.transform.position.x > currentMaxX)
             {
-                // Update the highest max position with the current one.
                 currentMaxX = character.transform.position.x;
                 wasMaxUpdated = true;
             }
-            // Else if the current position doesn't exceed the max position, keep the current value.
             else if (character.transform.position.x < currentMaxX)
             {
                 currentMaxX = character.transform.position.x;
@@ -64,7 +60,8 @@ namespace Somersaultbear
 
         private void MoveOffset()
         {
-            if (characterRigidbody.velocity.x > -RB_VELOCITY_RANGE && characterRigidbody.velocity.x < RB_VELOCITY_RANGE)
+            if (characterRigidbody.velocity.x > -minMoveVelocityRange 
+                && characterRigidbody.velocity.x < minMoveVelocityRange)
             {
                 // Do nothing if player velocity is within range (close to stationary).
             }
@@ -78,7 +75,6 @@ namespace Somersaultbear
             }
         }
 
-        // Update the texture offset after the method calls.
         private void SetNewBackgroundOffset() => backgroundRenderer.material.mainTextureOffset = backgroundNewPosition;
 
         private void MoveOffsetRight()

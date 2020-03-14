@@ -123,6 +123,16 @@ MonoBehaviour:
   inputSchemePC: {fileID: 3324148644310624683}
   inputSchemeMobile: {fileID: 3324148643573315848}
   mobileMenus: {fileID: 0}
+  mobileMenuButton: {fileID: 0}
+  pcInputSchemePlatformNames:
+  - Windows
+  - Linux
+  - OSX
+  - WebGL
+  - WindowsEditor
+  mobileInputSchemePlatformNames:
+  - Android
+  - IPhone
 --- !u!1 &3324148644310624681
 GameObject:
   m_ObjectHideFlags: 0

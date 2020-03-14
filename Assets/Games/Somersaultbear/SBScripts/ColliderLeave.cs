@@ -22,13 +22,12 @@ namespace Somersaultbear
 			int random = Random.Range(0, maxRandomRange);
 
 			#if UNITY_EDITOR
-			Debug.Log($"{gameObject.transform.parent.gameObject.name} will be set inactive in {random} seconds.");
+			Debug.Log($"{transform.parent.name} will be set inactive in {random} seconds.");
 			#endif
 
-			// Wait for a random amount of seconds.
 			yield return new WaitForSeconds(random);
 			// Deactivate the whole scene prefab including the children.
-			gameObject.transform.parent.gameObject.SetActive(false);
+			transform.parent.gameObject.SetActive(false);
 		}
 	}
 }

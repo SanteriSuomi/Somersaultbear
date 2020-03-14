@@ -7,7 +7,7 @@ namespace Somersaultbear
     public class MainMenuAnim : MonoBehaviour, IPointerDownHandler, IPointerClickHandler, IPointerUpHandler
     {
         // True == right, false == left.
-        public bool Direction { get; set; } = false;
+        public bool Direction { get; set; }
 
         [SerializeField]
         private LayerMask groundLayer = default;
@@ -31,7 +31,6 @@ namespace Somersaultbear
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        // Add a random force to the character when clicked on.
         public void OnPointerClick(PointerEventData eventData)
         {
             float random = Random.Range(-clickRandomForce, clickRandomForce);
@@ -40,7 +39,6 @@ namespace Somersaultbear
 
         private void FixedUpdate()
         {
-            // Raycast for the jump
             RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, jumpDetectionHeight, groundLayer);
 
             #if UNITY_EDITOR
@@ -49,7 +47,6 @@ namespace Somersaultbear
 
             MoveCharacterAccordingToDirection();
 
-            // Jump every time the raycast hits the ground layer.
             if (rayHit)
             {
                 Jump();
@@ -78,7 +75,6 @@ namespace Somersaultbear
 
         private void FlipSprite()
         {
-            // Switch the sprite's direction according to the direction it's going.
             if (rigidBody.velocity.x > 0)
             {
                 spriteRenderer.flipX = false;

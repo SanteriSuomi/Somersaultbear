@@ -4,6 +4,7 @@ namespace Somersaultbear
 {
     public class InputManager : Singleton<InputManager>
     {
+        public InputSchemeBase InputScheme { get; private set; }
         [SerializeField]
         private InputSchemePC inputSchemePC = default;
         [SerializeField]
@@ -12,7 +13,10 @@ namespace Somersaultbear
         private GameObject mobileMenus = default;
         [SerializeField]
         private GameObject mobileMenuButton = default;
-        public InputSchemeBase InputScheme { get; private set; }
+        [SerializeField]
+        private string[] pcInputSchemePlatformNames = default;
+        [SerializeField]
+        private string[] mobileInputSchemePlatformNames = default;
 
         protected override void Awake()
         {
@@ -23,19 +27,39 @@ namespace Somersaultbear
         private void SetInputScheme()
         {
             string platformName = Application.platform.ToString();
-            if (platformName.Contains("Windows") || platformName.Contains("Linux") 
-                || platformName.Contains("OSX") || platformName.Contains("WebGL"))
+            InputScheme = SelectInputScheme(platformName);
+
+            #if UNITY_EDITOR
+            if (InputScheme is null)
             {
-                InputScheme = inputSchemePC;
+                Debug.LogError("Did not find an input scheme that exists!");
             }
-            else if (platformName.Contains("Android") || platformName.Contains("IPhone"))
-            {
-                InputScheme = inputSchemeMobile;
-                mobileMenus.SetActive(true); // Activate mobile menu button
-                mobileMenuButton.SetActive(true);
-            }
+            #endif
 
             InputScheme.gameObject.SetActive(true); // Activate the gameobject that contains the input scheme
+        }
+
+        private InputSchemeBase SelectInputScheme(string platformName)
+        {
+            for (int i = 0; i < pcInputSchemePlatformNames.Length; i++)
+            {
+                if (pcInputSchemePlatformNames[i].Contains(platformName))
+                {
+                    return inputSchemePC;
+                }
+            }
+
+            for (int i = 0; i < mobileInputSchemePlatformNames.Length; i++)
+            {
+                if (pcInputSchemePlatformNames[i].Contains(platformName))
+                {
+                    mobileMenus.SetActive(true); // Activate mobile menu button
+                    mobileMenuButton.SetActive(true);
+                    return inputSchemeMobile;
+                }
+            }
+
+            return null;
         }
     }
 }

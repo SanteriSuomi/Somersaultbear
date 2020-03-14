@@ -12,10 +12,11 @@ namespace Somersaultbear
         private ScoreManager scoreManager;
 
         [SerializeField]
+        private float selfDestroyDelay = 0.5f;
+        [SerializeField]
+        private float selfDestroyTime = 15;
+        [SerializeField]
         private int scoreToGive = 100;
-
-        private const float DESTROY_DELAY = 0.5f;
-        private const float DESTROY_TIME = 15f;
 
         private void Awake()
         {
@@ -26,33 +27,28 @@ namespace Somersaultbear
 
         private void Start()
         {
-            // Randomise the sprite when the object gets instantiated, and start the destroy timer.
             RandomiseSprite();
-            // Start a destroy timer.
-            Invoke(nameof(DestroyTimer), DESTROY_TIME);
+            Invoke(nameof(DestroyTimer), selfDestroyTime);
+        }
+
+        private void RandomiseSprite()
+        {
+            int random = Random.Range(0, sprites.Length);
+            spriteRenderer.sprite = sprites[random];
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
             {
-                // On trigger, add score to the player's total.
                 scoreManager.CurrentScore += scoreToGive;
                 PlayPickupSound();
-                // Destroy the object with small delay to allow the audiosource time to play.
-                Invoke(nameof(DestroyTimer), DESTROY_DELAY);
+                Invoke(nameof(DestroyTimer), selfDestroyDelay);
             }
         }
 
         private void PlayPickupSound() => audioSource.Play();
 
         private void DestroyTimer() => Destroy(gameObject);
-
-        private void RandomiseSprite()
-        {
-            // Randomise the sprite to a random sprite in the sprites array.
-            int random = Random.Range(0, sprites.Length);
-            spriteRenderer.sprite = sprites[random];
-        }
     }
 }

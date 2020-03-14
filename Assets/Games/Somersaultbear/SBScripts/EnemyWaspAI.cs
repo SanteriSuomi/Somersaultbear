@@ -20,7 +20,7 @@ namespace Somersaultbear
             HitPoints = hitPoints;
         }
 
-        private void Start() => Invoke(nameof(DestroyTimer), DESTROY_TIME);
+        private void Start() => Invoke(nameof(DestroyTimer), selfDestroyTime);
 
         private void DestroyTimer() => Destroy(gameObject);
 
@@ -32,7 +32,6 @@ namespace Somersaultbear
 
         private void DestroyOnHitpointsZero()
         {
-            // Deactivate enemy when hitpoints are zero.
             if (HitPoints <= 0)
             {
                 Destroy(gameObject);
@@ -41,7 +40,6 @@ namespace Somersaultbear
 
         private void FlipSprite()
         {
-            // Flip the sprite direction.
             if (target.x > transform.position.x)
             {
                 spriteRenderer.flipX = true;
@@ -59,7 +57,8 @@ namespace Somersaultbear
         {
             PlayFollowSound();
             target = collision.transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, 
+                moveSpeed * Time.deltaTime);
         }
 
         private void PlayFollowSound()

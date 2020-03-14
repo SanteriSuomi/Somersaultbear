@@ -12,12 +12,5 @@ namespace Somersaultbear
             get => value;
             set => this.value = value;
         }
-
-        [SerializeField]
-        private T onDisableResetValue = default;
-
-        private void OnDisable() => Value = onDisableResetValue;
-
-        private void OnDestroy() => Value = onDisableResetValue;
     }
 }

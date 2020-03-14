@@ -5,13 +5,11 @@ namespace Somersaultbear
     [RequireComponent(typeof(AudioSource))]
     public class PlayerShoot : MonoBehaviour
     {
-        private AudioSource[] audioSources = default;
+        private AudioSource[] audioSources;
         private Collider2D playerCollider;
         private Vector3 target;
         [SerializeField]
         private LayerMask mobileShootMask = default;
-        //[SerializeField]
-        //private LayerMask mobileShootRayMask = default;
         [SerializeField]
         private Vector3 mobileShootRadiusOffset = new Vector3(3.75f, 1.5f, 0);
         [SerializeField]
@@ -48,7 +46,7 @@ namespace Somersaultbear
             }
         }
 
-        public void OnShoot() // Mobile on shoot (from UI)
+        public void OnShoot() // Mobile on shoot (activated from UI)
         {
             if (timer >= shootCooldown)
             {
@@ -68,16 +66,6 @@ namespace Somersaultbear
             if (circleResults.Length > 0)
             {
                 return (true, circleResults[0].transform.position);
-
-                //int amountOfRayResults = Physics2D.LinecastNonAlloc(transform.position, circleResults[0].transform.position, 
-                //    null, mobileShootRayMask);
-                //Debug.Log("Amount of results : " + amountOfRayResults);
-                //if (amountOfRayResults == 1)
-                //{
-                //    return (true, circleResults[0].transform.position);
-                //}
-
-                //return (false, Vector2.zero);
             }
 
             return (false, Vector2.zero);
@@ -101,16 +89,20 @@ namespace Somersaultbear
                 Vector3 positionAsVector3 = new Vector2(position.x, position.y); // Convert to vector3
                 target = (positionAsVector3 - transform.position).normalized;
             }
-            
+
+            ApplyOffsetToTargetOnMobile();
+            target.z = 0f;
+        }
+
+        private void ApplyOffsetToTargetOnMobile()
+        {
             if (InputManager.Instance.InputScheme.InputType == InputType.Mobile)
             {
                 target += mobileShootOffset; // Offset the shoot pos to account for projectile drop (on mobile)
             }
-
-            target.z = 0f;
         }
 
-        private void PlayShootSound() => audioSources[1].Play();
+        private void PlayShootSound() => audioSources[1].Play(); // Throw SFX
 
         private void LaunchProjectile()
         {

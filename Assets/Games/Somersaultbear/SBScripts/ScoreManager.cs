@@ -19,15 +19,18 @@ namespace Somersaultbear
         [SerializeField]
         private int updateScoreRate = 10;
         [SerializeField]
+        private int updateScoreBy = 1;
+        [SerializeField]
         private string scoreString = "Score: ";
 
         private void FixedUpdate() => UpdateScore();
 
         private void UpdateScore()
         {
-            if (!PauseScoreCounting && playerRigidbody.velocity.x > minVelocityForScoring)
+            if (!PauseScoreCounting
+                && playerRigidbody.velocity.x > minVelocityForScoring)
             {
-                CurrentScore += 1;
+                CurrentScore += updateScoreBy;
                 if (CurrentScore % updateScoreRate == 0)
                 {
                     textScore.text = $"{scoreString} {CurrentScore}";

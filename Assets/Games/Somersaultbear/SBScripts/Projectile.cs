@@ -9,6 +9,8 @@ namespace Somersaultbear
 
         [SerializeField]
         private float maxTimeAlive = 5;
+        [SerializeField]
+        private int projectileDamage = 1;
 
         private void Awake()
         {
@@ -24,11 +26,10 @@ namespace Somersaultbear
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Enemy"))
+            if (collision.CompareTag("Enemy") 
+                && collision.transform.parent.TryGetComponent(out EnemyWaspAI enemy))
             {
-                // Get the hit enemy's Hitpoints value and decrease it every hit.
-                EnemyWaspAI enemyWaspAI = collision.gameObject.transform.parent.gameObject.GetComponent<EnemyWaspAI>();
-                enemyWaspAI.HitPoints -= 1;
+                enemy.HitPoints -= projectileDamage;
             }
         }
 

@@ -13,6 +13,7 @@ namespace Somersaultbear
 			MainMenu,
 			MainScene
 		}
+
 		[SerializeField]
 		private SceneType sceneType = default;
 
@@ -25,7 +26,6 @@ namespace Somersaultbear
 			}
 		}
 
-		// "Central" logic for variety of things such as changing scene.
 		public void ChangeScene(string sceneName)
 		{
 			switch (sceneType)
@@ -36,14 +36,14 @@ namespace Somersaultbear
 
 				case SceneType.MainScene:
 					SceneManager.LoadScene(sceneName);
-					AudioListener.volume = 1; // Make sure volume is on when loading main menu
+					AudioListener.volume = 1; // Make sure volume is on when loading main menu.
 					break;
 
 				default:
 					break;
 			}
 
-			Time.timeScale = 1;
+			Time.timeScale = 1; // Make sure time is passed as normal upon changing scene.
 		}
 
 		public void ExitGame() => Application.Quit();

@@ -322,6 +322,8 @@ MonoBehaviour:
     m_Bits: 256
   lensSmoothTime: 0.6
   detectionHeight: 1.25
+  maxLensSize: 7
+  minLensSize: 5
 --- !u!1001 &1616202544807040552
 PrefabInstance:
   m_ObjectHideFlags: 0

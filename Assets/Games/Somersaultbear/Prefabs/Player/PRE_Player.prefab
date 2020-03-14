@@ -414,6 +414,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   mobileShootRadiusOffset: {x: 3.75, y: 1.5, z: 0}
+  mobileShootOffset: {x: 0, y: 0.1, z: 0}
   projectileSpeed: 25
   shootCooldown: 0.175
   boulderLayer: 10

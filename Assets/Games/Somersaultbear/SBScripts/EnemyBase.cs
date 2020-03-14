@@ -8,7 +8,8 @@ namespace Somersaultbear
 
         [SerializeField]
         protected float moveSpeed = 3;
-        protected const float DESTROY_TIME = 15;
+        [SerializeField]
+        protected float selfDestroyTime = 15;
 
         protected virtual void Awake() => uiManager = FindObjectOfType<UIManager>();
 

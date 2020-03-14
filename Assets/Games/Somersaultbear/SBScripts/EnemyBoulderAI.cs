@@ -26,7 +26,7 @@ namespace Somersaultbear
             rigidBody = GetComponent<Rigidbody2D>();
         }
 
-        private void Start() => Invoke(nameof(DestroyTimer), DESTROY_TIME);
+        private void Start() => Invoke(nameof(DestroyTimer), selfDestroyTime);
 
         private void DestroyTimer() => Destroy(gameObject);
 
@@ -40,7 +40,6 @@ namespace Somersaultbear
             }
             else if (!oneDirection)
             {
-                // Draw a raycast for both right and left directions.
                 RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, hitDetectionDistance, groundLayer);
                 RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, hitDetectionDistance, groundLayer);
 
@@ -49,7 +48,6 @@ namespace Somersaultbear
                 Debug.DrawRay(transform.position, Vector2.left * hitDetectionDistance, Color.white);
                 #endif
 
-                // Detect if the gameObject is hitting left or right using raycasts and move to the opposite direction.
                 MoveAccordingToHitDirection(hitRight, hitLeft);
             }
         }

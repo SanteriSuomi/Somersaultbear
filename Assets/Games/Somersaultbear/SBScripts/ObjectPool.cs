@@ -6,7 +6,7 @@ namespace Somersaultbear
     public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : Component
     {
         private Queue<T> pool;
-        private Transform parent;
+        private Transform poolParent;
         [SerializeField]
         private T prefabToPool = default;
         [SerializeField]
@@ -27,56 +27,60 @@ namespace Somersaultbear
         private void InitializePool()
         {
             pool = new Queue<T>(poolSize);
-            parent = new GameObject($"{typeof(T).Name} Pool Objects").transform;
-            DontDestroyOnLoad(parent);
+            poolParent = new GameObject($"{typeof(T).Name} Pool Objects").transform;
+            DontDestroyOnLoad(poolParent);
             for (int i = 0; i < poolSize; i++)
             {
-                AddNewObjectToPool();
+                AddNewObjectToPool(); 
             }
         }
 
-        private void OnDisable() => isPooled.Value = false; // Make sure pool is spawned only one per load
+        private void OnDestroy() 
+            => isPooled.Value = false;
+
+        private void OnApplicationQuit() 
+            => isPooled.Value = false;
 
         /// <summary>
-        /// Get a object from the pool.
+        /// Get an object from the pool.
         /// </summary>
         /// <returns></returns>
         public T Get()
         {
-            T peekedObject = pool.Peek();
-            if (peekedObject == null)
+            T peekObj = pool.Peek();
+            if (peekObj == null)
             {
                 AddNewObjectToPool();
             }
 
-            T poppedObject = pool.Dequeue();
-            if (poppedObject != null)
+            T popObj = pool.Dequeue();
+            if (popObj != null)
             {
-                SetObjectActiveState(poppedObject, true);
+                ActivateObj(popObj, true);
             }
 
-            return poppedObject;
+            return popObj;
         }
 
         /// <summary>
-        /// Return a object to the pool.
+        /// Return an object to the pool.
         /// </summary>
-        /// <param name="value"></param>
-        public void Return(T value)
+        /// <param name="returnObj"></param>
+        public void Return(T returnObj)
         {
-            SetObjectActiveState(value, false);
-            pool.Enqueue(value);
+            ActivateObj(returnObj, false);
+            pool.Enqueue(returnObj);
         }
 
         private void AddNewObjectToPool()
         {
-            T newObject = Instantiate(prefabToPool);
-            SetObjectActiveState(newObject, false);
-            newObject.transform.SetParent(parent);
-            pool.Enqueue(newObject);
+            T newObj = Instantiate(prefabToPool);
+            ActivateObj(newObj, false);
+            newObj.transform.SetParent(poolParent);
+            pool.Enqueue(newObj);
         }
 
-        private void SetObjectActiveState(T poolObject, bool active)
-            => poolObject.gameObject.SetActive(active);
+        private void ActivateObj(T poolObj, bool activate)
+            => poolObj.gameObject.SetActive(activate);
     }
 }

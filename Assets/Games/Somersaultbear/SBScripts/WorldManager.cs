@@ -18,6 +18,7 @@ namespace Somersaultbear
         private CinemachineTransposer cinemachineTransposer;
         private WaitUntil waitUntilAdjustmentFalse;
         private Vector3 originalDamping;
+
         [SerializeField]
         private float maxPlayerXPosBeforeAdjustment = 10000;
         private bool isAdjusting;
@@ -51,16 +52,16 @@ namespace Somersaultbear
 
         private IEnumerator ResetPlayerPos()
         {
-            player.position = new Vector3(player.position.x - maxPlayerXPosBeforeAdjustment, 
-                player.position.y, 
+            player.position = new Vector3(player.position.x - maxPlayerXPosBeforeAdjustment,
+                player.position.y,
                 player.position.z);
             yield return null;
         }
 
         private IEnumerator ResetLevelPos()
         {
-            gameScenes.position = new Vector3(gameScenes.position.x - maxPlayerXPosBeforeAdjustment, 
-                gameScenes.position.y, 
+            gameScenes.position = new Vector3(gameScenes.position.x - maxPlayerXPosBeforeAdjustment,
+                gameScenes.position.y,
                 gameScenes.position.z);
             yield return null;
         }

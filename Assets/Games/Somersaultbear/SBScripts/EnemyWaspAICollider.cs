@@ -20,7 +20,6 @@ namespace Somersaultbear
         {
             if (collision.CompareTag("Player"))
             {
-                // Call methods on the main enemyWaspAI script 
                 switch (colliderType)
                 {
                     case ColliderType.Body:

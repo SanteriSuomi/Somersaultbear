@@ -5,11 +5,10 @@ namespace Somersaultbear
 	public class ColliderInfo : MonoBehaviour
 	{
 		private SpawnManager spawnManager;
-		private bool alreadyHit = false;
+		private bool alreadyHit;
 
 		private void Awake() => spawnManager = FindObjectOfType<SpawnManager>();
 
-		// Every time the gameObject is enabled, alreadyHit should be false.
 		private void OnEnable() => alreadyHit = false;
 
 		private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +21,6 @@ namespace Somersaultbear
 
 				// Change alreadyHit to true to prevent this from activating again in this instance of the prefab.
 				alreadyHit = true;
-				// Spawn a new scene prefab using the method in spawnManager.
 				spawnManager.SpawnNewScenePrefab();
 			}
 		}

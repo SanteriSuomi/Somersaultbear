@@ -6,9 +6,9 @@ namespace Somersaultbear
     {
         [SerializeField]
         private GameObject player = default;
-        private MainMenuAnim mmAnim = default;
+        private MainMenuAnim mainMenuAnim;
 
-        private void Awake() => mmAnim = player.GetComponent<MainMenuAnim>();
+        private void Awake() => mainMenuAnim = player.GetComponent<MainMenuAnim>();
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -19,7 +19,7 @@ namespace Somersaultbear
                 #endif
 
                 // New direction is the opposite direction to the current one.
-                mmAnim.Direction = !mmAnim.Direction;
+                mainMenuAnim.Direction = !mainMenuAnim.Direction;
             }
         }
     }

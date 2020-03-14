@@ -2,7 +2,7 @@
 
 namespace Somersaultbear
 {
-    public class SpawnScript : MonoBehaviour
+    public class EnemySpawner : MonoBehaviour
     {
         private enum SpawnType
         {
@@ -23,7 +23,6 @@ namespace Somersaultbear
 
         private void OnEnable()
         {
-            // Determine the spawn type of this instance.
             switch (spawnType)
             {
                 case SpawnType.Enemy:
